@@ -14,19 +14,10 @@
 		DF30927929918150000EB8F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF30927829918150000EB8F6 /* Assets.xcassets */; };
 		DF30927C29918150000EB8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF30927A29918150000EB8F6 /* LaunchScreen.storyboard */; };
 		DF30928729918150000EB8F6 /* WeCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30928629918150000EB8F6 /* WeCareTests.swift */; };
-		DF30929129918151000EB8F6 /* WeCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30929029918151000EB8F6 /* WeCareUITests.swift */; };
-		DF30929329918151000EB8F6 /* WeCareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30929229918151000EB8F6 /* WeCareUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DF30928329918150000EB8F6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DF30926429918150000EB8F6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF30926B29918150000EB8F6;
-			remoteInfo = WeCare;
-		};
-		DF30928D29918151000EB8F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DF30926429918150000EB8F6 /* Project object */;
 			proxyType = 1;
@@ -46,9 +37,6 @@
 		DF30927D29918150000EB8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF30928229918150000EB8F6 /* WeCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF30928629918150000EB8F6 /* WeCareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeCareTests.swift; sourceTree = "<group>"; };
-		DF30928C29918151000EB8F6 /* WeCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF30929029918151000EB8F6 /* WeCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeCareUITests.swift; sourceTree = "<group>"; };
-		DF30929229918151000EB8F6 /* WeCareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeCareUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +54,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF30928929918151000EB8F6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +62,6 @@
 			children = (
 				DF30926E29918150000EB8F6 /* WeCare */,
 				DF30928529918150000EB8F6 /* WeCareTests */,
-				DF30928F29918151000EB8F6 /* WeCareUITests */,
 				DF30926D29918150000EB8F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +71,6 @@
 			children = (
 				DF30926C29918150000EB8F6 /* WeCare.app */,
 				DF30928229918150000EB8F6 /* WeCareTests.xctest */,
-				DF30928C29918151000EB8F6 /* WeCareUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,12 +78,9 @@
 		DF30926E29918150000EB8F6 /* WeCare */ = {
 			isa = PBXGroup;
 			children = (
-				DF30926F29918150000EB8F6 /* AppDelegate.swift */,
-				DF30927129918150000EB8F6 /* SceneDelegate.swift */,
-				DF30927329918150000EB8F6 /* ViewController.swift */,
-				DF30927529918150000EB8F6 /* Main.storyboard */,
-				DF30927829918150000EB8F6 /* Assets.xcassets */,
-				DF30927A29918150000EB8F6 /* LaunchScreen.storyboard */,
+				DF30929F29918173000EB8F6 /* Application */,
+				DF3092A02991818C000EB8F6 /* Resources */,
+				DF3092A1299181BE000EB8F6 /* Sources */,
 				DF30927D29918150000EB8F6 /* Info.plist */,
 			);
 			path = WeCare;
@@ -118,13 +94,31 @@
 			path = WeCareTests;
 			sourceTree = "<group>";
 		};
-		DF30928F29918151000EB8F6 /* WeCareUITests */ = {
+		DF30929F29918173000EB8F6 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DF30929029918151000EB8F6 /* WeCareUITests.swift */,
-				DF30929229918151000EB8F6 /* WeCareUITestsLaunchTests.swift */,
+				DF30927A29918150000EB8F6 /* LaunchScreen.storyboard */,
+				DF30926F29918150000EB8F6 /* AppDelegate.swift */,
+				DF30927129918150000EB8F6 /* SceneDelegate.swift */,
 			);
-			path = WeCareUITests;
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DF3092A02991818C000EB8F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DF30927829918150000EB8F6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF3092A1299181BE000EB8F6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DF30927329918150000EB8F6 /* ViewController.swift */,
+				DF30927529918150000EB8F6 /* Main.storyboard */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,24 +159,6 @@
 			productReference = DF30928229918150000EB8F6 /* WeCareTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DF30928B29918151000EB8F6 /* WeCareUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DF30929C29918151000EB8F6 /* Build configuration list for PBXNativeTarget "WeCareUITests" */;
-			buildPhases = (
-				DF30928829918151000EB8F6 /* Sources */,
-				DF30928929918151000EB8F6 /* Frameworks */,
-				DF30928A29918151000EB8F6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DF30928E29918151000EB8F6 /* PBXTargetDependency */,
-			);
-			name = WeCareUITests;
-			productName = WeCareUITests;
-			productReference = DF30928C29918151000EB8F6 /* WeCareUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +173,6 @@
 						CreatedOnToolsVersion = 14.0;
 					};
 					DF30928129918150000EB8F6 = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = DF30926B29918150000EB8F6;
-					};
-					DF30928B29918151000EB8F6 = {
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = DF30926B29918150000EB8F6;
 					};
@@ -221,7 +193,6 @@
 			targets = (
 				DF30926B29918150000EB8F6 /* WeCare */,
 				DF30928129918150000EB8F6 /* WeCareTests */,
-				DF30928B29918151000EB8F6 /* WeCareUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +209,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DF30928029918150000EB8F6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DF30928A29918151000EB8F6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,15 +236,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF30928829918151000EB8F6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DF30929129918151000EB8F6 /* WeCareUITests.swift in Sources */,
-				DF30929329918151000EB8F6 /* WeCareUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -288,11 +243,6 @@
 			isa = PBXTargetDependency;
 			target = DF30926B29918150000EB8F6 /* WeCare */;
 			targetProxy = DF30928329918150000EB8F6 /* PBXContainerItemProxy */;
-		};
-		DF30928E29918151000EB8F6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DF30926B29918150000EB8F6 /* WeCare */;
-			targetProxy = DF30928D29918151000EB8F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -526,42 +476,6 @@
 			};
 			name = Release;
 		};
-		DF30929D29918151000EB8F6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PC4MSN8T7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCareUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WeCare;
-			};
-			name = Debug;
-		};
-		DF30929E29918151000EB8F6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PC4MSN8T7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCareUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = WeCare;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -588,15 +502,6 @@
 			buildConfigurations = (
 				DF30929A29918151000EB8F6 /* Debug */,
 				DF30929B29918151000EB8F6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DF30929C29918151000EB8F6 /* Build configuration list for PBXNativeTarget "WeCareUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DF30929D29918151000EB8F6 /* Debug */,
-				DF30929E29918151000EB8F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
