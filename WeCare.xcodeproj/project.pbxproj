@@ -14,7 +14,7 @@
 		DF30927929918150000EB8F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF30927829918150000EB8F6 /* Assets.xcassets */; };
 		DF30927C29918150000EB8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF30927A29918150000EB8F6 /* LaunchScreen.storyboard */; };
 		DF30928729918150000EB8F6 /* WeCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30928629918150000EB8F6 /* WeCareTests.swift */; };
-		DFDF63472995754200AABF9B /* WeatherLoader in Frameworks */ = {isa = PBXBuildFile; productRef = DFDF63462995754200AABF9B /* WeatherLoader */; };
+		DFE1C8B329967ABD006922BE /* WeatherLoader in Frameworks */ = {isa = PBXBuildFile; productRef = DFE1C8B229967ABD006922BE /* WeatherLoader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +38,8 @@
 		DF30927D29918150000EB8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF30928229918150000EB8F6 /* WeCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF30928629918150000EB8F6 /* WeCareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeCareTests.swift; sourceTree = "<group>"; };
-		DF6609CE2993C66600185DF8 /* WeatherLoader */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WeatherLoader; path = ../WeatherLoader; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
+		DFE1C8B129967A9A006922BE /* WeatherLoader */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WeatherLoader; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFDF63472995754200AABF9B /* WeatherLoader in Frameworks */,
+				DFE1C8B329967ABD006922BE /* WeatherLoader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,11 +64,11 @@
 		DF30926329918150000EB8F6 = {
 			isa = PBXGroup;
 			children = (
-				DF6609CE2993C66600185DF8 /* WeatherLoader */,
 				DF30926E29918150000EB8F6 /* WeCare */,
 				DF30928529918150000EB8F6 /* WeCareTests */,
 				DF30926D29918150000EB8F6 /* Products */,
 				DF6609CF2993C90000185DF8 /* Frameworks */,
+				DFE1C8B029967A9A006922BE /* Packages */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +135,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DFE1C8B029967A9A006922BE /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				DFE1C8B129967A9A006922BE /* WeatherLoader */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,7 +160,7 @@
 			);
 			name = WeCare;
 			packageProductDependencies = (
-				DFDF63462995754200AABF9B /* WeatherLoader */,
+				DFE1C8B229967ABD006922BE /* WeatherLoader */,
 			);
 			productName = WeCare;
 			productReference = DF30926C29918150000EB8F6 /* WeCare.app */;
@@ -530,7 +538,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DFDF63462995754200AABF9B /* WeatherLoader */ = {
+		DFE1C8B229967ABD006922BE /* WeatherLoader */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WeatherLoader;
 		};
