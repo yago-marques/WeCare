@@ -14,6 +14,7 @@
 		DF30927929918150000EB8F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF30927829918150000EB8F6 /* Assets.xcassets */; };
 		DF30927C29918150000EB8F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF30927A29918150000EB8F6 /* LaunchScreen.storyboard */; };
 		DF30928729918150000EB8F6 /* WeCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30928629918150000EB8F6 /* WeCareTests.swift */; };
+		DFDF63472995754200AABF9B /* WeatherLoader in Frameworks */ = {isa = PBXBuildFile; productRef = DFDF63462995754200AABF9B /* WeatherLoader */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,8 @@
 		DF30927D29918150000EB8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF30928229918150000EB8F6 /* WeCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF30928629918150000EB8F6 /* WeCareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeCareTests.swift; sourceTree = "<group>"; };
+		DF6609CE2993C66600185DF8 /* WeatherLoader */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = WeatherLoader; path = ../WeatherLoader; sourceTree = "<group>"; };
+		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFDF63472995754200AABF9B /* WeatherLoader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +64,11 @@
 		DF30926329918150000EB8F6 = {
 			isa = PBXGroup;
 			children = (
+				DF6609CE2993C66600185DF8 /* WeatherLoader */,
 				DF30926E29918150000EB8F6 /* WeCare */,
 				DF30928529918150000EB8F6 /* WeCareTests */,
 				DF30926D29918150000EB8F6 /* Products */,
+				DF6609CF2993C90000185DF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +84,7 @@
 		DF30926E29918150000EB8F6 /* WeCare */ = {
 			isa = PBXGroup;
 			children = (
+				DF6609D2299414C400185DF8 /* WeCare.entitlements */,
 				DF30929F29918173000EB8F6 /* Application */,
 				DF3092A02991818C000EB8F6 /* Resources */,
 				DF3092A1299181BE000EB8F6 /* Sources */,
@@ -121,6 +128,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		DF6609CF2993C90000185DF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +151,9 @@
 			dependencies = (
 			);
 			name = WeCare;
+			packageProductDependencies = (
+				DFDF63462995754200AABF9B /* WeatherLoader */,
+			);
 			productName = WeCare;
 			productReference = DF30926C29918150000EB8F6 /* WeCare.app */;
 			productType = "com.apple.product-type.application";
@@ -385,11 +402,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3PC4MSN8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -413,11 +432,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3PC4MSN8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -507,6 +528,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFDF63462995754200AABF9B /* WeatherLoader */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WeatherLoader;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF30926429918150000EB8F6 /* Project object */;
 }

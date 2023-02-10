@@ -6,14 +6,35 @@
 //
 
 import UIKit
+import WeatherLoader
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
-        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        Task.detached {
+            let locationManager = LocationManager()
+            if locationManager.authorizationStatus != .authorizedWhenInUse {
+                locationManager.makeRequest()
+            }
+        }
+
+        Task.detached {
+            do {
+                let service = WeatherLoader()
+                try await service.play() { weatherData in
+                    print(weatherData)
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
 
 }
-
