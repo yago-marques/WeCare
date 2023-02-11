@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+protocol ViewCoding {
+    func setupView()
+    func setupConstraints()
+    func setupHierarchy()
+}
+
+extension ViewCoding {
+    func buildLayout() {
+        setupView()
+        setupConstraints()
+        setupHierarchy()
+    }
+}
