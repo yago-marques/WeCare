@@ -15,7 +15,8 @@ class NotificationViewCell: UITableViewCell {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.backgroundColor = UIColor(red: 0.64, green: 0.73, blue: 0.72, alpha: 1)
-        cell.layer.cornerRadius = 22
+        cell.layer.cornerCurve = .circular
+        cell.layer.cornerRadius = 12
         return cell
     }()
     
@@ -23,33 +24,33 @@ class NotificationViewCell: UITableViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(systemName: "sun.max.fill")
-        image.tintColor = .systemBackground
+        image.tintColor = .yellow
         return image
     }()
     
     private lazy var titleCell: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = .systemFont(ofSize: 18, weight: .semibold)
-        title.text = ("Testando Título")
+        title.text = "Testando Título"
+        title.numberOfLines = 0
+        title.adjustsFontForContentSizeCategory = true
+        title.font = UIFont.preferredFont(forTextStyle: .title3)
         return title
     }()
     
     private lazy var descriptionCell: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
-        description.font = .systemFont(ofSize: 12, weight: .regular)
         description.text = ("Testando descrição de item de rotina skincare")
+        description.numberOfLines = 0
+        description.adjustsFontForContentSizeCategory = true
+        description.font = UIFont.preferredFont(forTextStyle: .caption1)
         return description
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildLayout()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -74,38 +75,38 @@ extension NotificationViewCell {
 }
 
 extension NotificationViewCell: ViewCoding {
-    func setupView() {
+    func setupView() { }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            
+            cell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            cell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            cell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            
+            imageCell.centerYAnchor.constraint(equalTo: cell.centerYAnchor),
+            imageCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.15),
+            imageCell.heightAnchor.constraint(equalTo: imageCell.widthAnchor),
+            imageCell.leadingAnchor.constraint(equalToSystemSpacingAfter: cell.leadingAnchor, multiplier: 1),
+//
+            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10),
+            titleCell.leadingAnchor.constraint(equalToSystemSpacingAfter: imageCell.trailingAnchor, multiplier: 0.5),
+            titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.75),
+
+            descriptionCell.topAnchor.constraint(equalToSystemSpacingBelow: titleCell.bottomAnchor, multiplier: 0.1),
+            descriptionCell.leadingAnchor.constraint(equalTo: titleCell.leadingAnchor),
+            descriptionCell.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+            descriptionCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15),
+        ])
+    }
+    
+    func setupHierarchy() {
         contentView.addSubview(cell)
         cell.addSubview(imageCell)
         cell.addSubview(titleCell)
         cell.addSubview(descriptionCell)
     }
-    
-    func setupConstraints() {
-        NSLayoutConstraint.activate([
-            cell.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            cell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            cell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -13),
-            cell.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -10),
-            
-            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 20),
-            titleCell.leadingAnchor.constraint(equalTo: imageCell.trailingAnchor, constant: 20),
-            titleCell.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -128),
-            titleCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -32),
-            
-            imageCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 14),
-            imageCell.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 12),
-            imageCell.trailingAnchor.constraint(equalTo: titleCell.leadingAnchor, constant: -4),
-            imageCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -14),
-            
-            descriptionCell.topAnchor.constraint(equalTo: titleCell.bottomAnchor, constant: 6),
-            descriptionCell.leadingAnchor.constraint(equalTo: titleCell.leadingAnchor),
-            descriptionCell.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -30),
-            descriptionCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15)
-        ])
-    }
-    
-    func setupHierarchy() { }
     
     
 }

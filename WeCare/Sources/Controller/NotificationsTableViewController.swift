@@ -42,7 +42,5 @@ extension NotificationsTableViewController: UITableViewDelegate, UITableViewData
         return 24
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
-    }
+    
 }

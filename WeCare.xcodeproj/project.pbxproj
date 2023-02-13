@@ -13,6 +13,7 @@
 		ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3D2996CC670002F8F2 /* NotificationsTableView.swift */; };
 		ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A41299813520002F8F2 /* ViewCoding.swift */; };
 		ABCA6A442998244D0002F8F2 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A432998244D0002F8F2 /* NotificationsTableViewController.swift */; };
+		ABCA6A462999FDBF0002F8F2 /* WeatherCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A452999FDBF0002F8F2 /* WeatherCardViewController.swift */; };
 		DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30926F29918150000EB8F6 /* AppDelegate.swift */; };
 		DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30927129918150000EB8F6 /* SceneDelegate.swift */; };
 		DF30927429918150000EB8F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30927329918150000EB8F6 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		ABCA6A3D2996CC670002F8F2 /* NotificationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableView.swift; sourceTree = "<group>"; };
 		ABCA6A41299813520002F8F2 /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
 		ABCA6A432998244D0002F8F2 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewController.swift; sourceTree = "<group>"; };
+		ABCA6A452999FDBF0002F8F2 /* WeatherCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardViewController.swift; sourceTree = "<group>"; };
 		DF30926C29918150000EB8F6 /* WeCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF30926F29918150000EB8F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF30927129918150000EB8F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				ABCA6A432998244D0002F8F2 /* NotificationsTableViewController.swift */,
+				ABCA6A452999FDBF0002F8F2 /* WeatherCardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				ABCA6A442998244D0002F8F2 /* NotificationsTableViewController.swift in Sources */,
 				DF30927429918150000EB8F6 /* ViewController.swift in Sources */,
 				ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */,
+				ABCA6A462999FDBF0002F8F2 /* WeatherCardViewController.swift in Sources */,
 				ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */,
 				DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */,
 				DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */,
