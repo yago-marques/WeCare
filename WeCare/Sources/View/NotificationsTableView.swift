@@ -22,7 +22,7 @@ class NotificationsTableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        buildLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +32,10 @@ class NotificationsTableView: UIView {
 }
 
 extension NotificationsTableView: ViewCoding {
+    func setupHierarchy() {
+        addSubview(tableView)
+    }
+    
     func setupView() { }
     
     func setupConstraints() {
@@ -41,11 +45,5 @@ extension NotificationsTableView: ViewCoding {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor)])
     }
-    
-    func setupHierarchy() {
-        addSubview(tableView)
-        
-    }
-    
 }
 
