@@ -23,7 +23,7 @@ class WeatherCardViewController: UIViewController {
         NSLayoutConstraint.activate([
             cardContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             cardContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            cardContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
+            cardContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.35),
             cardContainer.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }

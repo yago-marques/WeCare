@@ -13,7 +13,7 @@ class WeatherCardView: UIView {
     lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .systemGray
+        card.backgroundColor = .systemGray6
         card.layer.shadowColor = UIColor.black.cgColor
         card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         card.layer.shadowRadius = 0.9
@@ -27,7 +27,8 @@ class WeatherCardView: UIView {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
-        icon.image = UIImage(named: "sun.max.fill")
+        icon.image = UIImage(systemName: "cloud.fill")
+        icon.tintColor = .blue
         return icon
     }()
     
@@ -35,18 +36,25 @@ class WeatherCardView: UIView {
         let temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
         temperature.text = "29°C"
+        temperature.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         return temperature
     }()
     
     private lazy var location: UILabel = {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
+        location.text = "Fortaleza, Brasil"
+        location.adjustsFontForContentSizeCategory = true
+        location.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         return location
     }()
     
     private lazy var uvIndex: UILabel = {
         let uvIndex = UILabel()
         uvIndex.translatesAutoresizingMaskIntoConstraints = false
+        uvIndex.text = "Índice UV: 3"
+        uvIndex.adjustsFontForContentSizeCategory = true
+        uvIndex.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         return uvIndex
     }()
     
@@ -62,20 +70,29 @@ class WeatherCardView: UIView {
 }
 
 extension WeatherCardView: ViewCoding {
-    func setupView() {
-        
-    }
+    func setupView() { }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            weatherCard.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.55),
+            weatherCard.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
             weatherCard.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             weatherCard.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             weatherCard.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
-            weatherCard.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -15),
-            weatherCard.topAnchor.constraint(equalTo: weatherCard.topAnchor, constant: 15)
-            
+
+            temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 3),
+            temperature.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 3),
+
+            location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
+            location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
+
+            weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.4),
+            weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
+            weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -30),
+            weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 2),
+
+            uvIndex.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
+            uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: location.bottomAnchor, multiplier: 1),
+
         ])
     }
     
