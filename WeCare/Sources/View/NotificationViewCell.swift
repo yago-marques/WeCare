@@ -14,9 +14,14 @@ class NotificationViewCell: UITableViewCell {
     private lazy var cell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.backgroundColor = UIColor(red: 0.64, green: 0.73, blue: 0.72, alpha: 1)
+        cell.backgroundColor = .systemGray6
         cell.layer.cornerCurve = .circular
         cell.layer.cornerRadius = 12
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.masksToBounds = false
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.layer.shadowRadius = 3
         return cell
     }()
     
@@ -56,18 +61,10 @@ class NotificationViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        titleCell.text = nil
-        descriptionCell.text = nil
-        imageCell.image = nil
-    }
 }
 
 extension NotificationViewCell {
-    
-    public func configureCellInformations(title: String, description: String, image: String) {
+    func configureCellInformations(title: String, description: String, image: String) {
         imageCell.image = UIImage(named: image)
         titleCell.text = title
         descriptionCell.text = description
@@ -75,11 +72,13 @@ extension NotificationViewCell {
 }
 
 extension NotificationViewCell: ViewCoding {
-    func setupView() { }
+    func setupView() {
+        self.selectionStyle = .none
+        self.backgroundColor = .systemBackground
+    }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            
             cell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             cell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             cell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -89,7 +88,7 @@ extension NotificationViewCell: ViewCoding {
             imageCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.15),
             imageCell.heightAnchor.constraint(equalTo: imageCell.widthAnchor),
             imageCell.leadingAnchor.constraint(equalToSystemSpacingAfter: cell.leadingAnchor, multiplier: 1),
-//
+
             titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10),
             titleCell.leadingAnchor.constraint(equalToSystemSpacingAfter: imageCell.trailingAnchor, multiplier: 0.5),
             titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.75),

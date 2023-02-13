@@ -15,7 +15,6 @@ class NotificationsTableView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
         tableView.separatorStyle = .none
-        tableView.allowsMultipleSelection = true
         tableView.register(NotificationViewCell.self, forCellReuseIdentifier: NotificationViewCell.identifier)
         return tableView
     }()
@@ -43,7 +42,8 @@ extension NotificationsTableView: ViewCoding {
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)])
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
 }
 
