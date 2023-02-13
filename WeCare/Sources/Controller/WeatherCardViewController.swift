@@ -9,10 +9,22 @@ import Foundation
 import UIKit
 
 class WeatherCardViewController: UIViewController {
-    
-   private var weatherCardView = WeatherCardView()
+        
+    private let cardContainer: WeatherCardView = {
+        let weatherCardView = WeatherCardView()
+        weatherCardView.translatesAutoresizingMaskIntoConstraints = false
+        return weatherCardView
+    }()
     
     override func viewDidLoad() {
-        view = weatherCardView
+        view.addSubview(cardContainer)
+        view.backgroundColor = .systemBackground
+        
+        NSLayoutConstraint.activate([
+            cardContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            cardContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cardContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
+            cardContainer.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
 }

@@ -13,29 +13,46 @@ class WeatherCardView: UIView {
     lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .init(red: 0.17, green: 0.59, blue: 0.96, alpha: 1.00)
-        card.layer.shadowColor = .init(red: 0, green: 0, blue: 0, alpha: 0.2)
-        card.layer.shadowOffset = CGSizeMake(4.0, 4.0)
+        card.backgroundColor = .systemGray
+        card.layer.shadowColor = UIColor.black.cgColor
+        card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         card.layer.shadowRadius = 0.9
-        card.layer.shadowOpacity = 12
+        card.layer.shadowOpacity = 0.2
+        card.layer.cornerCurve = .circular
+        card.layer.cornerRadius = 20
         return card
     }()
     
-    private lazy var icon: UIImageView =  {
+    private lazy var weatherIcon: UIImageView =  {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
-        icon.image = UIImage(named: "circle.fill")
+        icon.image = UIImage(named: "sun.max.fill")
         return icon
+    }()
+    
+    private lazy var temperature: UILabel = {
+        let temperature = UILabel()
+        temperature.translatesAutoresizingMaskIntoConstraints = false
+        temperature.text = "29°C"
+        return temperature
+    }()
+    
+    private lazy var location: UILabel = {
+        let location = UILabel()
+        location.translatesAutoresizingMaskIntoConstraints = false
+        return location
     }()
     
     private lazy var uvIndex: UILabel = {
         let uvIndex = UILabel()
+        uvIndex.translatesAutoresizingMaskIntoConstraints = false
         return uvIndex
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
+        buildLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -50,12 +67,24 @@ extension WeatherCardView: ViewCoding {
     }
     
     func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            weatherCard.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.55),
+            weatherCard.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            weatherCard.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            weatherCard.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            
+            weatherCard.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -15),
+            weatherCard.topAnchor.constraint(equalTo: weatherCard.topAnchor, constant: 15)
+            
+        ])
     }
     
     func setupHierarchy() {
         addSubview(weatherCard)
-        weatherCard.addSubview(icon)
+        weatherCard.addSubview(weatherIcon)
+        weatherCard.addSubview(temperature)
+        weatherCard.addSubview(uvIndex)
+        weatherCard.addSubview(location)
     }
     
     
