@@ -58,9 +58,8 @@ class NotificationViewCell: UITableViewCell {
         buildLayout()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
 }
 
 extension NotificationViewCell {
@@ -106,6 +105,4 @@ extension NotificationViewCell: ViewCoding {
         cell.addSubview(titleCell)
         cell.addSubview(descriptionCell)
     }
-    
-    
 }

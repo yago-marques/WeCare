@@ -11,7 +11,7 @@ import UIKit
 class NotificationsTableView: UIView {
     
     internal lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
         tableView.separatorStyle = .none
@@ -24,9 +24,8 @@ class NotificationsTableView: UIView {
         buildLayout()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
     
 }
 
