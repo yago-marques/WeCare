@@ -10,10 +10,32 @@ import UIKit
 
 final class DailyTasksController: UIViewController {
 
+    let dailyView: DailyTasksView
+    let presenter: DailyTasksPresenting
+
+    init(dailyView: DailyTasksView, presenter: DailyTasksPresenting) {
+        self.dailyView = dailyView
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        self.view = DailyTasksView(frame: UIScreen.main.bounds)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        Task {
+            do {
+                try await presenter.showView(self)
+            } catch {
+                print(error)
+            }
+        }
     }
     
 }

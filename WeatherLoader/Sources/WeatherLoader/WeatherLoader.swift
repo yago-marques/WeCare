@@ -8,12 +8,15 @@
 import Foundation
 import WeatherKit
 
+enum WeatherError: Error {
+    case invalidWeather
+}
+
 public struct WeatherInfo {
-    let location: WorldLocation
-    let temperature: String
-    let humidity: Double
-    let uvIndex: Int
-    let symbolName: String
+    public let location: WorldLocation
+    public let temperature: String
+    public let uvIndex: Int
+    public let symbolName: String
 }
 
 @available(iOS 16.0, *)
@@ -32,12 +35,24 @@ public final class WeatherLoader {
                 .init(
                     location: address,
                     temperature: weather.currentWeather.temperature.formatted(),
-                    humidity: weather.currentWeather.humidity,
                     uvIndex: weather.currentWeather.uvIndex.value,
                     symbolName: weather.currentWeather.symbolName
                 )
             )
         }
+    }
+
+    public func getWeather() async throws -> WeatherInfo {
+        try await findWeather()
+        let address = try await findAddress()
+        guard let weather = self.weather else { throw WeatherError.invalidWeather }
+
+        return .init(
+            location: address,
+            temperature: weather.currentWeather.temperature.formatted(),
+            uvIndex: weather.currentWeather.uvIndex.value,
+            symbolName: weather.currentWeather.symbolName
+        )
     }
 
     private func findWeather() async throws {
@@ -64,6 +79,17 @@ public final class WeatherLoader {
             case .failure(let failure):
                 print(failure)
             }
+        }
+    }
+
+    private func findAddress() async throws -> WorldLocation {
+        do {
+            return try await map.getAddress(
+                latitude: self.location.latitude,
+                longitude: self.location.longitude
+            )
+        } catch {
+            throw error
         }
     }
 }

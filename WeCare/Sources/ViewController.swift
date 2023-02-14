@@ -21,9 +21,7 @@ class ViewController: UIViewController {
 
         Task.detached {
             let locationManager = LocationManager()
-            if locationManager.authorizationStatus != .authorizedWhenInUse {
-                locationManager.makeRequest()
-            }
+            
         }
 
         Task.detached {

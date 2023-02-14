@@ -10,6 +10,12 @@ import UIKit
 
 final class DailyTasksView: UIView {
 
+    var notificationsViewModel: NotificationsTasksViewModel? {
+        didSet {
+            self.notificationsTable.tableView.reloadData()
+        }
+    }
+
     private let headerGreetings: HeaderGreetings = {
         let header = HeaderGreetings()
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +47,12 @@ final class DailyTasksView: UIView {
 
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
+
+    func setup(viewModel: DailyTasksViewModel) {
+        self.headerGreetings.setup(viewModel: viewModel.header)
+        self.weatherCard.setup(viewModel: viewModel.weatherCard)
+        self.notificationsViewModel = viewModel.notificationsTable
+    }
 }
 
 extension DailyTasksView: UITableViewDelegate { }
@@ -48,13 +60,17 @@ extension DailyTasksView: UITableViewDelegate { }
 extension DailyTasksView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        self.notificationsViewModel?.tasks.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NotificationViewCell.identifier, for: indexPath) as? NotificationViewCell else {
             return UITableViewCell(style: .default, reuseIdentifier: NotificationViewCell.identifier)
+        }
+
+        if let viewModel = self.notificationsViewModel?.tasks[indexPath.row] {
+            cell.setup(viewModel: viewModel)
         }
 
         return cell

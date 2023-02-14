@@ -12,15 +12,14 @@ class HeaderGreetings: UIView {
     
     private lazy var date: UILabel = {
         let data = UILabel()
+        data.text = Date().displayFormat
         data.translatesAutoresizingMaskIntoConstraints = false
-        data.text = ("\(Date().displayFormat)")
         data.font = .systemFont(ofSize: 16, weight: .light)
         return data
     }()
     
     private lazy var greetings: UILabel = {
         let greetings = UILabel()
-        greetings.text = ("\(Date().greetingMessage), Emilly")
         greetings.translatesAutoresizingMaskIntoConstraints = false
         greetings.font = .systemFont(ofSize: 32, weight: .regular)
         return greetings
@@ -34,6 +33,10 @@ class HeaderGreetings: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
+    func setup(viewModel: HeaderGreetingsViewModel?) {
+        guard let viewModel else { return }
+        self.greetings.text = "\(Date().greetingMessage), \(viewModel.userName)"
+    }
 }
 
 extension HeaderGreetings: ViewCoding {

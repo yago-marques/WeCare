@@ -27,7 +27,6 @@ class WeatherCardView: UIView {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
-        icon.image = UIImage(systemName: "cloud.fill")
         icon.tintColor = .blue
         return icon
     }()
@@ -35,7 +34,6 @@ class WeatherCardView: UIView {
     private lazy var temperature: UILabel = {
         let temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.text = "29°C"
         temperature.font = UIFont.systemFont(ofSize: 40, weight: .bold)
         return temperature
     }()
@@ -43,7 +41,6 @@ class WeatherCardView: UIView {
     private lazy var location: UILabel = {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
-        location.text = "Fortaleza, Brasil"
         location.adjustsFontForContentSizeCategory = true
         location.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         return location
@@ -52,7 +49,6 @@ class WeatherCardView: UIView {
     private lazy var uvIndex: UILabel = {
         let uvIndex = UILabel()
         uvIndex.translatesAutoresizingMaskIntoConstraints = false
-        uvIndex.text = "Índice UV: 3"
         uvIndex.adjustsFontForContentSizeCategory = true
         uvIndex.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         return uvIndex
@@ -65,6 +61,14 @@ class WeatherCardView: UIView {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
+
+    func setup(viewModel: WeatherCardViewModel?) {
+        guard let viewModel else { return }
+        weatherIcon.image = UIImage(systemName: viewModel.weather.weatherIcon)
+        temperature.text = viewModel.weather.temperature
+        location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"
+        uvIndex.text = "Índice UV: \(viewModel.weather.uvIndex)"
+    }
 
 }
 

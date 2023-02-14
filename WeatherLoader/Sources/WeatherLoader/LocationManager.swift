@@ -30,6 +30,8 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
 
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { }
+
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:

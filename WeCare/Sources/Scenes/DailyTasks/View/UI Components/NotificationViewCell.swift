@@ -28,7 +28,6 @@ class NotificationViewCell: UITableViewCell {
     private lazy var imageCell: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(systemName: "sun.max.fill")
         image.tintColor = .yellow
         return image
     }()
@@ -36,7 +35,6 @@ class NotificationViewCell: UITableViewCell {
     private lazy var titleCell: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Testando Título"
         title.numberOfLines = 0
         title.adjustsFontForContentSizeCategory = true
         title.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -46,7 +44,6 @@ class NotificationViewCell: UITableViewCell {
     private lazy var descriptionCell: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
-        description.text = ("Testando descrição de item de rotina skincare")
         description.numberOfLines = 0
         description.adjustsFontForContentSizeCategory = true
         description.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -63,10 +60,10 @@ class NotificationViewCell: UITableViewCell {
 }
 
 extension NotificationViewCell {
-    func configureCellInformations(title: String, description: String, image: String) {
-        imageCell.image = UIImage(named: image)
-        titleCell.text = title
-        descriptionCell.text = description
+    func setup(viewModel: NotificationsTask) {
+        imageCell.image = UIImage(systemName: viewModel.icon)
+        titleCell.text = viewModel.title
+        descriptionCell.text = viewModel.description
     }
 }
 
