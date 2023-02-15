@@ -34,7 +34,13 @@ extension NotificationsTableViewController: UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sheetViewController = StepByStepViewController(nibName: nil, bundle: nil)
+        present(sheetViewController, animated: true, completion: nil)
+        return
+        
+    }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
