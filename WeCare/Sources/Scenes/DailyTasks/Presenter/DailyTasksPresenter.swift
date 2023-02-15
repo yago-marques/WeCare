@@ -42,7 +42,6 @@ private extension DailyTasksPresenter {
     private func updateInterface() {
         DispatchQueue.main.async {
             self.controller?.dailyView.setup(viewModel: self.interfaceModel)
-            print("oi")
         }
     }
 

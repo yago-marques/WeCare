@@ -44,6 +44,24 @@ extension DailyTasksViewModel {
                             )
                         ]
                     )
+                ),
+                .init(
+                    title: "Hidratante",
+                    description: "Passar hidratante",
+                    icon: "cloud.fill",
+                    steps: (
+                        "É só passar o hidratante",
+                        [
+                            .init(
+                                title: "Abrir o hidratante",
+                                description: "Gire a tampa até abrir"
+                            ),
+                            .init(
+                                title: "Passar no rosto",
+                                description: "Use movimemtos circulares"
+                            )
+                        ]
+                    )
                 )
             ])
         )
