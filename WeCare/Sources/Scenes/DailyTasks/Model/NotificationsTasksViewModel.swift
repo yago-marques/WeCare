@@ -12,6 +12,7 @@ struct NotificationsTasksViewModel {
 }
 
 struct NotificationsTask {
+    let useCases: TaksUseCase?
     let title: String
     let description: String
     let icon: String
@@ -21,4 +22,11 @@ struct NotificationsTask {
 struct TaskStep {
     let title: String
     let description: String
+}
+
+struct TaksUseCase {
+    let minTemperature: Int
+    let minUvIndex: Int
+    let maxTemperature: Int
+    let maxUvIndex: Int
 }

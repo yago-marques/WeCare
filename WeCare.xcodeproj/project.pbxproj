@@ -20,6 +20,7 @@
 		DF52B41E299CFEAC00F54E43 /* StepByStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B41D299CFEAC00F54E43 /* StepByStepController.swift */; };
 		DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B420299CFF1B00F54E43 /* StepByStepView.swift */; };
 		DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */; };
+		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -61,6 +62,7 @@
 		DF52B41D299CFEAC00F54E43 /* StepByStepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepController.swift; sourceTree = "<group>"; };
 		DF52B420299CFF1B00F54E43 /* StepByStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepView.swift; sourceTree = "<group>"; };
 		DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepViewCell.swift; sourceTree = "<group>"; };
+		DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTaskExtension.swift; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8F97A6299B1CB400AD3A5C /* Date.swift */,
+				DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */,
 				DFE84966299BB132006A7805 /* HeaderGreetingsViewModel.swift in Sources */,
 				ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */,
+				DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */,
 				ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */,
 				DFE8496A299BB271006A7805 /* NotificationsTasksViewModel.swift in Sources */,
 				DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */,

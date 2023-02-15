@@ -10,7 +10,7 @@ import UIKit
 
 enum DailyTasksFactory {
     static func make() -> UIViewController {
-        let view = DailyTasksView()
+        let view = DailyTasksView(frame: UIScreen.main.bounds)
         let presenter = DailyTasksPresenter(weatherService: RemoteWeatherLoader())
 
         return DailyTasksController(

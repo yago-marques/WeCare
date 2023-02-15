@@ -28,6 +28,7 @@ extension DailyTasksViewModel {
             ),
             notificationsTable: .init(tasks: [
                 .init(
+                    useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "cloud.fill",
@@ -46,6 +47,7 @@ extension DailyTasksViewModel {
                     )
                 ),
                 .init(
+                    useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "cloud.fill",
