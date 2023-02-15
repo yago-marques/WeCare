@@ -36,7 +36,7 @@ class NotificationViewCell: UITableViewCell {
     private lazy var titleCell: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Testando Título"
+        title.text = "Testando Título 1"
         title.numberOfLines = 0
         title.adjustsFontForContentSizeCategory = true
         title.font = UIFont.preferredFont(forTextStyle: .title3)
