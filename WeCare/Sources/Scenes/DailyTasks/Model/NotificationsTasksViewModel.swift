@@ -11,20 +11,23 @@ struct NotificationsTasksViewModel {
     let tasks: [NotificationsTask]
 }
 
-struct NotificationsTask {
-    let useCases: TaksUseCase?
+struct NotificationsTask: Codable {
+    let id: UUID
+    let useCases: TasksUseCase?
     let title: String
     let description: String
     let icon: String
-    let steps: (String, [TaskStep])
+    let stepsDescription: String
+    let steps: [TaskStep]
+    var isDone: Bool
 }
 
-struct TaskStep {
+struct TaskStep: Codable {
     let title: String
     let description: String
 }
 
-struct TaksUseCase {
+struct TasksUseCase: Codable {
     let minTemperature: Int
     let minUvIndex: Int
     let maxTemperature: Int
