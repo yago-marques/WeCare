@@ -28,6 +28,8 @@ class WeatherCardView: UIView {
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
         icon.tintColor = .blue
+//        icon.isAccessibilityElement = true
+//        icon.accessibilityLabel = "Sol azul"
         return icon
     }()
     
@@ -65,16 +67,38 @@ class WeatherCardView: UIView {
     func setup(viewModel: WeatherCardViewModel?) {
         guard let viewModel else { return }
         weatherIcon.image = UIImage(systemName: viewModel.weather.weatherIcon)
+//        weatherIcon.accessibilityLabel = "Sol azul"
         temperature.text = viewModel.weather.temperature
         location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"
         uvIndex.text = "Índice UV: \(viewModel.weather.uvIndex)"
+        groupAccessible()
+    }
+
+    func groupAccessible() {
+        self.weatherCard.isAccessibilityElement = false
+//        self.weatherIcon.isAccessibilityElement = false
+        self.location.isAccessibilityElement = false
+        self.temperature.isAccessibilityElement = false
+        self.uvIndex.isAccessibilityElement = false
+
+        self.shouldGroupAccessibilityChildren = true
+        self.isAccessibilityElement = true
+
+//        let weatherIconAccessible = weatherIcon.accessibilityLabel ?? "nao deu"
+        let locationAccessible = location.text ?? "erro"
+        let temperatureAccessible = temperature.text ?? "erro"
+        let uvIndexAccessible = uvIndex.text ?? "erro"
+
+        self.accessibilityLabel = """
+            temperatura \(temperatureAccessible) em \(locationAccessible), com \(uvIndexAccessible)
+        """
     }
 
 }
 
 extension WeatherCardView: ViewCoding {
     func setupView() { }
-    
+
     func setupConstraints() {
         NSLayoutConstraint.activate([
             weatherCard.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
@@ -98,7 +122,7 @@ extension WeatherCardView: ViewCoding {
 
         ])
     }
-    
+
     func setupHierarchy() {
         addSubview(weatherCard)
         weatherCard.addSubview(weatherIcon)
@@ -106,8 +130,8 @@ extension WeatherCardView: ViewCoding {
         weatherCard.addSubview(uvIndex)
         weatherCard.addSubview(location)
     }
-    
-    
+
+
+
+
 }
-
-

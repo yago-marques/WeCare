@@ -21,6 +21,7 @@ final class DailyTasksPresenter {
         self.controller = controller
         self.weatherService = weatherService
     }
+    
 }
 
 extension DailyTasksPresenter: DailyTasksPresenting {
@@ -58,6 +59,7 @@ private extension DailyTasksPresenter {
 
     private func loadWeatherCard() async throws {
         self.interfaceModel.weatherCard = DailyTasksViewModel.getMock().weatherCard
+    
 //        do {
 //            let weather = try await weatherService.getWeather()
 //            self.interfaceModel.weatherCard = .init(weather: weather)
