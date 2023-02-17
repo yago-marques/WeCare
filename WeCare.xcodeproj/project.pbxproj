@@ -12,6 +12,11 @@
 		ABCA6A3C29968F200002F8F2 /* HeaderGreetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3B29968F200002F8F2 /* HeaderGreetings.swift */; };
 		ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3D2996CC670002F8F2 /* NotificationsTableView.swift */; };
 		ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A41299813520002F8F2 /* ViewCoding.swift */; };
+		DF104277299E528E00356761 /* WeCare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DF104275299E528E00356761 /* WeCare.xcdatamodeld */; };
+		DF10427B299E538E00356761 /* LocalPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10427A299E538E00356761 /* LocalPersistenceManager.swift */; };
+		DF10427D299E53D300356761 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10427C299E53D300356761 /* CoreDataStack.swift */; };
+		DF104280299E546200356761 /* DailyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF10427F299E546200356761 /* DailyControl.swift */; };
+		DF245217299E5DAA002DC6C1 /* TasksControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF245216299E5DAA002DC6C1 /* TasksControl.swift */; };
 		DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30926F29918150000EB8F6 /* AppDelegate.swift */; };
 		DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30927129918150000EB8F6 /* SceneDelegate.swift */; };
 		DF30927929918150000EB8F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF30927829918150000EB8F6 /* Assets.xcassets */; };
@@ -20,6 +25,7 @@
 		DF52B41E299CFEAC00F54E43 /* StepByStepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B41D299CFEAC00F54E43 /* StepByStepController.swift */; };
 		DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B420299CFF1B00F54E43 /* StepByStepView.swift */; };
 		DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */; };
+		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -50,6 +56,11 @@
 		ABCA6A3B29968F200002F8F2 /* HeaderGreetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGreetings.swift; sourceTree = "<group>"; };
 		ABCA6A3D2996CC670002F8F2 /* NotificationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableView.swift; sourceTree = "<group>"; };
 		ABCA6A41299813520002F8F2 /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
+		DF104276299E528E00356761 /* WeCare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeCare.xcdatamodel; sourceTree = "<group>"; };
+		DF10427A299E538E00356761 /* LocalPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistenceManager.swift; sourceTree = "<group>"; };
+		DF10427C299E53D300356761 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		DF10427F299E546200356761 /* DailyControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyControl.swift; sourceTree = "<group>"; };
+		DF245216299E5DAA002DC6C1 /* TasksControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksControl.swift; sourceTree = "<group>"; };
 		DF30926C29918150000EB8F6 /* WeCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF30926F29918150000EB8F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF30927129918150000EB8F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +72,7 @@
 		DF52B41D299CFEAC00F54E43 /* StepByStepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepController.swift; sourceTree = "<group>"; };
 		DF52B420299CFF1B00F54E43 /* StepByStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepView.swift; sourceTree = "<group>"; };
 		DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepViewCell.swift; sourceTree = "<group>"; };
+		DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTaskExtension.swift; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
@@ -119,6 +131,34 @@
 				ABCA6A41299813520002F8F2 /* ViewCoding.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DF104278299E52E800356761 /* WeatherAPI */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8496E299BC4F0006A7805 /* RemoteWeatherLoader.swift */,
+			);
+			path = WeatherAPI;
+			sourceTree = "<group>";
+		};
+		DF104279299E533200356761 /* CoreDataClient */ = {
+			isa = PBXGroup;
+			children = (
+				DF10427E299E542100356761 /* CoreDataContract */,
+				DF104275299E528E00356761 /* WeCare.xcdatamodeld */,
+				DF10427A299E538E00356761 /* LocalPersistenceManager.swift */,
+				DF10427C299E53D300356761 /* CoreDataStack.swift */,
+			);
+			path = CoreDataClient;
+			sourceTree = "<group>";
+		};
+		DF10427E299E542100356761 /* CoreDataContract */ = {
+			isa = PBXGroup;
+			children = (
+				DF10427F299E546200356761 /* DailyControl.swift */,
+				DF245216299E5DAA002DC6C1 /* TasksControl.swift */,
+			);
+			path = CoreDataContract;
 			sourceTree = "<group>";
 		};
 		DF30926329918150000EB8F6 = {
@@ -274,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8F97A6299B1CB400AD3A5C /* Date.swift */,
+				DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,7 +358,8 @@
 		DFE8496D299BC4C7006A7805 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DFE8496E299BC4F0006A7805 /* RemoteWeatherLoader.swift */,
+				DF104279299E533200356761 /* CoreDataClient */,
+				DF104278299E52E800356761 /* WeatherAPI */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -430,11 +472,15 @@
 				DFE84963299BB0AF006A7805 /* DailyTasksPresenter.swift in Sources */,
 				DFE84968299BB1A0006A7805 /* WeatherCardViewModel.swift in Sources */,
 				DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */,
+				DF104280299E546200356761 /* DailyControl.swift in Sources */,
 				DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */,
+				DF245217299E5DAA002DC6C1 /* TasksControl.swift in Sources */,
 				DFE84966299BB132006A7805 /* HeaderGreetingsViewModel.swift in Sources */,
 				ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */,
+				DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */,
 				ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */,
 				DFE8496A299BB271006A7805 /* NotificationsTasksViewModel.swift in Sources */,
+				DF10427B299E538E00356761 /* LocalPersistenceManager.swift in Sources */,
 				DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */,
 				DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */,
 				DFE84971299BC568006A7805 /* LocalWeather.swift in Sources */,
@@ -443,7 +489,9 @@
 				ABCA6A3C29968F200002F8F2 /* HeaderGreetings.swift in Sources */,
 				DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */,
 				DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */,
+				DF10427D299E53D300356761 /* CoreDataStack.swift in Sources */,
 				ABCA6A3A29968EE50002F8F2 /* WeatherCardView.swift in Sources */,
+				DF104277299E528E00356761 /* WeCare.xcdatamodeld in Sources */,
 				DFE8496C299BB3AE006A7805 /* DailyTasksViewModel.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
 			);
@@ -729,6 +777,19 @@
 			productName = WeatherLoader;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DF104275299E528E00356761 /* WeCare.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DF104276299E528E00356761 /* WeCare.xcdatamodel */,
+			);
+			currentVersion = DF104276299E528E00356761 /* WeCare.xcdatamodel */;
+			path = WeCare.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DF30926429918150000EB8F6 /* Project object */;
 }

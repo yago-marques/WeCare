@@ -28,11 +28,13 @@ extension DailyTasksViewModel {
             ),
             notificationsTable: .init(tasks: [
                 .init(
+                    id: UUID(),
+                    useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "cloud.fill",
-                    steps: (
-                        "É só passar o hidratante",
+                    stepsDescription: "É só passar o hidratante",
+                    steps:
                         [
                             .init(
                                 title: "Abrir o hidratante",
@@ -42,15 +44,17 @@ extension DailyTasksViewModel {
                                 title: "Passar no rosto",
                                 description: "Use movimemtos circulares"
                             )
-                        ]
-                    )
+                        ],
+                    isDone: false
                 ),
                 .init(
+                    id: UUID(),
+                    useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "cloud.fill",
-                    steps: (
-                        "É só passar o hidratante",
+                    stepsDescription: "É só passar o hidratante",
+                    steps:
                         [
                             .init(
                                 title: "Abrir o hidratante",
@@ -60,8 +64,8 @@ extension DailyTasksViewModel {
                                 title: "Passar no rosto",
                                 description: "Use movimemtos circulares"
                             )
-                        ]
-                    )
+                        ],
+                    isDone: false
                 )
             ])
         )
