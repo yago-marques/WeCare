@@ -24,6 +24,8 @@ final class DailyTasksController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        dailyView.setupController(controller: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,10 @@ final class DailyTasksController: UIViewController {
                 print(error)
             }
         }
+    }
+
+    func toShhet() {
+        navigationController?.present(StepByStepViewController(), animated: true)
     }
     
 }

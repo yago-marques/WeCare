@@ -15,6 +15,7 @@ final class DailyTasksView: UIView {
             self.notificationsTable.tableView.reloadData()
         }
     }
+    weak var controller: DailyTasksController?
 
     private let headerGreetings: HeaderGreetings = {
         let header = HeaderGreetings()
@@ -39,9 +40,9 @@ final class DailyTasksView: UIView {
         return table
     }()
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, controller: DailyTasksController? = nil) {
+        self.controller = controller
         super.init(frame: frame)
-
         buildLayout()
     }
 
@@ -52,6 +53,10 @@ final class DailyTasksView: UIView {
         self.headerGreetings.setup(viewModel: viewModel.header)
         self.weatherCard.setup(viewModel: viewModel.weatherCard)
         self.notificationsViewModel = viewModel.notificationsTable
+    }
+
+    func setupController(controller: DailyTasksController) {
+        self.controller = controller
     }
 }
 
@@ -75,6 +80,23 @@ extension DailyTasksView: UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        controller?.toShhet()
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+    }
+        
 
 }
 

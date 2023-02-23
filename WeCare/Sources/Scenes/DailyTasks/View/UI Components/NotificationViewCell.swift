@@ -14,21 +14,20 @@ class NotificationViewCell: UITableViewCell {
     private lazy var cell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.backgroundColor = .systemGray6
-        cell.layer.cornerCurve = .circular
-        cell.layer.cornerRadius = 12
+        cell.backgroundColor = UIColor(red: 0.99, green: 0.84, blue: 0.88, alpha: 1)
         cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSizeMake(2.5, 2.5)
+        cell.layer.shadowRadius = 0.9
         cell.layer.shadowOpacity = 0.2
-        cell.layer.masksToBounds = false
-        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
-        cell.layer.shadowRadius = 3
+        cell.layer.cornerCurve = .circular
+        cell.layer.cornerRadius = 14
         return cell
     }()
     
     private lazy var imageCell: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.tintColor = .yellow
+        image.tintColor = UIColor(red: 0.99, green: 0.97, blue: 1, alpha: 1)
         return image
     }()
     
@@ -75,8 +74,8 @@ extension NotificationViewCell: ViewCoding {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            cell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            cell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 19),
+            cell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
             cell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             

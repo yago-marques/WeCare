@@ -8,13 +8,27 @@
 import Foundation
 import UIKit
 
+
+
 class StepByStepView: UIView {
+    
+    weak var delegate: DismissSheetDelegate?
 
     internal lazy var stepIcon: UIImageView = {
         let stepIcon = UIImageView()
         stepIcon.translatesAutoresizingMaskIntoConstraints = false
         stepIcon.image = UIImage(systemName: "sun.max.fill")
+        stepIcon.tintColor = UIColor(red: 0.99, green: 0.97, blue: 1, alpha: 1)
         return stepIcon
+    }()
+    
+    internal lazy var closeButton: UIButton = {
+        let button = UIButton(type: .close)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
+        button.tag = 2
+        button.clipsToBounds = true
+        return button
     }()
 
     internal lazy var stepDescription: UILabel = {
@@ -45,6 +59,11 @@ class StepByStepView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func closeAction(sender: UIButton) {
+        delegate?.dismiss()
+        }
+
 }
 
 extension StepByStepView: ViewCoding {
@@ -53,11 +72,15 @@ extension StepByStepView: ViewCoding {
     func setupConstraints() {
         NSLayoutConstraint.activate([
 
-            stepIcon.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            
+            stepIcon.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 5),
             stepIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
             stepIcon.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
             stepIcon.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
             stepIcon.bottomAnchor.constraint(equalTo: tableView.topAnchor),
+            
 
             tableView.topAnchor.constraint(equalTo: stepIcon.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -70,7 +93,7 @@ extension StepByStepView: ViewCoding {
     func setupHierarchy() {
         addSubview(stepIcon)
         addSubview(tableView)
-       // addSubview(stepDescription)
+        addSubview(closeButton)
     }
 
 }
