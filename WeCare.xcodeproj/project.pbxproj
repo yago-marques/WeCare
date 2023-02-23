@@ -27,6 +27,7 @@
 		DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */; };
 		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
 		DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0029A78BA400654AC0 /* DismissSheet.swift */; };
+		DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -76,6 +77,7 @@
 		DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTaskExtension.swift; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 		DF75DB0029A78BA400654AC0 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSheet.swift; sourceTree = "<group>"; };
+		DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationLoader.swift; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -272,6 +274,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DF75DB0229A7928D00654AC0 /* NotificationsManager */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */,
+			);
+			path = NotificationsManager;
+			sourceTree = "<group>";
+		};
 		DF8F979D299B188E00AD3A5C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +371,7 @@
 		DFE8496D299BC4C7006A7805 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DF75DB0229A7928D00654AC0 /* NotificationsManager */,
 				DF104279299E533200356761 /* CoreDataClient */,
 				DF104278299E52E800356761 /* WeatherAPI */,
 			);
@@ -484,6 +495,7 @@
 				ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */,
 				DFE8496A299BB271006A7805 /* NotificationsTasksViewModel.swift in Sources */,
 				DF10427B299E538E00356761 /* LocalPersistenceManager.swift in Sources */,
+				DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */,
 				DF30927029918150000EB8F6 /* AppDelegate.swift in Sources */,
 				DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */,
 				DFE84971299BC568006A7805 /* LocalWeather.swift in Sources */,
@@ -653,7 +665,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 826U5T47TW;
+				DEVELOPMENT_TEAM = 3PC4MSN8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
@@ -666,7 +678,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.stephane.WeCare;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -682,7 +694,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 826U5T47TW;
+				DEVELOPMENT_TEAM = 3PC4MSN8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
@@ -695,7 +707,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.stephane.WeCare;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

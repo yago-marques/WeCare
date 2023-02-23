@@ -70,6 +70,7 @@ private extension DailyTasksPresenter {
 
     private func loadNotificationTable() {
         self.interfaceModel.notificationsTable = DailyTasksViewModel.getMock().notificationsTable
+
     }
-    
+
 }

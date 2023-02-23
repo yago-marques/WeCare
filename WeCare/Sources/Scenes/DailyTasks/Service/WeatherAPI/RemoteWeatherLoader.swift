@@ -46,5 +46,4 @@ extension RemoteWeatherLoader: WeatherClient {
             throw error
         }
     }
-
 }
