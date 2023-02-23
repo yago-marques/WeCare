@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ABB6B4EB299FAC0000A91CB5 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB6B4EA299FAC0000A91CB5 /* DismissSheet.swift */; };
 		ABCA6A3829968E9A0002F8F2 /* NotificationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3729968E9A0002F8F2 /* NotificationViewCell.swift */; };
 		ABCA6A3A29968EE50002F8F2 /* WeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3929968EE50002F8F2 /* WeatherCardView.swift */; };
 		ABCA6A3C29968F200002F8F2 /* HeaderGreetings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3B29968F200002F8F2 /* HeaderGreetings.swift */; };
@@ -27,6 +26,7 @@
 		DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B420299CFF1B00F54E43 /* StepByStepView.swift */; };
 		DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */; };
 		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
+		DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0029A78BA400654AC0 /* DismissSheet.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -52,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ABB6B4EA299FAC0000A91CB5 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DismissSheet.swift; path = ../../../../../../../.Trash/WeCare/WeCare/Sources/Utilities/Protocols/DismissSheet.swift; sourceTree = "<group>"; };
 		ABCA6A3729968E9A0002F8F2 /* NotificationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewCell.swift; sourceTree = "<group>"; };
 		ABCA6A3929968EE50002F8F2 /* WeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardView.swift; sourceTree = "<group>"; };
 		ABCA6A3B29968F200002F8F2 /* HeaderGreetings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGreetings.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepViewCell.swift; sourceTree = "<group>"; };
 		DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTaskExtension.swift; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
+		DF75DB0029A78BA400654AC0 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSheet.swift; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				ABCA6A41299813520002F8F2 /* ViewCoding.swift */,
-				ABB6B4EA299FAC0000A91CB5 /* DismissSheet.swift */,
+				DF75DB0029A78BA400654AC0 /* DismissSheet.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 				DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */,
 				DFE84971299BC568006A7805 /* LocalWeather.swift in Sources */,
 				DF52B41E299CFEAC00F54E43 /* StepByStepController.swift in Sources */,
-				ABB6B4EB299FAC0000A91CB5 /* DismissSheet.swift in Sources */,
+				DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */,
 				ABCA6A3829968E9A0002F8F2 /* NotificationViewCell.swift in Sources */,
 				ABCA6A3C29968F200002F8F2 /* HeaderGreetings.swift in Sources */,
 				DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */,
