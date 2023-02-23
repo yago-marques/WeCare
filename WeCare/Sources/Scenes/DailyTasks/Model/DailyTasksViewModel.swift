@@ -33,7 +33,7 @@ extension DailyTasksViewModel {
                     useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
-                    icon: "cloud.fill",
+                    icon: "Default",
                     stepsDescription: "É só passar o hidratante",
                     steps:
                         [
@@ -53,7 +53,7 @@ extension DailyTasksViewModel {
                     useCases: nil,
                     title: "Hidratante",
                     description: "Passar hidratante",
-                    icon: "cloud.fill",
+                    icon: "Default",
                     stepsDescription: "É só passar o hidratante",
                     steps:
                         [

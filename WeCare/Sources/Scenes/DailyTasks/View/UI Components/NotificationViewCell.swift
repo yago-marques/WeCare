@@ -60,7 +60,7 @@ class NotificationViewCell: UITableViewCell {
 
 extension NotificationViewCell {
     func setup(viewModel: NotificationsTask) {
-        imageCell.image = UIImage(systemName: viewModel.icon)
+        imageCell.image = UIImage(named: viewModel.icon)
         titleCell.text = viewModel.title
         descriptionCell.text = viewModel.description
     }
