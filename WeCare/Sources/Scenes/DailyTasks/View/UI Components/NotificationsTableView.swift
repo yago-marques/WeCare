@@ -13,7 +13,7 @@ class NotificationsTableView: UIView {
     internal lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = UIColor(named: "backgroundColor")
         tableView.separatorStyle = .none
         tableView.register(NotificationViewCell.self, forCellReuseIdentifier: NotificationViewCell.identifier)
         return tableView

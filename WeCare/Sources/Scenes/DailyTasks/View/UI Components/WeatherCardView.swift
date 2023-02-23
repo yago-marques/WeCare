@@ -13,7 +13,7 @@ class WeatherCardView: UIView {
     lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = UIColor(red: 0.40, green: 0.84, blue: 0.80, alpha: 0.8)
+        card.backgroundColor = UIColor(named: "WeatherCardColor")
         card.layer.shadowColor = UIColor.black.cgColor
         card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         card.layer.shadowRadius = 0.9
@@ -34,7 +34,7 @@ class WeatherCardView: UIView {
     private lazy var temperature: UILabel = {
         let temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        temperature.font = UIFont.systemFont(ofSize: 48, weight: .thin)
         return temperature
     }()
     
@@ -42,7 +42,7 @@ class WeatherCardView: UIView {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
         location.adjustsFontForContentSizeCategory = true
-        location.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        location.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         return location
     }()
     
@@ -50,7 +50,7 @@ class WeatherCardView: UIView {
         let uvIndex = UILabel()
         uvIndex.translatesAutoresizingMaskIntoConstraints = false
         uvIndex.adjustsFontForContentSizeCategory = true
-        uvIndex.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        uvIndex.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return uvIndex
     }()
     
@@ -83,18 +83,18 @@ extension WeatherCardView: ViewCoding {
             weatherCard.centerYAnchor.constraint(equalTo: self.centerYAnchor),
 
             temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 3),
-            temperature.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 3),
+            temperature.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 2),
 
             location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
             location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
 
-            weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.4),
+            weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.6),
             weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
-            weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -30),
+            weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -20),
             weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 2),
-
-            uvIndex.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
-            uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: location.bottomAnchor, multiplier: 1),
+            
+            uvIndex.trailingAnchor.constraint(equalTo: weatherIcon.trailingAnchor, constant: -17),
+            uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: weatherIcon.bottomAnchor, multiplier: 2),
 
         ])
     }

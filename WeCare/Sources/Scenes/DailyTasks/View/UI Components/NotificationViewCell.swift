@@ -14,7 +14,7 @@ class NotificationViewCell: UITableViewCell {
     private lazy var cell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
-        cell.backgroundColor = UIColor(red: 0.99, green: 0.84, blue: 0.88, alpha: 1)
+        cell.backgroundColor = UIColor(named: "NotificationCellColor")
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         cell.layer.shadowRadius = 0.9
@@ -69,7 +69,7 @@ extension NotificationViewCell {
 extension NotificationViewCell: ViewCoding {
     func setupView() {
         self.selectionStyle = .none
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(named: "backgroundColor")
     }
     
     func setupConstraints() {

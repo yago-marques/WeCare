@@ -16,7 +16,7 @@ class StepByStepViewController: UIViewController {
         stepByStepView.delegate = self
         stepByStepView.tableView.delegate = self
         stepByStepView.tableView.dataSource = self
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(named: "backgroundColor")
     }
 }
 

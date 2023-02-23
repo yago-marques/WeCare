@@ -44,7 +44,7 @@ class StepByStepView: UIView {
     internal lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = UIColor(named: "backgroundColor")
         tableView.separatorStyle = .none
         tableView.register(StepByStepViewCell.self, forCellReuseIdentifier: StepByStepViewCell.identifier)
 

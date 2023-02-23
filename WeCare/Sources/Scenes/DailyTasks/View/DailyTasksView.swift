@@ -102,7 +102,7 @@ extension DailyTasksView: UITableViewDataSource {
 
 extension DailyTasksView: ViewCoding {
     func setupView() {
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(named: "backgroundColor")
     }
 
     func setupConstraints() {
