@@ -26,6 +26,7 @@ extension DailyTasksViewModel {
                     weatherIcon: "sun.max.fill"
                 )
             ),
+
             notificationsTable: .init(tasks: [
                 .init(
                     id: UUID(),

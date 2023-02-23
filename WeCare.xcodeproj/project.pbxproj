@@ -653,7 +653,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PC4MSN8T7;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
@@ -666,7 +666,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.stephane.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -682,7 +682,7 @@
 				CODE_SIGN_ENTITLEMENTS = WeCare/WeCare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3PC4MSN8T7;
+				DEVELOPMENT_TEAM = 826U5T47TW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WeCare/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
@@ -695,7 +695,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.stephane.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
