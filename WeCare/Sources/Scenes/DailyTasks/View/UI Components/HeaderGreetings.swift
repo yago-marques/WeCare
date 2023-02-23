@@ -14,7 +14,7 @@ class HeaderGreetings: UIView {
         let data = UILabel()
         data.text = Date().displayFormat
         data.translatesAutoresizingMaskIntoConstraints = false
-        data.font = .systemFont(ofSize: 16, weight: .light)
+        data.font = .systemFont(ofSize: 14, weight: .thin)
         return data
     }()
     

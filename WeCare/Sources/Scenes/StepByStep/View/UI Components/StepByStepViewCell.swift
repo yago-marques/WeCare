@@ -31,7 +31,7 @@ class StepByStepViewCell: UITableViewCell {
         let descriptionStep = UILabel()
         descriptionStep.translatesAutoresizingMaskIntoConstraints = false
         descriptionStep.adjustsFontForContentSizeCategory = true
-        descriptionStep.font = UIFont.preferredFont(forTextStyle: .title3)
+        descriptionStep.font = UIFont.preferredFont(forTextStyle: .body)
         descriptionStep.numberOfLines = 0
         descriptionStep.text = "Aplique uma quantidade X de produto tanto no rosto quanto no pescoço, para garantir hidratação"
         return descriptionStep

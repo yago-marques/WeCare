@@ -13,7 +13,7 @@ class WeatherCardView: UIView {
     lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .systemGray6
+        card.backgroundColor = UIColor(red: 0.40, green: 0.84, blue: 0.80, alpha: 0.8)
         card.layer.shadowColor = UIColor.black.cgColor
         card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         card.layer.shadowRadius = 0.9
@@ -27,7 +27,7 @@ class WeatherCardView: UIView {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
-        icon.tintColor = .blue
+        icon.tintColor = UIColor(red: 0.99, green: 0.97, blue: 1, alpha: 1)
         return icon
     }()
     
