@@ -115,8 +115,8 @@ extension WeatherCardView: ViewCoding {
             weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -20),
             weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 2),
             
-            uvIndex.trailingAnchor.constraint(equalTo: weatherIcon.trailingAnchor, constant: -15),
             uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: weatherIcon.bottomAnchor, multiplier: 2),
+            uvIndex.centerXAnchor.constraint(equalTo: weatherIcon.centerXAnchor)
 
         ])
     }

@@ -28,6 +28,7 @@
 		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
 		DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0029A78BA400654AC0 /* DismissSheet.swift */; };
 		DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */; };
+		DF75DB0629A953F600654AC0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0529A953F600654AC0 /* Double.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -78,6 +79,7 @@
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 		DF75DB0029A78BA400654AC0 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSheet.swift; sourceTree = "<group>"; };
 		DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationLoader.swift; sourceTree = "<group>"; };
+		DF75DB0529A953F600654AC0 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			children = (
 				DF8F97A6299B1CB400AD3A5C /* Date.swift */,
 				DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */,
+				DF75DB0529A953F600654AC0 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				ABCA6A3A29968EE50002F8F2 /* WeatherCardView.swift in Sources */,
 				DF104277299E528E00356761 /* WeCare.xcdatamodeld in Sources */,
 				DFE8496C299BB3AE006A7805 /* DailyTasksViewModel.swift in Sources */,
+				DF75DB0629A953F600654AC0 /* Double.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

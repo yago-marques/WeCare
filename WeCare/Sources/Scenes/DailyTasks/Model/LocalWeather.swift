@@ -13,4 +13,13 @@ struct LocalWeather {
     let city: String
     let country: String
     let weatherIcon: String
+
+    func getTemperature() -> Int {
+        let stringNumbers = temperature.filter { item in
+            let possibleInt = Int(String(item))
+            return possibleInt != nil ? true : false
+        }
+
+        return Int(stringNumbers) ?? 200
+    }
 }

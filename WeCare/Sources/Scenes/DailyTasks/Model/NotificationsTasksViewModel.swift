@@ -22,6 +22,10 @@ struct NotificationsTask: Codable {
     let steps: [TaskStep]
     var isDone: Bool
     let hour: Double
+
+    func getHour() -> String {
+        String(hour).replacingOccurrences(of: ".", with: ":")
+    }
 }
 
 struct TaskStep: Codable {

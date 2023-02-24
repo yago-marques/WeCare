@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol TaskLoader: AnyObject {
+    func updateTasksIfNeeded(uvIndex: Int, temperature: Int) throws
+    func getTasks() throws -> [NotificationsTask]?
+    func startDateIfNeeded() throws
+}
+
 final class LocalNotificationLoader {
     let dailyControl: DailyControl
     let tasksControl: TasksControl
@@ -15,12 +21,35 @@ final class LocalNotificationLoader {
         self.dailyControl = dailyControl
         self.tasksControl = tasksControl
     }
+}
 
-    func startDate() throws {
-        try dailyControl.updateDate()
+extension LocalNotificationLoader: TaskLoader {
+    func getTasks() throws -> [NotificationsTask]? {
+        try tasksControl.fetchTasks()
     }
 
-    func verifyDate() throws {
+    func updateTasksIfNeeded(uvIndex: Int, temperature: Int) throws {
+        try verifyDate()
+        try registerMorningTasksIfNeeded()
+        try registerAfternoonTasksIfNeeded(uvIndex: uvIndex, temperature: temperature)
+        try registerEveningTasksIfNeeded()
+    }
+
+    func startDateIfNeeded() throws {
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "firstTime") {
+            try dailyControl.updateDate()
+            defaults.set(true, forKey: "firstTime")
+        }
+    }
+}
+
+private extension LocalNotificationLoader {
+    private func verifyTemperature(currentTemperature: Int, min: Int, max: Int) -> Bool {
+        currentTemperature >= min && currentTemperature <= max
+    }
+
+    private func verifyDate() throws {
         let coreDataDateIsToday: Bool = try dailyControl.isToday()
         if !coreDataDateIsToday {
             try tasksControl.removeAll()
@@ -28,14 +57,8 @@ final class LocalNotificationLoader {
         }
     }
 
-    private func setMorningTasks() throws {
-        for task in NotificationsTask.getMorningTasks() {
-            try tasksControl.createTask(task)
-        }
-    }
-
-    private func setEveningTasks() throws {
-        try NotificationsTask.getEveningTasks().forEach { try tasksControl.createTask($0) }
+    private func verifyUvIndex(currentUvIndex: Int, min: Int, max: Int) -> Bool {
+        currentUvIndex >= min && currentUvIndex <= max
     }
 
     private func setNewTesks(uvIndex: Int, temperature: Int) throws {
@@ -62,24 +85,55 @@ final class LocalNotificationLoader {
         return filteredCases
     }
 
-    private func verifyTemperature(currentTemperature: Int, min: Int, max: Int) -> Bool {
-        currentTemperature >= min && currentTemperature <= max
+    private func setMorningTasks() throws {
+        for task in NotificationsTask.getMorningTasks() {
+            try tasksControl.createTask(task)
+        }
     }
 
-    private func verifyUvIndex(currentUvIndex: Int, min: Int, max: Int) -> Bool {
-        currentUvIndex >= min && currentUvIndex <= max
+    private func setEveningTasks() throws {
+        try NotificationsTask.getEveningTasks().forEach { try tasksControl.createTask($0) }
     }
 
-    private func showMoringTasksIfNeeded() throws {
-        if Date().getHour <= 12 {
+    private func isPossibleLoaderNewTask() throws -> Bool {
+        guard let currentTasks = try tasksControl.fetchTasks() else { return false }
+        guard let lastTask = currentTasks.last else { return false }
+        let hourDifference = Date().getHour - lastTask.hour
+
+        return hourDifference >= 4
+    }
+
+    private func tasksIsEmpty() throws -> Bool {
+        guard let currentTasks = try tasksControl.fetchTasks() else { return false }
+
+        return currentTasks.isEmpty
+    }
+
+    private func registerMorningTasksIfNeeded() throws {
+        if
+            Date().getHour <= 12,
+            try tasksIsEmpty()
+        {
             try setMorningTasks()
         }
     }
 
-    private func showEveningTasksIfNeeded() throws {
-        if Date().getHour >= 18 {
+    private func registerEveningTasksIfNeeded() throws {
+        if
+            Date().getHour >= 18,
+            (try isPossibleLoaderNewTask() || tasksIsEmpty())
+        {
             try setEveningTasks()
         }
     }
 
+    private func registerAfternoonTasksIfNeeded(uvIndex: Int, temperature: Int) throws {
+        if
+            Date().getHour > 12,
+            Date().getHour < 18,
+            (try isPossibleLoaderNewTask() || tasksIsEmpty())
+        {
+            try setNewTesks(uvIndex: uvIndex, temperature: temperature)
+        }
+    }
 }
