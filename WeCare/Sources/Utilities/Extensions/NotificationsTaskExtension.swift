@@ -51,16 +51,10 @@ extension NotificationsTask {
                         maxUvIndex: 20
                     ),
                     title: "Acessórios",
-                    description: "Que tal proteger ainda mais a pele desse sol com acessórios?🥵",
+                    description: "Cuidado com os raios UV! Vamos proteger a pele?",
                     icon: "Acessorios",
-                    stepsDescription: "Para os dias quentes, o boné e óculos são perfeitos para dar estilo e proteger o rosto do sol",
-                    steps:
-                        [
-                            .init(
-                                title: "Passo 01:",
-                                description: "Escolha acessórios estilosos para seu look e que protegem sua pele, como chapéus, óculos e até sombrinhas"
-                            )
-                        ],
+                    stepsDescription: "Os raios UVA e UVB produzidos pelo sol representam 95% da radiação que atinge o corpo. Eles penetram profundamente na pele e, por terem efeito cumulativo, podem provocar o surgimento de pintas, sardas, manchas e rugas.",
+                    steps: getUseAcessoriesSteps(),
                     isDone: false
                 )
         ]
@@ -170,6 +164,17 @@ extension NotificationsTask {
                 description: "Depois retire bem o produto do rosto com água e está pronta essa limpeza!"
             )
         ]
+    }
+    
+    static func getUseAcessoriesSteps() -> [TaskStep] {
+
+        [
+            .init(
+                title: "Faça já:",
+                description: "Para os dias quentes, o boné e óculos são perfeitos para dar estilo e proteger o rosto do sol"
+            ),
+        ]
+
     }
 
 }
