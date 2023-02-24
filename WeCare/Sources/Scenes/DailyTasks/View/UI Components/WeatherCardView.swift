@@ -64,7 +64,7 @@ class WeatherCardView: UIView {
 
     func setup(viewModel: WeatherCardViewModel?) {
         guard let viewModel else { return }
-        weatherIcon.image = UIImage(systemName: viewModel.weather.weatherIcon)
+        weatherIcon.image = UIImage(named: viewModel.weather.weatherIcon)
 //        weatherIcon.accessibilityLabel = "Sol azul"
         temperature.text = viewModel.weather.temperature
         location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"

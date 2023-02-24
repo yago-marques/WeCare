@@ -19,9 +19,9 @@ extension NotificationsTask {
                     maxUvIndex: 20
                 ),
                 title: "Protetor solar",
-                description: "",
-                icon: "",
-                stepsDescription: "Os raios UVA e UVB ainda alcançam sua pele, que tal um filtro solar?",
+                description: "Os raios UVA e UVB ainda alcançam sua pele, que tal um filtro solar?",
+                icon: "ProtecaoSolar",
+                stepsDescription: "O filtro solar ou protetor solar é uma loção, spray ou produto tópico que ajuda a proteger a pele da radiação ultravioleta do sol, o que reduz as queimaduras solares e outros danos à pele, intimamente ligado a um menor risco de câncer de pele.",
                 steps: getSolarProtectorSteps(),
                 isDone: false
             ),
@@ -35,9 +35,9 @@ extension NotificationsTask {
                         maxUvIndex: 20
                     ),
                     title: "Hidratante",
-                    description: "",
-                    icon: "",
-                    stepsDescription: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    description: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    icon: "Hidratante",
+                    stepsDescription: "O hidratante facial é um dermocosmético que tem como principal função “repor a água” da pele do rosto, mantendo assim a barreira cutânea protegida e a textura da pele sedosa e saudável, sem oleosidade excessiva ou sensação de ressecamento.",
                     steps: getHidratationSteps(),
                     isDone: false
                 ),
@@ -51,9 +51,9 @@ extension NotificationsTask {
                         maxUvIndex: 20
                     ),
                     title: "Acessórios",
-                    description: "",
-                    icon: "",
-                    stepsDescription: "Que tal proteger ainda mais a pele desse sol com acessórios?🥵",
+                    description: "Que tal proteger ainda mais a pele desse sol com acessórios?🥵",
+                    icon: "Acessorios",
+                    stepsDescription: "Para os dias quentes, o boné e óculos são perfeitos para dar estilo e proteger o rosto do sol",
                     steps:
                         [
                             .init(
@@ -72,9 +72,9 @@ extension NotificationsTask {
                 id: UUID(),
                 useCases: nil,
                 title: "Lavar o rosto",
-                description: "",
-                icon: "",
-                stepsDescription: "Vamos fazer uma limpeza nesse rostinho?",
+                description: "Vamos fazer uma limpeza nesse rostinho?",
+                icon: "Limpeza",
+                stepsDescription: "Ter uma pele limpa é fundamental para que ela continue saudável e receba todos os benefícios do que você vai aplicar em seguida. Além disso, limpar seu rosto vai evitar poros entupidos (leia-se cravos e espinhas), normalizar sua produção de sebo e te ajudar a manter a pele viçosa.",
                 steps: getWashFaceSteps(),
                 isDone: false
             ),
@@ -83,9 +83,9 @@ extension NotificationsTask {
                     id: UUID(),
                     useCases: nil,
                     title: "Hidratante",
-                    description: "",
-                    icon: "",
-                    stepsDescription: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    description: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    icon: "Hidratante",
+                    stepsDescription: "O hidratante facial é um dermocosmético que tem como principal função “repor a água” da pele do rosto, mantendo assim a barreira cutânea protegida e a textura da pele sedosa e saudável, sem oleosidade excessiva ou sensação de ressecamento.",
                     steps: getHidratationSteps(),
                     isDone: false
                 ),
@@ -94,9 +94,9 @@ extension NotificationsTask {
                     id: UUID(),
                     useCases: nil,
                     title: "Protetor solar",
-                    description: "",
-                    icon: "",
-                    stepsDescription: "Os raios UVA e UVB ainda alcançam sua pele, que tal um filtro solar?",
+                    description: "Os raios UVA e UVB ainda alcançam sua pele, que tal um filtro solar?",
+                    icon: "ProtecaoSolar",
+                    stepsDescription: "O filtro solar ou protetor solar é uma loção, spray ou produto tópico que ajuda a proteger a pele da radiação ultravioleta do sol, o que reduz as queimaduras solares e outros danos à pele, intimamente ligado a um menor risco de câncer de pele.",
                     steps: getSolarProtectorSteps(),
                     isDone: false
                 )
@@ -109,9 +109,9 @@ extension NotificationsTask {
                 id: UUID(),
                 useCases: nil,
                 title: "Lavar o rosto",
-                description: "",
-                icon: "",
-                stepsDescription: "Vamos fazer uma limpeza nesse rostinho?",
+                description: "Vamos fazer uma limpeza nesse rostinho?",
+                icon: "Limpeza",
+                stepsDescription: "Ter uma pele limpa é fundamental para que ela continue saudável e receba todos os benefícios do que você vai aplicar em seguida. Além disso, limpar seu rosto vai evitar poros entupidos (leia-se cravos e espinhas), normalizar sua produção de sebo e te ajudar a manter a pele viçosa.",
                 steps: getWashFaceSteps(),
                 isDone: false
             ),
@@ -120,9 +120,9 @@ extension NotificationsTask {
                     id: UUID(),
                     useCases: nil,
                     title: "Hidratante",
-                    description: "",
-                    icon: "",
-                    stepsDescription: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    description: "Em dias frios e secos a hidratação é essencial para a saúde da pele.",
+                    icon: "Hidratante",
+                    stepsDescription: "O hidratante facial é um dermocosmético que tem como principal função “repor a água” da pele do rosto, mantendo assim a barreira cutânea protegida e a textura da pele sedosa e saudável, sem oleosidade excessiva ou sensação de ressecamento.",
                     steps: getHidratationSteps(),
                     isDone: false
                 ),
