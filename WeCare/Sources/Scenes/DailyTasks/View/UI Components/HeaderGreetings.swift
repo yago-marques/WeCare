@@ -48,7 +48,7 @@ extension HeaderGreetings: ViewCoding {
             date.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.85),
             date.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            greetings.topAnchor.constraint(equalToSystemSpacingBelow: date.bottomAnchor, multiplier: 1),
+            greetings.topAnchor.constraint(equalToSystemSpacingBelow: date.bottomAnchor, multiplier: 0.5),
             greetings.widthAnchor.constraint(equalTo: date.widthAnchor),
             greetings.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])

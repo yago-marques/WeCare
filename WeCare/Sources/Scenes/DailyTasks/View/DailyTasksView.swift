@@ -96,13 +96,17 @@ extension DailyTasksView: UITableViewDataSource {
             tableView.endUpdates()
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Cuidados Pendentes"
+    }
         
 
 }
 
 extension DailyTasksView: ViewCoding {
     func setupView() {
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(named: "backgroundColor")
     }
 
     func setupConstraints() {
@@ -116,7 +120,7 @@ extension DailyTasksView: ViewCoding {
             weatherCard.widthAnchor.constraint(equalTo: self.widthAnchor),
             weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
 
-            notificationsTable.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.bottomAnchor, multiplier: 3),
+            notificationsTable.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.bottomAnchor, multiplier: 0.1),
             notificationsTable.widthAnchor.constraint(equalTo: self.widthAnchor),
             notificationsTable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])

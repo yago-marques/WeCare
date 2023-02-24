@@ -57,7 +57,7 @@ extension StepByStepViewCell {
 extension StepByStepViewCell: ViewCoding {
     func setupView() {
         self.selectionStyle = .none
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(named: "backgroundColor")
     }
 
     func setupConstraints() {
