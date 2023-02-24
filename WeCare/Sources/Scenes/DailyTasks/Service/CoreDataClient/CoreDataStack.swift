@@ -10,7 +10,7 @@ import CoreData
 
 struct CoreDataStack {
     static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SalonGo")
+        let container = NSPersistentContainer(name: "WeCare")
         container.loadPersistentStores { (_, error) in
             if let error = error {
                 fatalError("Loading of store failed \(error)")

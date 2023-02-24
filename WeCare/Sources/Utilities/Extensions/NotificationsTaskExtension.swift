@@ -55,7 +55,7 @@ extension NotificationsTask {
                         maxUvIndex: 20
                     ),
                     title: "Acessórios",
-                    description: "Que tal proteger ainda mais a pele desse sol com acessórios?🥵",
+                    description: "Cuidado com os raios UV! Vamos proteger a pele?",
                     icon: "Acessorios",
                     voiceIcon: "",
                     stepsDescription: "Para os dias quentes, o boné e óculos são perfeitos para dar estilo e proteger o rosto do sol",
@@ -186,6 +186,16 @@ extension NotificationsTask {
                 description: "Depois retire bem o produto do rosto com água e está pronta essa limpeza!"
             )
         ]
+    }
+    
+    static func getUseAcessoriesSteps() -> [TaskStep] {
+        [
+            .init(
+                title: "Faça já:",
+                description: "Para os dias quentes, o boné e óculos são perfeitos para dar estilo e proteger o rosto do sol"
+            ),
+        ]
+
     }
 
 }
