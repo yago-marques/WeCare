@@ -17,7 +17,7 @@ class StepByStepView: UIView {
     internal lazy var stepIcon: UIImageView = {
         let stepIcon = UIImageView()
         stepIcon.translatesAutoresizingMaskIntoConstraints = false
-        stepIcon.image = UIImage(systemName: "sun.max.fill")
+        stepIcon.image = UIImage(named: "ProtecaoSolar")
         stepIcon.tintColor = UIColor(red: 0.99, green: 0.97, blue: 1, alpha: 1)
         return stepIcon
     }()
