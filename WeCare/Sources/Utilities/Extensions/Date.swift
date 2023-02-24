@@ -21,4 +21,12 @@ extension Date {
         }
         return "Boa noite"
     }
+
+    var getHour: Double {
+        let hourInt = Calendar.current.component(.hour, from: Date())
+        let minute = Calendar.current.component(.minute, from: Date())
+        let minuteTransformationForDouble = Double(minute)/100
+
+        return minuteTransformationForDouble + Double(hourInt)
+    }
 }
