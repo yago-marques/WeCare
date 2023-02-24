@@ -17,9 +17,11 @@ struct NotificationsTask: Codable {
     let title: String
     let description: String
     let icon: String
+    let voiceIcon: String
     let stepsDescription: String
     let steps: [TaskStep]
     var isDone: Bool
+    let hour: Double
 }
 
 struct TaskStep: Codable {

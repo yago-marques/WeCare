@@ -34,6 +34,7 @@ extension DailyTasksViewModel {
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "Default",
+                    voiceIcon: "",
                     stepsDescription: "É só passar o hidratante",
                     steps:
                         [
@@ -46,7 +47,8 @@ extension DailyTasksViewModel {
                                 description: "Use movimemtos circulares"
                             )
                         ],
-                    isDone: false
+                    isDone: false,
+                    hour: 1.0
                 ),
                 .init(
                     id: UUID(),
@@ -54,6 +56,7 @@ extension DailyTasksViewModel {
                     title: "Hidratante",
                     description: "Passar hidratante",
                     icon: "Default",
+                    voiceIcon: "",
                     stepsDescription: "É só passar o hidratante",
                     steps:
                         [
@@ -66,7 +69,8 @@ extension DailyTasksViewModel {
                                 description: "Use movimemtos circulares"
                             )
                         ],
-                    isDone: false
+                    isDone: false,
+                    hour: 1.0
                 )
             ])
         )
