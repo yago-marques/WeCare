@@ -28,17 +28,17 @@ final class LocalNotificationLoader {
         }
     }
 
-    func setMorningTasks() throws {
+    private func setMorningTasks() throws {
         for task in NotificationsTask.getMorningTasks() {
             try tasksControl.createTask(task)
         }
     }
 
-    func setEveningTasks() throws {
+    private func setEveningTasks() throws {
         try NotificationsTask.getEveningTasks().forEach { try tasksControl.createTask($0) }
     }
 
-    func setNewTesks(uvIndex: Int, temperature: Int) throws {
+    private func setNewTesks(uvIndex: Int, temperature: Int) throws {
         let filteredCases = getValidCases(uvIndex: uvIndex, temperature: temperature)
 
         for filteredCase in filteredCases {
@@ -69,4 +69,17 @@ final class LocalNotificationLoader {
     private func verifyUvIndex(currentUvIndex: Int, min: Int, max: Int) -> Bool {
         currentUvIndex >= min && currentUvIndex <= max
     }
+
+    private func showMoringTasksIfNeeded() throws {
+        if Date().getHour <= 12 {
+            try setMorningTasks()
+        }
+    }
+
+    private func showEveningTasksIfNeeded() throws {
+        if Date().getHour >= 18 {
+            try setEveningTasks()
+        }
+    }
+
 }

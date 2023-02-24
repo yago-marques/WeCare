@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigation = UINavigationController(rootViewController: rootView)
         window.rootViewController = navigation
         window.makeKeyAndVisible()
+        print(Date().getHour)
 
         self.window = window
     }
