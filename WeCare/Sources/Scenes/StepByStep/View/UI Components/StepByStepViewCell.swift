@@ -23,7 +23,7 @@ class StepByStepViewCell: UITableViewCell {
         titleStep.adjustsFontForContentSizeCategory = true
         titleStep.font = UIFont.preferredFont(forTextStyle: .title3)
         titleStep.numberOfLines = 0
-        titleStep.text = "Passo 1"
+//        titleStep.text = "Passo 1"
         return titleStep
     }()
 
@@ -32,8 +32,8 @@ class StepByStepViewCell: UITableViewCell {
         descriptionStep.translatesAutoresizingMaskIntoConstraints = false
         descriptionStep.adjustsFontForContentSizeCategory = true
         descriptionStep.font = UIFont.preferredFont(forTextStyle: .body)
-        descriptionStep.numberOfLines = 0
-        descriptionStep.text = "Aplique uma quantidade X de produto tanto no rosto quanto no pescoço, para garantir hidratação"
+//        descriptionStep.numberOfLines = 0
+//        descriptionStep.text = "Aplique uma quantidade X de produto tanto no rosto quanto no pescoço, para garantir hidratação"
         return descriptionStep
     }()
 

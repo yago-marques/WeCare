@@ -13,7 +13,7 @@ class WeatherCardView: UIView {
     lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = UIColor(named: "WeatherCardColor")
+        card.backgroundColor = UIColor(named: "weatherCardColor")
         card.layer.shadowColor = UIColor.black.cgColor
         card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
         card.layer.shadowRadius = 0.9
