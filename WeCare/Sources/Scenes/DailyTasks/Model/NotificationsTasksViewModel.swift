@@ -24,7 +24,7 @@ struct NotificationsTask: Codable {
     let hour: Double
 
     func getHour() -> String {
-        String(hour).replacingOccurrences(of: ".", with: ":")
+        hour.round(to: 2).replacingOccurrences(of: ".", with: ":")
     }
 }
 

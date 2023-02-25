@@ -11,6 +11,7 @@ protocol TaskLoader: AnyObject {
     func updateTasksIfNeeded(uvIndex: Int, temperature: Int) throws
     func getTasks() throws -> [NotificationsTask]?
     func startDateIfNeeded() throws
+    func markTaskAsDone(id: UUID) throws
 }
 
 final class LocalNotificationLoader {
@@ -24,6 +25,10 @@ final class LocalNotificationLoader {
 }
 
 extension LocalNotificationLoader: TaskLoader {
+    func markTaskAsDone(id: UUID) throws {
+        try tasksControl.markAsDone(taskId: id)
+    }
+
     func getTasks() throws -> [NotificationsTask]? {
         try tasksControl.fetchTasks()
     }
@@ -38,7 +43,7 @@ extension LocalNotificationLoader: TaskLoader {
     func startDateIfNeeded() throws {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "firstTime") {
-            try dailyControl.updateDate()
+            try dailyControl.startDate()
             defaults.set(true, forKey: "firstTime")
         }
     }

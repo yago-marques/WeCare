@@ -9,6 +9,7 @@ import Foundation
 
 protocol DailyTasksPresenting: AnyObject {
     func showView(_ controller: DailyTasksController) async throws
+    func markTaskAsDone(id: UUID) throws
 }
 
 final class DailyTasksPresenter {
@@ -16,7 +17,11 @@ final class DailyTasksPresenter {
     let weatherService: WeatherClient
     let taskLoader: TaskLoader
 
-    var interfaceModel = DailyTasksViewModel()
+    var interfaceModel = DailyTasksViewModel() {
+        didSet {
+            updateInterface()
+        }
+    }
 
     init(
         controller: DailyTasksController? = nil,
@@ -35,17 +40,24 @@ extension DailyTasksPresenter: DailyTasksPresenting {
         self.controller = controller
         incrementView()
         loadHeader()
-        try await loadWeatherCard()
-        try updateTasksIfNeeded()
+        try loadWeatherCard() {
+            try self.updateTasksIfNeeded()
+            try self.loadNotificationTable()
+        }
+    }
+
+    func markTaskAsDone(id: UUID) throws {
+        try taskLoader.markTaskAsDone(id: id)
         try loadNotificationTable()
-        updateInterface()
     }
 }
 
 private extension DailyTasksPresenter {
     private func updateInterface() {
         DispatchQueue.main.async {
-            self.controller?.dailyView.setup(viewModel: self.interfaceModel)
+            self.controller?.reloadData {
+                self.controller?.dailyView.setup(viewModel: self.interfaceModel)
+            }
         }
     }
 
@@ -63,29 +75,28 @@ private extension DailyTasksPresenter {
         self.interfaceModel.header = .init(userName: "Usuário")
     }
 
-    private func loadWeatherCard() async throws {
-//        self.interfaceModel.weatherCard = DailyTasksViewModel.getMock().weatherCard
-    
-        do {
-            let weather = try await weatherService.getWeather()
-            self.interfaceModel.weatherCard = .init(weather: weather)
-        } catch {
-            throw error
-        }
+    private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
+        self.interfaceModel.weatherCard = DailyTasksViewModel.getMock().weatherCard
+        try completion()
+//        try weatherService.getWeather() { weather in
+//            self.interfaceModel.weatherCard = .init(weather: weather)
+//            try completion()
+//        }
     }
 
     private func updateTasksIfNeeded() throws {
-        let temperature = interfaceModel.weatherCard?.weather.getTemperature() ?? 0
-        let uvIndex = interfaceModel.weatherCard?.weather.uvIndex ?? 0
-
-        try taskLoader.updateTasksIfNeeded(uvIndex: uvIndex, temperature: temperature)
-
-//        try taskLoader.updateTasksIfNeeded(uvIndex: 4, temperature: 30)
+//        let temperature = interfaceModel.weatherCard?.weather.getTemperature() ?? 0
+//        let uvIndex = interfaceModel.weatherCard?.weather.uvIndex ?? 0
+//
+//
+//        try taskLoader.updateTasksIfNeeded(uvIndex: uvIndex, temperature: temperature)
+        try taskLoader.updateTasksIfNeeded(uvIndex: 4, temperature: 30)
     }
 
     private func loadNotificationTable() throws {
         guard let tasks = try taskLoader.getTasks() else { return }
-        self.interfaceModel.notificationsTable = .init(tasks: tasks)
+        let validTasks = tasks.filter { $0.isDone == false }
+        self.interfaceModel.notificationsTable = .init(tasks: validTasks)
     }
 
 }

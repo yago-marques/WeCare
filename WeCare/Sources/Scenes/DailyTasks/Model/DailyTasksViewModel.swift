@@ -48,7 +48,7 @@ extension DailyTasksViewModel {
                             )
                         ],
                     isDone: false,
-                    hour: 1.0
+                    hour: Date().getHour
                 ),
                 .init(
                     id: UUID(),
@@ -70,7 +70,7 @@ extension DailyTasksViewModel {
                             )
                         ],
                     isDone: false,
-                    hour: 1.0
+                    hour: Date().getHour
                 )
             ])
         )

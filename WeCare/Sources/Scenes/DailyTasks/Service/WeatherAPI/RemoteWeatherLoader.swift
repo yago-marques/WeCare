@@ -9,13 +9,25 @@ import Foundation
 import WeatherLoader
 
 protocol WeatherClient: AnyObject {
-    func getWeather() async throws -> LocalWeather
+    var weather: LocalWeather {get set}
+    func getWeather(completion: @escaping (LocalWeather) throws -> Void) throws
 }
 
 final class RemoteWeatherLoader {
 
     let locationManager = LocationManager()
     let weatherLoader = WeatherLoader()
+    var weather: LocalWeather = .init(
+        temperature: "--",
+        uvIndex: 0,
+        city: "--",
+        country: "--",
+        weatherIcon: "sun"
+    ) {
+        didSet {
+            print(weather)
+        }
+    }
 
     private func getLocationAccess() {
         Task.detached {
@@ -35,15 +47,19 @@ final class RemoteWeatherLoader {
         )
     }
 
+    private func fetchWeather() {
+
+    }
+
 }
 
 extension RemoteWeatherLoader: WeatherClient {
-    func getWeather() async throws -> LocalWeather {
-        getLocationAccess()
-        do {
-            return makeWeather(try await weatherLoader.getWeather())
-        } catch {
-            throw error
+    func getWeather(completion: @escaping (LocalWeather) throws -> Void) throws {
+        locationManager.completion = {
+            Task {
+                try completion(self.makeWeather(try await self.weatherLoader.getWeather()))
+            }
         }
+        getLocationAccess()
     }
 }

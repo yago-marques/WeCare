@@ -40,8 +40,22 @@ final class DailyTasksController: UIViewController {
         }
     }
 
-    func toShhet() {
-        navigationController?.present(StepByStepViewController(), animated: true)
+    func openSheet(viewModel: NotificationsTask) {
+        navigationController?.present(StepByStepFactory.make(viewModel: viewModel), animated: true)
     }
-    
+
+    func markTaskAsDone(id: UUID) throws {
+        try presenter.markTaskAsDone(id: id)
+    }
+
+    func reloadData(completion: @escaping () -> Void) {
+        UIView.transition(
+            with: dailyView.notificationsTable,
+            duration: 0.3,
+            options: .transitionCrossDissolve,
+            animations: {
+                completion()
+            }
+        )
+    }
 }

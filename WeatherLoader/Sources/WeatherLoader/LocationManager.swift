@@ -14,6 +14,8 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     public var authorizationStatus: CLAuthorizationStatus?
 
+    public var completion: () -> Void = { }
+
     public var latitude: Double {
         locationManager.location?.coordinate.latitude ?? 0.0
     }
@@ -30,7 +32,9 @@ public class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
 
-    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { }
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        completion()
+    }
 
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {

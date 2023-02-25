@@ -31,7 +31,7 @@ final class DailyTasksView: UIView {
         return card
     }()
 
-    private lazy var notificationsTable: NotificationsTableView = {
+    lazy var notificationsTable: NotificationsTableView = {
         let table = NotificationsTableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.tableView.delegate = self
@@ -82,19 +82,20 @@ extension DailyTasksView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        controller?.toShhet()
+        guard let viewModel = notificationsViewModel?.tasks[indexPath.row] else { return }
+        controller?.openSheet(viewModel: viewModel)
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let updatedAction = UIContextualAction(style: .destructive, title: "Feito") {_,_,completionHandler in
+            guard let taskId = self.notificationsViewModel?.tasks[indexPath.row].id else { return }
+            try? self.controller?.markTaskAsDone(id: taskId)
+            completionHandler(true)
         }
+        updatedAction.image = UIImage(systemName: "checkmark.diamond.fill")
+        updatedAction.backgroundColor = .systemGreen
+        let swipeAction = UISwipeActionsConfiguration(actions: [updatedAction])
+        return swipeAction
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

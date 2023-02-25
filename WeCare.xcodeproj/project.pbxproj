@@ -29,6 +29,7 @@
 		DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0029A78BA400654AC0 /* DismissSheet.swift */; };
 		DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */; };
 		DF75DB0629A953F600654AC0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0529A953F600654AC0 /* Double.swift */; };
+		DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0B29AA875000654AC0 /* StepByStepFactory.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -80,6 +81,7 @@
 		DF75DB0029A78BA400654AC0 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSheet.swift; sourceTree = "<group>"; };
 		DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationLoader.swift; sourceTree = "<group>"; };
 		DF75DB0529A953F600654AC0 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		DF75DB0B29AA875000654AC0 /* StepByStepFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepFactory.swift; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		DF52B41B299CFE8200F54E43 /* StepByStep */ = {
 			isa = PBXGroup;
 			children = (
+				DF75DB0A29AA873300654AC0 /* Factory */,
 				DF52B41F299CFEF000F54E43 /* View */,
 				DF52B41C299CFE9400F54E43 /* Controller */,
 			);
@@ -282,6 +285,14 @@
 				DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */,
 			);
 			path = NotificationsManager;
+			sourceTree = "<group>";
+		};
+		DF75DB0A29AA873300654AC0 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB0B29AA875000654AC0 /* StepByStepFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		DF8F979D299B188E00AD3A5C /* Scenes */ = {
@@ -514,6 +525,7 @@
 				DFE8496C299BB3AE006A7805 /* DailyTasksViewModel.swift in Sources */,
 				DF75DB0629A953F600654AC0 /* Double.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
+				DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,8 +687,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -684,9 +695,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -704,8 +718,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usamos a sua localização para utilizar informações sobre o clima da sua cidade";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,9 +726,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.yago.WeCare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

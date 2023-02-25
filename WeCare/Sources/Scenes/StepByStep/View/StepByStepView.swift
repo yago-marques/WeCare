@@ -14,15 +14,14 @@ class StepByStepView: UIView {
     
     weak var delegate: DismissSheetDelegate?
 
-    internal lazy var stepIcon: UIImageView = {
+    private let stepIcon: UIImageView = {
         let stepIcon = UIImageView()
         stepIcon.translatesAutoresizingMaskIntoConstraints = false
-        stepIcon.image = UIImage(named: "ProtecaoSolar")
-        stepIcon.tintColor = UIColor(red: 0.99, green: 0.97, blue: 1, alpha: 1)
+        stepIcon.contentMode = .scaleAspectFit
         return stepIcon
     }()
     
-    internal lazy var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let button = UIButton(type: .close)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
@@ -31,18 +30,18 @@ class StepByStepView: UIView {
         return button
     }()
 
-    internal lazy var stepDescription: UILabel = {
+    private let stepDescription: UILabel = {
         let stepDescription = UILabel()
         stepDescription.translatesAutoresizingMaskIntoConstraints = false
         stepDescription.numberOfLines = 0
         stepDescription.adjustsFontForContentSizeCategory = true
-        stepDescription.font = UIFont.preferredFont(forTextStyle: .caption2)
-        stepDescription.text = "Que tal passar protetor para proteger esse rostinho? 🥵"
+        stepDescription.font = UIFont.preferredFont(forTextStyle: .body)
+        stepDescription.textAlignment = .center
         return stepDescription
     }()
 
-    internal lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "backgroundColor")
         tableView.separatorStyle = .none
@@ -59,41 +58,50 @@ class StepByStepView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setupView(viewModel: NotificationsTask) {
+        self.stepDescription.text = viewModel.stepsDescription
+        self.stepIcon.image = UIImage(named: viewModel.icon)
+    }
     
     @objc func closeAction(sender: UIButton) {
         delegate?.dismiss()
-        }
+    }
 
 }
 
 extension StepByStepView: ViewCoding {
-    func setupView() { }
+    func setupView() {
+        self.backgroundColor = UIColor(named: "backgroundColor")
+    }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            
-            stepIcon.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 5),
+
+            stepIcon.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 5),
             stepIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
             stepIcon.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
-            stepIcon.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1),
-            stepIcon.bottomAnchor.constraint(equalTo: tableView.topAnchor),
-            
+            stepIcon.heightAnchor.constraint(equalTo: stepIcon.widthAnchor),
 
-            tableView.topAnchor.constraint(equalTo: stepIcon.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            stepDescription.topAnchor.constraint(equalToSystemSpacingBelow: stepIcon.bottomAnchor, multiplier: 3),
+            stepDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stepDescription.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+
+
+            tableView.topAnchor.constraint(equalToSystemSpacingBelow: stepDescription.bottomAnchor, multiplier: 2),
+            tableView.widthAnchor.constraint(equalTo: widthAnchor),
+            tableView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8)
 
         ])
     }
 
     func setupHierarchy() {
-        addSubview(stepIcon)
-        addSubview(tableView)
         addSubview(closeButton)
+        addSubview(stepIcon)
+        addSubview(stepDescription)
+        addSubview(tableView)
     }
 
 }
