@@ -22,10 +22,24 @@ struct LocalPersistanceManager {
 
 extension LocalPersistanceManager: DailyControl {
 
-    func updateDate() throws {
+    func startDate() throws {
         let context = persistentContainer.viewContext
         let dateEntity = DateEntity(context: context)
 
+        dateEntity.date = Date()
+
+        do {
+            try context.save()
+        } catch {
+            throw error
+        }
+    }
+
+    func updateDate() throws {
+        let context = persistentContainer.viewContext
+        let dateEntity = try fetchRawDate()
+
+        guard let dateEntity else { return }
         dateEntity.date = Date()
 
         do {
@@ -50,11 +64,7 @@ extension LocalPersistanceManager: DailyControl {
     }
 
     func isToday() throws -> Bool {
-        do {
-            return try self.fetchDate()?.displayFormat == Date().displayFormat
-        } catch {
-            throw error
-        }
+        try self.fetchDate()?.displayFormat == Date().displayFormat
     }
 }
 
@@ -98,6 +108,20 @@ extension LocalPersistanceManager: TasksControl {
 
         do {
             return try context.fetch(fetchRequest)
+        } catch let error {
+            throw error
+        }
+    }
+
+    func fetchRawDate() throws -> DateEntity? {
+        let context = persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<DateEntity>(entityName: "DateEntity")
+        fetchRequest.fetchLimit = 1
+
+        do {
+            let dateEntity = try context.fetch(fetchRequest)
+            return dateEntity.first
         } catch let error {
             throw error
         }

@@ -27,6 +27,6 @@ extension Date {
         let minute = Calendar.current.component(.minute, from: Date())
         let minuteTransformationForDouble = Double(minute)/100
 
-        return minuteTransformationForDouble + Double(hourInt)
+        return (minuteTransformationForDouble + Double(hourInt))
     }
 }

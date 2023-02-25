@@ -32,7 +32,7 @@ class StepByStepViewCell: UITableViewCell {
         descriptionStep.translatesAutoresizingMaskIntoConstraints = false
         descriptionStep.adjustsFontForContentSizeCategory = true
         descriptionStep.font = UIFont.preferredFont(forTextStyle: .body)
-//        descriptionStep.numberOfLines = 0
+        descriptionStep.numberOfLines = 0
 //        descriptionStep.text = "Aplique uma quantidade X de produto tanto no rosto quanto no pescoço, para garantir hidratação"
         return descriptionStep
     }()
@@ -50,7 +50,7 @@ class StepByStepViewCell: UITableViewCell {
 extension StepByStepViewCell {
     func configureCellInformations(title: String, description: String) {
         titleStep.text = title
-        descriptionStep.text = title
+        descriptionStep.text = description
     }
 }
 

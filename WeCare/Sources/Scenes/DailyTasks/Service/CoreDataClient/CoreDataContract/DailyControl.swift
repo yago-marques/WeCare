@@ -11,4 +11,5 @@ protocol DailyControl {
     func updateDate() throws
     func fetchDate() throws -> Date?
     func isToday() throws -> Bool
+    func startDate() throws
 }
