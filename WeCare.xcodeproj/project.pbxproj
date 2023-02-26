@@ -30,6 +30,11 @@
 		DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */; };
 		DF75DB0629A953F600654AC0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0529A953F600654AC0 /* Double.swift */; };
 		DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0B29AA875000654AC0 /* StepByStepFactory.swift */; };
+		DF75DB1329ABBC8200654AC0 /* HalfCircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB1229ABBC8200654AC0 /* HalfCircleProgress.swift */; };
+		DF75DB1529ABBD2C00654AC0 /* TasksProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB1429ABBD2C00654AC0 /* TasksProgressView.swift */; };
+		DF75DB1829ABDDC600654AC0 /* TasksProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB1729ABDDC600654AC0 /* TasksProgressController.swift */; };
+		DF75DB1B29ABE0EE00654AC0 /* TasksProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB1A29ABE0EE00654AC0 /* TasksProgressViewModel.swift */; };
+		DF75DB1E29ABE43200654AC0 /* TasksProgressFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB1D29ABE43200654AC0 /* TasksProgressFactory.swift */; };
 		DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */; };
 		DF8F97A4299B19DC00AD3A5C /* DailyTasksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */; };
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
@@ -82,6 +87,11 @@
 		DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationLoader.swift; sourceTree = "<group>"; };
 		DF75DB0529A953F600654AC0 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		DF75DB0B29AA875000654AC0 /* StepByStepFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepFactory.swift; sourceTree = "<group>"; };
+		DF75DB1229ABBC8200654AC0 /* HalfCircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfCircleProgress.swift; sourceTree = "<group>"; };
+		DF75DB1429ABBD2C00654AC0 /* TasksProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressView.swift; sourceTree = "<group>"; };
+		DF75DB1729ABDDC600654AC0 /* TasksProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressController.swift; sourceTree = "<group>"; };
+		DF75DB1A29ABE0EE00654AC0 /* TasksProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressViewModel.swift; sourceTree = "<group>"; };
+		DF75DB1D29ABE43200654AC0 /* TasksProgressFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressFactory.swift; sourceTree = "<group>"; };
 		DF8F97A0299B191100AD3A5C /* DailyTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksView.swift; sourceTree = "<group>"; };
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -295,9 +305,62 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		DF75DB0F29ABBC4A00654AC0 /* TasksProgress */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1C29ABE41800654AC0 /* Factory */,
+				DF75DB1929ABE0C500654AC0 /* Model */,
+				DF75DB1629ABDDB000654AC0 /* Controller */,
+				DF75DB1029ABBC5B00654AC0 /* View */,
+			);
+			path = TasksProgress;
+			sourceTree = "<group>";
+		};
+		DF75DB1029ABBC5B00654AC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1129ABBC6100654AC0 /* UI Components */,
+				DF75DB1429ABBD2C00654AC0 /* TasksProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF75DB1129ABBC6100654AC0 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1229ABBC8200654AC0 /* HalfCircleProgress.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		DF75DB1629ABDDB000654AC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1729ABDDC600654AC0 /* TasksProgressController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF75DB1929ABE0C500654AC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1A29ABE0EE00654AC0 /* TasksProgressViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF75DB1C29ABE41800654AC0 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DF75DB1D29ABE43200654AC0 /* TasksProgressFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		DF8F979D299B188E00AD3A5C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DF75DB0F29ABBC4A00654AC0 /* TasksProgress */,
 				DF52B41B299CFE8200F54E43 /* StepByStep */,
 				DF8F979E299B189700AD3A5C /* DailyTasks */,
 			);
@@ -495,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF75DB1B29ABE0EE00654AC0 /* TasksProgressViewModel.swift in Sources */,
 				DF8F97A1299B191100AD3A5C /* DailyTasksView.swift in Sources */,
 				DF8F97AA299B1D8B00AD3A5C /* DailyTasksFactory.swift in Sources */,
 				DFE84963299BB0AF006A7805 /* DailyTasksPresenter.swift in Sources */,
@@ -502,8 +566,11 @@
 				DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */,
 				DF104280299E546200356761 /* DailyControl.swift in Sources */,
 				DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */,
+				DF75DB1829ABDDC600654AC0 /* TasksProgressController.swift in Sources */,
+				DF75DB1529ABBD2C00654AC0 /* TasksProgressView.swift in Sources */,
 				DF245217299E5DAA002DC6C1 /* TasksControl.swift in Sources */,
 				DFE84966299BB132006A7805 /* HeaderGreetingsViewModel.swift in Sources */,
+				DF75DB1E29ABE43200654AC0 /* TasksProgressFactory.swift in Sources */,
 				ABCA6A3E2996CC670002F8F2 /* NotificationsTableView.swift in Sources */,
 				DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */,
 				ABCA6A42299813520002F8F2 /* ViewCoding.swift in Sources */,
@@ -523,6 +590,7 @@
 				ABCA6A3A29968EE50002F8F2 /* WeatherCardView.swift in Sources */,
 				DF104277299E528E00356761 /* WeCare.xcdatamodeld in Sources */,
 				DFE8496C299BB3AE006A7805 /* DailyTasksViewModel.swift in Sources */,
+				DF75DB1329ABBC8200654AC0 /* HalfCircleProgress.swift in Sources */,
 				DF75DB0629A953F600654AC0 /* Double.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
 				DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 protocol DailyTasksPresenting: AnyObject {
     func showView(_ controller: DailyTasksController) async throws
     func markTaskAsDone(id: UUID) throws
+    func getTasksProgressViewModel() throws -> TasksProgressViewModel?
 }
 
 final class DailyTasksPresenter {
@@ -36,6 +37,17 @@ final class DailyTasksPresenter {
 }
 
 extension DailyTasksPresenter: DailyTasksPresenting {
+    func getTasksProgressViewModel() throws -> TasksProgressViewModel? {
+        guard let tasks = try taskLoader.getTasks() else { return nil }
+        let doneTasks = tasks.filter { $0.isDone == true }
+
+        return .init(
+            allTaksCount: tasks.count,
+            doneTasksCount: doneTasks.count,
+            doneTasks: doneTasks
+        )
+    }
+
     func showView(_ controller: DailyTasksController) async throws {
         self.controller = controller
         incrementView()
@@ -76,27 +88,23 @@ private extension DailyTasksPresenter {
     }
 
     private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
-        self.interfaceModel.weatherCard = DailyTasksViewModel.getMock().weatherCard
-        try completion()
-//        try weatherService.getWeather() { weather in
-//            self.interfaceModel.weatherCard = .init(weather: weather)
-//            try completion()
-//        }
+        try weatherService.getWeather() { weather in
+            self.interfaceModel.weatherCard = .init(weather: weather)
+            try completion()
+        }
     }
 
     private func updateTasksIfNeeded() throws {
-//        let temperature = interfaceModel.weatherCard?.weather.getTemperature() ?? 0
-//        let uvIndex = interfaceModel.weatherCard?.weather.uvIndex ?? 0
-//
-//
-//        try taskLoader.updateTasksIfNeeded(uvIndex: uvIndex, temperature: temperature)
-        try taskLoader.updateTasksIfNeeded(uvIndex: 4, temperature: 30)
+        let temperature = interfaceModel.weatherCard?.weather.getTemperature() ?? 0
+        let uvIndex = interfaceModel.weatherCard?.weather.uvIndex ?? 0
+
+        try taskLoader.updateTasksIfNeeded(uvIndex: uvIndex, temperature: temperature)
     }
 
     private func loadNotificationTable() throws {
         guard let tasks = try taskLoader.getTasks() else { return }
-        let validTasks = tasks.filter { $0.isDone == false }
-        self.interfaceModel.notificationsTable = .init(tasks: validTasks)
+        let unDoneTasks = tasks.filter { $0.isDone == false }
+        self.interfaceModel.notificationsTable = .init(tasks: unDoneTasks)
     }
 
 }
