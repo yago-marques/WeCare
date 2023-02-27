@@ -90,6 +90,7 @@ private extension DailyTasksPresenter {
     private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
         try weatherService.getWeather() { weather in
             self.interfaceModel.weatherCard = .init(weather: weather)
+            self.controller?.removeWeatherAnimation()
             try completion()
         }
     }

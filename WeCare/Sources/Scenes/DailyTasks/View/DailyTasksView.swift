@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 final class DailyTasksView: UIView {
 
@@ -17,12 +18,25 @@ final class DailyTasksView: UIView {
     }
     weak var controller: DailyTasksController?
 
-//    private let headerGreetings: HeaderGreetings = {
-//        let header = HeaderGreetings()
-//        header.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return header
-//    }()
+    lazy var weatherAnimationLoader: LottieAnimationView = {
+        let animationView = LottieAnimationView(animation: LottieAnimation.named("cat-loader"))
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.backgroundColor = .clear
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+
+        return animationView
+    }()
+
+    lazy var emptyTasksAnimation: LottieAnimationView = {
+        let animationView = LottieAnimationView(animation: LottieAnimation.named("empty-notifications"))
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.backgroundColor = .clear
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+
+        return animationView
+    }()
 
     private let weatherCard: WeatherCardView = {
         let card = WeatherCardView()
@@ -58,13 +72,25 @@ final class DailyTasksView: UIView {
     required init?(coder: NSCoder) { nil }
 
     func setup(viewModel: DailyTasksViewModel) {
-      //  self.headerGreetings.setup(viewModel: viewModel.header)
         self.weatherCard.setup(viewModel: viewModel.weatherCard)
         self.notificationsViewModel = viewModel.notificationsTable
     }
 
     func setupController(controller: DailyTasksController) {
         self.controller = controller
+    }
+
+    func addEmptyTableAnimation() {
+        self.addSubview(emptyTasksAnimation)
+
+        NSLayoutConstraint.activate([
+            emptyTasksAnimation.topAnchor.constraint(equalTo: notificationsTable.topAnchor),
+            emptyTasksAnimation.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyTasksAnimation.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7),
+            emptyTasksAnimation.heightAnchor.constraint(equalTo: emptyTasksAnimation.widthAnchor)
+        ])
+
+        emptyTasksAnimation.play()
     }
 }
 
@@ -73,7 +99,14 @@ extension DailyTasksView: UITableViewDelegate { }
 extension DailyTasksView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.notificationsViewModel?.tasks.count ?? 0
+        guard let count = self.notificationsViewModel?.tasks.count else { return 0 }
+
+        if count == 0 {
+            addEmptyTableAnimation()
+            return 0
+        } else {
+            return count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,31 +138,21 @@ extension DailyTasksView: UITableViewDataSource {
         let swipeAction = UISwipeActionsConfiguration(actions: [updatedAction])
         return swipeAction
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Cuidados Pendentes"
-//    }
-        
 
 }
 
 extension DailyTasksView: ViewCoding {
     func setupView() {
         self.backgroundColor = UIColor(named: "backgroundColor")
+        weatherAnimationLoader.play()
     }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-//            headerGreetings.topAnchor.constraint(equalTo: self.topAnchor),
-//            headerGreetings.widthAnchor.constraint(equalTo: self.widthAnchor),
-//            headerGreetings.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            headerGreetings.heightAnchor.constraint(equalTo: headerGreetings.widthAnchor, multiplier: 0.4),
-            
             background.topAnchor.constraint(equalTo: topAnchor),
             background.widthAnchor.constraint(equalTo: widthAnchor),
             background.heightAnchor.constraint(equalTo: heightAnchor),
             background.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
 
             weatherCard.topAnchor.constraint(equalTo: topAnchor, constant: -40),
             weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.98),
@@ -138,16 +161,21 @@ extension DailyTasksView: ViewCoding {
 
             notificationsTable.topAnchor.constraint(equalTo: weatherCard.bottomAnchor),
             notificationsTable.widthAnchor.constraint(equalTo: self.widthAnchor),
-            notificationsTable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
+            notificationsTable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+
+            weatherAnimationLoader.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
+            weatherAnimationLoader.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
+            weatherAnimationLoader.widthAnchor.constraint(equalTo: weatherCard.widthAnchor, multiplier: 0.2),
+            weatherAnimationLoader.heightAnchor.constraint(equalTo: weatherAnimationLoader.widthAnchor),
         ])
     }
 
     func setupHierarchy() {
         let views = [
-           // headerGreetings,
             background,
             weatherCard,
-            notificationsTable
+            notificationsTable,
+            weatherAnimationLoader,
         ]
 
         views.forEach { view in

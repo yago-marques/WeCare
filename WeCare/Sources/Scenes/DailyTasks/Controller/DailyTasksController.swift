@@ -66,6 +66,12 @@ final class DailyTasksController: UIViewController {
         self.navigationItem.rightBarButtonItems = [progressButton]
     }
 
+    func removeWeatherAnimation() {
+        DispatchQueue.main.async {
+            self.dailyView.weatherAnimationLoader.removeFromSuperview()
+        }
+    }
+
     @objc
     func toTasksProgress() {
         do {
