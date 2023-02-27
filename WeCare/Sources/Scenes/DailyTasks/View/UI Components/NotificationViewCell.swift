@@ -56,6 +56,14 @@ class NotificationViewCell: UITableViewCell {
         return description
     }()
     
+    private lazy var rightButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .label
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildLayout()
@@ -77,7 +85,7 @@ extension NotificationViewCell {
 extension NotificationViewCell: ViewCoding {
     func setupView() {
         self.selectionStyle = .none
-        self.backgroundColor = UIColor(named: "backgroundColor")
+        self.backgroundColor = .clear
     }
     
     func setupConstraints() {
@@ -92,17 +100,23 @@ extension NotificationViewCell: ViewCoding {
             imageCell.heightAnchor.constraint(equalTo: imageCell.widthAnchor),
             imageCell.leadingAnchor.constraint(equalToSystemSpacingAfter: cell.leadingAnchor, multiplier: 1),
 
-            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10),
+            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 20),
             titleCell.leadingAnchor.constraint(equalToSystemSpacingAfter: imageCell.trailingAnchor, multiplier: 1.5),
             titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.75),
 
-            descriptionCell.topAnchor.constraint(equalToSystemSpacingBelow: titleCell.bottomAnchor, multiplier: 0.1),
+//            descriptionCell.topAnchor.constraint(equalToSystemSpacingBelow: titleCell.bottomAnchor, multiplier: 0.1),
             descriptionCell.leadingAnchor.constraint(equalTo: titleCell.leadingAnchor),
             descriptionCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor),
+            descriptionCell.centerYAnchor.constraint(equalTo: cell.centerYAnchor, constant: 6),
 
             hourCell.topAnchor.constraint(equalToSystemSpacingBelow: descriptionCell.bottomAnchor, multiplier: 1),
             hourCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor),
-            hourCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15)
+            hourCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15),
+            
+            rightButton.centerYAnchor.constraint(equalTo: imageCell.centerYAnchor),
+            rightButton.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.5),
+            rightButton.heightAnchor.constraint(equalTo: rightButton.widthAnchor),
+            rightButton.trailingAnchor.constraint(equalToSystemSpacingAfter: cell.trailingAnchor, multiplier: 8)
         ])
     }
     
@@ -112,5 +126,23 @@ extension NotificationViewCell: ViewCoding {
         cell.addSubview(titleCell)
         cell.addSubview(descriptionCell)
         cell.addSubview(hourCell)
+        cell.addSubview(rightButton)
+    }
+}
+
+extension NotificationViewCell {
+    
+    private func groupAccessible() {
+        
+        self.rightButton.isAccessibilityElement = false
+        
+        self.shouldGroupAccessibilityChildren = true
+        self.isAccessibilityElement = true
+        
+        self.accessibilityLabel = "Seta para direita clicável. Clique para exibir botão de marcar tarefa como concluída"
+        
+        self.accessibilityCustomActions = [
+//            rightButton.action(for: is, forKey: <#T##String#>)
+        ]
     }
 }

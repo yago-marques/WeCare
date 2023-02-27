@@ -23,7 +23,7 @@ extension DailyTasksViewModel {
                     uvIndex: 3,
                     city: "Fortaleza",
                     country: "Brasil",
-                    weatherIcon: "sun"
+                    weatherIcon: "moon"
                 )
             ),
 

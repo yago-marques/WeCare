@@ -17,12 +17,12 @@ final class DailyTasksView: UIView {
     }
     weak var controller: DailyTasksController?
 
-    private let headerGreetings: HeaderGreetings = {
-        let header = HeaderGreetings()
-        header.translatesAutoresizingMaskIntoConstraints = false
-
-        return header
-    }()
+//    private let headerGreetings: HeaderGreetings = {
+//        let header = HeaderGreetings()
+//        header.translatesAutoresizingMaskIntoConstraints = false
+//
+//        return header
+//    }()
 
     private let weatherCard: WeatherCardView = {
         let card = WeatherCardView()
@@ -39,6 +39,14 @@ final class DailyTasksView: UIView {
 
         return table
     }()
+    
+    lazy var background: UIImageView = {
+        let background = UIImageView()
+        background.translatesAutoresizingMaskIntoConstraints = false
+        background.contentMode = .scaleToFill
+        background.image = UIImage(named: "DailyTasksBackground")
+        return background
+    }()
 
     init(frame: CGRect, controller: DailyTasksController? = nil) {
         self.controller = controller
@@ -50,7 +58,7 @@ final class DailyTasksView: UIView {
     required init?(coder: NSCoder) { nil }
 
     func setup(viewModel: DailyTasksViewModel) {
-        self.headerGreetings.setup(viewModel: viewModel.header)
+      //  self.headerGreetings.setup(viewModel: viewModel.header)
         self.weatherCard.setup(viewModel: viewModel.weatherCard)
         self.notificationsViewModel = viewModel.notificationsTable
     }
@@ -98,9 +106,9 @@ extension DailyTasksView: UITableViewDataSource {
         return swipeAction
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Cuidados Pendentes"
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Cuidados Pendentes"
+//    }
         
 
 }
@@ -112,16 +120,23 @@ extension DailyTasksView: ViewCoding {
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            headerGreetings.topAnchor.constraint(equalTo: self.topAnchor),
-            headerGreetings.widthAnchor.constraint(equalTo: self.widthAnchor),
-            headerGreetings.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            headerGreetings.heightAnchor.constraint(equalTo: headerGreetings.widthAnchor, multiplier: 0.4),
+//            headerGreetings.topAnchor.constraint(equalTo: self.topAnchor),
+//            headerGreetings.widthAnchor.constraint(equalTo: self.widthAnchor),
+//            headerGreetings.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            headerGreetings.heightAnchor.constraint(equalTo: headerGreetings.widthAnchor, multiplier: 0.4),
+            
+            background.topAnchor.constraint(equalTo: topAnchor),
+            background.widthAnchor.constraint(equalTo: widthAnchor),
+            background.heightAnchor.constraint(equalTo: heightAnchor),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
 
-            weatherCard.topAnchor.constraint(equalToSystemSpacingBelow: headerGreetings.bottomAnchor, multiplier: 1),
-            weatherCard.widthAnchor.constraint(equalTo: self.widthAnchor),
-            weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+            weatherCard.topAnchor.constraint(equalTo: topAnchor, constant: -38),
+            weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.98),
+            weatherCard.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -30),
+            weatherCard.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
 
-            notificationsTable.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.bottomAnchor, multiplier: 0.1),
+            notificationsTable.topAnchor.constraint(equalTo: weatherCard.bottomAnchor),
             notificationsTable.widthAnchor.constraint(equalTo: self.widthAnchor),
             notificationsTable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
@@ -129,7 +144,8 @@ extension DailyTasksView: ViewCoding {
 
     func setupHierarchy() {
         let views = [
-            headerGreetings,
+           // headerGreetings,
+            background,
             weatherCard,
             notificationsTable
         ]
