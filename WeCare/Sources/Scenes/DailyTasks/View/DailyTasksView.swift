@@ -43,7 +43,7 @@ final class DailyTasksView: UIView {
     lazy var background: UIImageView = {
         let background = UIImageView()
         background.translatesAutoresizingMaskIntoConstraints = false
-        background.contentMode = .scaleToFill
+        background.contentMode = .scaleAspectFill
         background.image = UIImage(named: "DailyTasksBackground")
         return background
     }()
@@ -131,7 +131,7 @@ extension DailyTasksView: ViewCoding {
             background.bottomAnchor.constraint(equalTo: bottomAnchor),
             
 
-            weatherCard.topAnchor.constraint(equalTo: topAnchor, constant: -38),
+            weatherCard.topAnchor.constraint(equalTo: topAnchor, constant: -40),
             weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.98),
             weatherCard.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -30),
             weatherCard.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
