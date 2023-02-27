@@ -50,7 +50,7 @@ class WeatherCardView: UIView {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
         location.adjustsFontForContentSizeCategory = true
-        location.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        location.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         return location
     }()
     
@@ -58,7 +58,7 @@ class WeatherCardView: UIView {
         let uvIndex = UILabel()
         uvIndex.translatesAutoresizingMaskIntoConstraints = false
         uvIndex.adjustsFontForContentSizeCategory = true
-        uvIndex.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        uvIndex.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         return uvIndex
     }()
     
@@ -114,16 +114,16 @@ extension WeatherCardView: ViewCoding {
             background.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
             background.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
 
-            temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 3),
-            temperature.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 7),
+            temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 5.7),
+            temperature.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 7),
 
             location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
             location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
 
-            weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.6),
+            weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.4),
             weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
-            weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -20),
-            weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.topAnchor, multiplier: 7),
+            weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -50),
+            weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 5),
 
             uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: weatherIcon.bottomAnchor, multiplier: 2),
             uvIndex.centerXAnchor.constraint(equalTo: weatherIcon.centerXAnchor)

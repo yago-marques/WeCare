@@ -44,7 +44,7 @@ class NotificationViewCell: UITableViewCell {
         description.translatesAutoresizingMaskIntoConstraints = false
         description.numberOfLines = 0
         description.adjustsFontForContentSizeCategory = true
-        description.font = UIFont.preferredFont(forTextStyle: .caption1)
+        description.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return description
     }()
 
@@ -100,11 +100,11 @@ extension NotificationViewCell: ViewCoding {
             imageCell.heightAnchor.constraint(equalTo: imageCell.widthAnchor),
             imageCell.leadingAnchor.constraint(equalToSystemSpacingAfter: cell.leadingAnchor, multiplier: 1),
 
-            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 20),
+            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10),
             titleCell.leadingAnchor.constraint(equalToSystemSpacingAfter: imageCell.trailingAnchor, multiplier: 1.5),
-            titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.75),
+            titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.70),
 
-//            descriptionCell.topAnchor.constraint(equalToSystemSpacingBelow: titleCell.bottomAnchor, multiplier: 0.1),
+            descriptionCell.topAnchor.constraint(equalTo: titleCell.bottomAnchor),
             descriptionCell.leadingAnchor.constraint(equalTo: titleCell.leadingAnchor),
             descriptionCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor),
             descriptionCell.centerYAnchor.constraint(equalTo: cell.centerYAnchor, constant: 6),
