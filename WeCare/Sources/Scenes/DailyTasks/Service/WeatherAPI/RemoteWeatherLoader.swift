@@ -55,11 +55,18 @@ final class RemoteWeatherLoader {
 
 extension RemoteWeatherLoader: WeatherClient {
     func getWeather(completion: @escaping (LocalWeather) throws -> Void) throws {
-        locationManager.completion = {
+        if locationManager.authorizationStatus != .authorizedWhenInUse {
+            locationManager.completion = {
+                Task {
+                    try completion(self.makeWeather(try await self.weatherLoader.getWeather()))
+                }
+            }
+            getLocationAccess()
+        } else {
             Task {
                 try completion(self.makeWeather(try await self.weatherLoader.getWeather()))
             }
         }
-        getLocationAccess()
+
     }
 }

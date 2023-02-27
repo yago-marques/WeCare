@@ -26,10 +26,7 @@ final class DailyTasksController: UIViewController {
         super.viewDidLoad()
 
         dailyView.setupController(controller: self)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        addBarButton()
 
         Task {
             do {
@@ -57,5 +54,28 @@ final class DailyTasksController: UIViewController {
                 completion()
             }
         )
+    }
+
+    func addBarButton() {
+        let progressButton = UIBarButtonItem(
+            image: UIImage(systemName: "chart.bar.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(toTasksProgress)
+        )
+        self.navigationItem.rightBarButtonItems = [progressButton]
+    }
+
+    @objc
+    func toTasksProgress() {
+        do {
+            if let viewModel = try presenter.getTasksProgressViewModel() {
+                navigationController?.pushViewController(
+                    TasksProgressFactory.make(viewModel: viewModel), animated: true
+                )
+            }
+        } catch {
+            print(error)
+        }
     }
 }
