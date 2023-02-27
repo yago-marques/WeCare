@@ -58,7 +58,7 @@ final class DailyTasksController: UIViewController {
 
     func addBarButton() {
         let progressButton = UIBarButtonItem(
-            image: UIImage(systemName: "chart.bar.fill"),
+            image: UIImage(systemName: "checklist.checked"),
             style: .plain,
             target: self,
             action: #selector(toTasksProgress)

@@ -12,7 +12,7 @@ struct LocalWeather {
     let uvIndex: Int
     let city: String
     let country: String
-    let weatherIcon: String
+    var weatherIcon: String
 
     func getTemperature() -> Int {
         let stringNumbers = temperature.filter { item in
