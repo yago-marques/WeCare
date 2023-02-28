@@ -156,7 +156,7 @@ extension DailyTasksView: UITableViewDataSource {
             completionHandler(true)
         }
         updatedAction.image = UIImage(systemName: "checkmark.diamond.fill")
-        updatedAction.backgroundColor = .systemGreen
+        updatedAction.backgroundColor = UIColor(red: 0.55, green: 0.6, blue: 0.27, alpha: 1)
         let swipeAction = UISwipeActionsConfiguration(actions: [updatedAction])
         return swipeAction
     }

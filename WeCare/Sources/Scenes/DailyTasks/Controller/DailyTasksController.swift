@@ -64,6 +64,7 @@ final class DailyTasksController: UIViewController {
             action: #selector(toTasksProgress)
         )
         self.navigationItem.rightBarButtonItems = [progressButton]
+        progressButton.accessibilityLabel = "Lista de cuidados concluídos"
     }
 
     func removeWeatherAnimation() {

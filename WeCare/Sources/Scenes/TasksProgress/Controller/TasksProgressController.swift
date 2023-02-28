@@ -28,7 +28,7 @@ final class TasksProgressController: UIViewController {
         super.viewDidLoad()
 
         self.view = self.tasksProgressView
-        self.title = "Progresso"
+        self.title = "Seu progresso"
     }
 
     override func viewWillAppear(_ animated: Bool) {

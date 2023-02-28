@@ -14,7 +14,7 @@ class StepByStepView: UIView {
     
     weak var delegate: DismissSheetDelegate?
 
-    private let stepIcon: UIImageView = {
+    private lazy var stepIcon: UIImageView = {
         let stepIcon = UIImageView()
         stepIcon.translatesAutoresizingMaskIntoConstraints = false
         stepIcon.contentMode = .scaleAspectFit
@@ -27,10 +27,11 @@ class StepByStepView: UIView {
         button.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         button.tag = 2
         button.clipsToBounds = true
+        button.accessibilityLabel = "Fechar aba"
         return button
     }()
 
-    private let stepDescription: UILabel = {
+    private lazy var stepDescription: UILabel = {
         let stepDescription = UILabel()
         stepDescription.translatesAutoresizingMaskIntoConstraints = false
         stepDescription.numberOfLines = 0
@@ -40,7 +41,7 @@ class StepByStepView: UIView {
         return stepDescription
     }()
 
-    lazy var tableView: UITableView = {
+   internal lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "backgroundColor")
@@ -48,6 +49,18 @@ class StepByStepView: UIView {
         tableView.register(StepByStepViewCell.self, forCellReuseIdentifier: StepByStepViewCell.identifier)
 
         return tableView
+    }()
+     
+    private lazy var doneButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = .systemBackground
+        button.backgroundColor = .systemRed
+        button.layer.cornerCurve = .circular
+        button.layer.cornerRadius = 10
+        button.setTitle("Feito", for: .normal)
+        button.backgroundColor = UIColor(red: 0.55, green: 0.6, blue: 0.27, alpha: 1)
+        return button
     }()
 
     init() {
@@ -62,12 +75,9 @@ class StepByStepView: UIView {
     func setupView(viewModel: NotificationsTask) {
         self.stepDescription.text = viewModel.stepsDescription
         self.stepIcon.image = UIImage(named: viewModel.icon)
+        stepDescriptionAccesible()
     }
     
-    @objc func closeAction(sender: UIButton) {
-        delegate?.dismiss()
-    }
-
 }
 
 extension StepByStepView: ViewCoding {
@@ -92,7 +102,14 @@ extension StepByStepView: ViewCoding {
 
             tableView.topAnchor.constraint(equalToSystemSpacingBelow: stepDescription.bottomAnchor, multiplier: 5),
             tableView.widthAnchor.constraint(equalTo: widthAnchor),
-            tableView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8)
+            tableView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+            
+            doneButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 70),
+            doneButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
+            doneButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
+            doneButton.centerXAnchor.constraint(equalTo: stepIcon.centerXAnchor),
+
+            
 
         ])
     }
@@ -102,6 +119,24 @@ extension StepByStepView: ViewCoding {
         addSubview(stepIcon)
         addSubview(stepDescription)
         addSubview(tableView)
+        addSubview(doneButton)
+    }
+
+}
+
+extension StepByStepView {
+    
+    @objc func closeAction(sender: UIButton) {
+        delegate?.dismiss()
+    }
+    
+    @objc func doneButtonPressed() {
+        
+    }
+    
+    func stepDescriptionAccesible() {
+        self.stepDescription.accessibilityLabel = "resumo da etapa de cuidados: \(stepDescription.text ?? "vazio")"
+        
     }
 
 }
