@@ -67,6 +67,12 @@ final class DailyTasksController: UIViewController {
         progressButton.accessibilityLabel = "Lista de cuidados concluídos"
     }
 
+    func removeWeatherAnimation() {
+        DispatchQueue.main.async {
+            self.dailyView.weatherAnimationLoader.removeFromSuperview()
+        }
+    }
+
     @objc
     func toTasksProgress() {
         do {

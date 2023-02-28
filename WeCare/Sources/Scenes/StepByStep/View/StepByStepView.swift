@@ -100,7 +100,7 @@ extension StepByStepView: ViewCoding {
             stepDescription.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
 
 
-            tableView.topAnchor.constraint(equalToSystemSpacingBelow: stepDescription.bottomAnchor, multiplier: 2),
+            tableView.topAnchor.constraint(equalToSystemSpacingBelow: stepDescription.bottomAnchor, multiplier: 5),
             tableView.widthAnchor.constraint(equalTo: widthAnchor),
             tableView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             
