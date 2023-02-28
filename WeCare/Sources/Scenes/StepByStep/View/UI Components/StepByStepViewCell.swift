@@ -23,8 +23,26 @@ class StepByStepViewCell: UITableViewCell {
         titleStep.adjustsFontForContentSizeCategory = true
         titleStep.font = UIFont.preferredFont(forTextStyle: .title3)
         titleStep.numberOfLines = 0
-//        titleStep.text = "Passo 1"
         return titleStep
+    }()
+
+    private let wayPoint: UIView = {
+        let point = UIView()
+        point.translatesAutoresizingMaskIntoConstraints = false
+        point.clipsToBounds = true
+        point.layer.cornerCurve = .circular
+        point.layer.cornerRadius = 10
+        point.backgroundColor = .blue
+
+        return point
+    }()
+
+    private let wayRoute: UIView = {
+        let route = UIView()
+        route.translatesAutoresizingMaskIntoConstraints = false
+        route.backgroundColor = .blue
+
+        return route
     }()
 
     private lazy var descriptionStep: UILabel = {
@@ -33,7 +51,6 @@ class StepByStepViewCell: UITableViewCell {
         descriptionStep.adjustsFontForContentSizeCategory = true
         descriptionStep.font = UIFont.preferredFont(forTextStyle: .body)
         descriptionStep.numberOfLines = 0
-//        descriptionStep.text = "Aplique uma quantidade X de produto tanto no rosto quanto no pescoço, para garantir hidratação"
         return descriptionStep
     }()
 
@@ -48,9 +65,26 @@ class StepByStepViewCell: UITableViewCell {
 }
 
 extension StepByStepViewCell {
-    func configureCellInformations(title: String, description: String) {
+    func configureCellInformations(title: String, description: String, isLast: Bool) {
         titleStep.text = title
         descriptionStep.text = description
+        if !isLast {
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                self.addRouteIfNeeded()
+            }
+        }
+    }
+
+    func addRouteIfNeeded() {
+        self.addSubview(wayRoute)
+
+        NSLayoutConstraint.activate([
+            wayRoute.topAnchor.constraint(equalTo: wayPoint.centerYAnchor),
+            wayRoute.widthAnchor.constraint(equalToConstant: 1),
+            wayRoute.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 2),
+            wayRoute.centerXAnchor.constraint(equalTo: wayPoint.centerXAnchor)
+        ])
     }
 }
 
@@ -64,12 +98,17 @@ extension StepByStepViewCell: ViewCoding {
         NSLayoutConstraint.activate([
             cell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             cell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            cell.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            cell.topAnchor.constraint(equalTo: topAnchor),
             cell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
 
-            titleStep.topAnchor.constraint(equalTo: cell.topAnchor, constant: 4),
+            wayPoint.topAnchor.constraint(equalTo: topAnchor, constant: 2),
+            wayPoint.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            wayPoint.widthAnchor.constraint(equalToConstant: 20),
+            wayPoint.heightAnchor.constraint(equalTo: wayPoint.widthAnchor),
+
+            titleStep.topAnchor.constraint(equalTo: cell.topAnchor),
             titleStep.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 8),
-            titleStep.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+            titleStep.leadingAnchor.constraint(equalTo: wayPoint.trailingAnchor, constant: 20),
 
 
             descriptionStep.topAnchor.constraint(equalToSystemSpacingBelow: titleStep.bottomAnchor, multiplier: 0.2),
@@ -82,6 +121,7 @@ extension StepByStepViewCell: ViewCoding {
 
     func setupHierarchy() {
         addSubview(cell)
+        cell.addSubview(wayPoint)
         cell.addSubview(titleStep)
         cell.addSubview(descriptionStep)
     }

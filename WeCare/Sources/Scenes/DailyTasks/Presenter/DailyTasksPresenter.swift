@@ -88,11 +88,15 @@ private extension DailyTasksPresenter {
     }
 
     private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
-        try weatherService.getWeather() { weather in
-            self.interfaceModel.weatherCard = .init(weather: weather)
-            self.controller?.removeWeatherAnimation()
-            try completion()
-        }
+//        try weatherService.getWeather() { weather in
+//            self.interfaceModel.weatherCard = .init(weather: weather)
+//            self.controller?.removeWeatherAnimation()
+//            try completion()
+//        }
+        guard let mock = DailyTasksViewModel.getMock().weatherCard?.weather else { return }
+        self.interfaceModel.weatherCard = .init(weather: mock)
+        self.controller?.removeWeatherAnimation()
+        try completion()
     }
 
     private func updateTasksIfNeeded() throws {

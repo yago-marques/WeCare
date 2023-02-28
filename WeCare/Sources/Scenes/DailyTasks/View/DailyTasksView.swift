@@ -19,7 +19,7 @@ final class DailyTasksView: UIView {
     weak var controller: DailyTasksController?
 
     lazy var weatherAnimationLoader: LottieAnimationView = {
-        let animationView = LottieAnimationView(animation: LottieAnimation.named("cat-loader"))
+        let animationView = LottieAnimationView(animation: LottieAnimation.named("loader"))
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.backgroundColor = .clear
         animationView.contentMode = .scaleAspectFit
@@ -38,11 +38,29 @@ final class DailyTasksView: UIView {
         return animationView
     }()
 
+    private let emptyTasksLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Nenhuma atividade pendente"
+        label.textColor = .secondaryLabel
+
+        return label
+    }()
+
     private let weatherCard: WeatherCardView = {
         let card = WeatherCardView()
         card.translatesAutoresizingMaskIntoConstraints = false
 
         return card
+    }()
+
+    private let tableLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Atividades pendentes:"
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+
+        return label
     }()
 
     lazy var notificationsTable: NotificationsTableView = {
@@ -82,12 +100,16 @@ final class DailyTasksView: UIView {
 
     func addEmptyTableAnimation() {
         self.addSubview(emptyTasksAnimation)
+        self.addSubview(emptyTasksLabel)
 
         NSLayoutConstraint.activate([
             emptyTasksAnimation.topAnchor.constraint(equalTo: notificationsTable.topAnchor),
             emptyTasksAnimation.centerXAnchor.constraint(equalTo: centerXAnchor),
             emptyTasksAnimation.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7),
-            emptyTasksAnimation.heightAnchor.constraint(equalTo: emptyTasksAnimation.widthAnchor)
+            emptyTasksAnimation.heightAnchor.constraint(equalTo: emptyTasksAnimation.widthAnchor),
+
+            emptyTasksLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyTasksLabel.topAnchor.constraint(equalToSystemSpacingBelow: emptyTasksAnimation.bottomAnchor, multiplier: 1)
         ])
 
         emptyTasksAnimation.play()
@@ -159,13 +181,16 @@ extension DailyTasksView: ViewCoding {
             weatherCard.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -30),
             weatherCard.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
 
-            notificationsTable.topAnchor.constraint(equalTo: weatherCard.bottomAnchor),
+            tableLabel.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.bottomAnchor, multiplier: 1),
+            tableLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            notificationsTable.topAnchor.constraint(equalToSystemSpacingBelow: tableLabel.bottomAnchor, multiplier: 1),
             notificationsTable.widthAnchor.constraint(equalTo: self.widthAnchor),
             notificationsTable.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
 
             weatherAnimationLoader.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
             weatherAnimationLoader.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
-            weatherAnimationLoader.widthAnchor.constraint(equalTo: weatherCard.widthAnchor, multiplier: 0.2),
+            weatherAnimationLoader.widthAnchor.constraint(equalTo: weatherCard.widthAnchor, multiplier: 0.7),
             weatherAnimationLoader.heightAnchor.constraint(equalTo: weatherAnimationLoader.widthAnchor),
         ])
     }
@@ -176,6 +201,7 @@ extension DailyTasksView: ViewCoding {
             weatherCard,
             notificationsTable,
             weatherAnimationLoader,
+            tableLabel
         ]
 
         views.forEach { view in

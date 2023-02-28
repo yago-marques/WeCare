@@ -50,7 +50,8 @@ extension StepByStepViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
         let cellViewModel = self.viewModel.steps[indexPath.row]
-        cell.configureCellInformations(title: cellViewModel.title, description: cellViewModel.description)
+        let isLast = indexPath.row == (viewModel.steps.count - 1)
+        cell.configureCellInformations(title: cellViewModel.title, description: cellViewModel.description, isLast: isLast)
 
         return cell
     }

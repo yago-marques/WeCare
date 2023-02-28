@@ -40,8 +40,8 @@
 		DF8F97A7299B1CB400AD3A5C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A6299B1CB400AD3A5C /* Date.swift */; };
 		DF8F97AA299B1D8B00AD3A5C /* DailyTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F97A9299B1D8B00AD3A5C /* DailyTasksFactory.swift */; };
 		DFB7C8EB29AD58C600905A3A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DFB7C8EA29AD58C600905A3A /* Lottie */; };
-		DFB7C8ED29AD5C4400905A3A /* cat-loader.json in Resources */ = {isa = PBXBuildFile; fileRef = DFB7C8EC29AD5C4400905A3A /* cat-loader.json */; };
-		DFB7C8EF29AD5D8500905A3A /* empty-notifications.json in Resources */ = {isa = PBXBuildFile; fileRef = DFB7C8EE29AD5D8500905A3A /* empty-notifications.json */; };
+		DFB7C8F129AE1F2800905A3A /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = DFB7C8F029AE1F2800905A3A /* loader.json */; };
+		DFB7C8F729AE255300905A3A /* empty-notifications.json in Resources */ = {isa = PBXBuildFile; fileRef = DFB7C8F629AE255300905A3A /* empty-notifications.json */; };
 		DFE1C8B329967ABD006922BE /* WeatherLoader in Frameworks */ = {isa = PBXBuildFile; productRef = DFE1C8B229967ABD006922BE /* WeatherLoader */; };
 		DFE84963299BB0AF006A7805 /* DailyTasksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE84962299BB0AF006A7805 /* DailyTasksPresenter.swift */; };
 		DFE84966299BB132006A7805 /* HeaderGreetingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE84965299BB132006A7805 /* HeaderGreetingsViewModel.swift */; };
@@ -99,8 +99,8 @@
 		DF8F97A3299B19DC00AD3A5C /* DailyTasksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksController.swift; sourceTree = "<group>"; };
 		DF8F97A6299B1CB400AD3A5C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		DF8F97A9299B1D8B00AD3A5C /* DailyTasksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksFactory.swift; sourceTree = "<group>"; };
-		DFB7C8EC29AD5C4400905A3A /* cat-loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cat-loader.json"; sourceTree = "<group>"; };
-		DFB7C8EE29AD5D8500905A3A /* empty-notifications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "empty-notifications.json"; sourceTree = "<group>"; };
+		DFB7C8F029AE1F2800905A3A /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		DFB7C8F629AE255300905A3A /* empty-notifications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "empty-notifications.json"; sourceTree = "<group>"; };
 		DFE1C8B129967A9A006922BE /* WeatherLoader */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = WeatherLoader; sourceTree = "<group>"; };
 		DFE84962299BB0AF006A7805 /* DailyTasksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksPresenter.swift; sourceTree = "<group>"; };
 		DFE84965299BB132006A7805 /* HeaderGreetingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGreetingsViewModel.swift; sourceTree = "<group>"; };
@@ -427,8 +427,8 @@
 		DFB7C8E629AD557B00905A3A /* LottieFiles */ = {
 			isa = PBXGroup;
 			children = (
-				DFB7C8EC29AD5C4400905A3A /* cat-loader.json */,
-				DFB7C8EE29AD5D8500905A3A /* empty-notifications.json */,
+				DFB7C8F029AE1F2800905A3A /* loader.json */,
+				DFB7C8F629AE255300905A3A /* empty-notifications.json */,
 			);
 			path = LottieFiles;
 			sourceTree = "<group>";
@@ -561,8 +561,8 @@
 			files = (
 				DF30927C29918150000EB8F6 /* LaunchScreen.storyboard in Resources */,
 				DF30927929918150000EB8F6 /* Assets.xcassets in Resources */,
-				DFB7C8EF29AD5D8500905A3A /* empty-notifications.json in Resources */,
-				DFB7C8ED29AD5C4400905A3A /* cat-loader.json in Resources */,
+				DFB7C8F729AE255300905A3A /* empty-notifications.json in Resources */,
+				DFB7C8F129AE1F2800905A3A /* loader.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
