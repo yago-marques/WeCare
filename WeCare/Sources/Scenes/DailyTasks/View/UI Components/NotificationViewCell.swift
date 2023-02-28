@@ -30,7 +30,7 @@ class NotificationViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var titleCell: UILabel = {
+    lazy var titleCell: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.numberOfLines = 0
@@ -56,11 +56,12 @@ class NotificationViewCell: UITableViewCell {
         return description
     }()
     
-    private lazy var rightButton: UIButton = {
-        let button = UIButton()
+    private lazy var rightButton: UIImageView = {
+        let button = UIImageView()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .label
-        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.image = UIImage(systemName: "chevron.right")
         return button
     }()
     
@@ -79,6 +80,7 @@ extension NotificationViewCell {
         titleCell.text = viewModel.title
         descriptionCell.text = viewModel.description
         hourCell.text = viewModel.getHour()
+        groupAccessible()
     }
 }
 
@@ -114,9 +116,9 @@ extension NotificationViewCell: ViewCoding {
             hourCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15),
             
             rightButton.centerYAnchor.constraint(equalTo: imageCell.centerYAnchor),
-            rightButton.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.5),
+            rightButton.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.05),
             rightButton.heightAnchor.constraint(equalTo: rightButton.widthAnchor),
-            rightButton.trailingAnchor.constraint(equalToSystemSpacingAfter: cell.trailingAnchor, multiplier: 8)
+            rightButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -7)
         ])
     }
     
@@ -134,15 +136,9 @@ extension NotificationViewCell {
     
     private func groupAccessible() {
         
-        self.rightButton.isAccessibilityElement = false
+        self.titleCell.accessibilityLabel = "Etapa de cuidado pendente, título: \(titleCell.text ?? "etapa de skincare")"
+        self.descriptionCell.accessibilityLabel = "descrição: \(descriptionCell.text ?? "vamos nos cuidar?")"
+        self.hourCell.accessibilityLabel = "Horário de envio da notificação: \(hourCell.text ?? "horário indisponível")"
         
-        self.shouldGroupAccessibilityChildren = true
-        self.isAccessibilityElement = true
-        
-        self.accessibilityLabel = "Seta para direita clicável. Clique para exibir botão de marcar tarefa como concluída"
-        
-        self.accessibilityCustomActions = [
-//            rightButton.action(for: is, forKey: <#T##String#>)
-        ]
     }
 }
