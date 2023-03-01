@@ -67,7 +67,7 @@ final class HalfCircleProgress: UIView {
         beizerPath.close()
         let greenCircleLayer = CAShapeLayer()
         greenCircleLayer.path = beizerPath.cgPath
-        greenCircleLayer.fillColor = UIColor.green.cgColor
+        greenCircleLayer.fillColor = UIColor(named: "NotificationCellColor")?.cgColor
         return greenCircleLayer
     }
 

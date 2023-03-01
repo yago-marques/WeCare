@@ -41,7 +41,7 @@ final class DailyTasksView: UIView {
     private let emptyTasksLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Nenhuma atividade pendente"
+        label.text = "Você não possui cuidados pendentes!"
         label.textColor = .secondaryLabel
 
         return label
@@ -57,8 +57,8 @@ final class DailyTasksView: UIView {
     private let tableLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Atividades pendentes:"
-        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        label.text = "Cuidados pendentes:"
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
 
         return label
     }()
