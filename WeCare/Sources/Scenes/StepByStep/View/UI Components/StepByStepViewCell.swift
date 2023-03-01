@@ -21,7 +21,7 @@ class StepByStepViewCell: UITableViewCell {
         let titleStep = UILabel()
         titleStep.translatesAutoresizingMaskIntoConstraints = false
         titleStep.adjustsFontForContentSizeCategory = true
-        titleStep.font = UIFont.preferredFont(forTextStyle: .title3)
+        titleStep.font = UIFont.preferredFont(forTextStyle: .headline)
         titleStep.numberOfLines = 0
         return titleStep
     }()
@@ -32,7 +32,7 @@ class StepByStepViewCell: UITableViewCell {
         point.clipsToBounds = true
         point.layer.cornerCurve = .circular
         point.layer.cornerRadius = 10
-        point.backgroundColor = .blue
+        point.backgroundColor = UIColor(named: "NotificationCellColor")
 
         return point
     }()
@@ -40,7 +40,7 @@ class StepByStepViewCell: UITableViewCell {
     private let wayRoute: UIView = {
         let route = UIView()
         route.translatesAutoresizingMaskIntoConstraints = false
-        route.backgroundColor = .blue
+        route.backgroundColor = UIColor(named: "NotificationCellColor")
 
         return route
     }()
@@ -49,7 +49,7 @@ class StepByStepViewCell: UITableViewCell {
         let descriptionStep = UILabel()
         descriptionStep.translatesAutoresizingMaskIntoConstraints = false
         descriptionStep.adjustsFontForContentSizeCategory = true
-        descriptionStep.font = UIFont.preferredFont(forTextStyle: .body)
+        descriptionStep.font = UIFont.preferredFont(forTextStyle: .subheadline)
         descriptionStep.numberOfLines = 0
         return descriptionStep
     }()

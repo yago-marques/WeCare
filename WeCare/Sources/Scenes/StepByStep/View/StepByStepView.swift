@@ -36,7 +36,7 @@ class StepByStepView: UIView {
         stepDescription.translatesAutoresizingMaskIntoConstraints = false
         stepDescription.numberOfLines = 0
         stepDescription.adjustsFontForContentSizeCategory = true
-        stepDescription.font = UIFont.preferredFont(forTextStyle: .body)
+        stepDescription.font = UIFont.preferredFont(forTextStyle: .callout)
         stepDescription.textAlignment = .center
         return stepDescription
     }()
