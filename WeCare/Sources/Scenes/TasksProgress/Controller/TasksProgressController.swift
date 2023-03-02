@@ -28,12 +28,47 @@ final class TasksProgressController: UIViewController {
         super.viewDidLoad()
 
         self.view = self.tasksProgressView
-        self.title = "Seu progresso"
+        self.navigationItem.title = "Seu progresso"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        tasksProgressView.tableView.delegate = self
+        tasksProgressView.tableView.dataSource = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tasksProgressView.setup(viewModel: self.viewModel)
+    }
+}
+
+extension TasksProgressController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let rows = viewModel.doneTasksCount
+        if rows == 0 {
+            tasksProgressView.addEmptyTableAnimation()
+            return 0
+        } else {
+            return rows
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            return UITableViewCell()
+        }
+
+        let viewModel = viewModel.doneTasks[indexPath.row]
+
+        cell.textLabel?.text = "\(viewModel.title) às \(viewModel.getHour())"
+        cell.backgroundColor = .white
+        cell.textLabel?.textColor = .black
+
+        return cell
+    }
+}
+
+extension TasksProgressController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Cuidados feitos:"
     }
 }

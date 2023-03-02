@@ -13,6 +13,8 @@ import UIKit
 class StepByStepView: UIView {
     
     weak var delegate: DismissSheetDelegate?
+    weak var controller: StepByStepViewController?
+    var id: UUID? = nil
 
     private lazy var stepIcon: UIImageView = {
         let stepIcon = UIImageView()
@@ -60,6 +62,8 @@ class StepByStepView: UIView {
         button.layer.cornerRadius = 10
         button.setTitle("Feito", for: .normal)
         button.backgroundColor = UIColor(red: 0.55, green: 0.6, blue: 0.27, alpha: 1)
+        button.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+
         return button
     }()
 
@@ -75,6 +79,7 @@ class StepByStepView: UIView {
     func setupView(viewModel: NotificationsTask) {
         self.stepDescription.text = viewModel.stepsDescription
         self.stepIcon.image = UIImage(named: viewModel.icon)
+        self.id = viewModel.id
         stepDescriptionAccesible()
     }
     
@@ -131,7 +136,9 @@ extension StepByStepView {
     }
     
     @objc func doneButtonPressed() {
-        
+        guard let id = self.id else { return }
+        try? controller?.dailyController.markTaskAsDone(id: id)
+        delegate?.dismiss()
     }
     
     func stepDescriptionAccesible() {
