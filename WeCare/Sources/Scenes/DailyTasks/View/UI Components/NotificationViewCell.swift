@@ -21,6 +21,7 @@ class NotificationViewCell: UITableViewCell {
         cell.layer.shadowOpacity = 0.2
         cell.layer.cornerCurve = .circular
         cell.layer.cornerRadius = 10
+//        cell.isAccessibilityElement = true
         return cell
     }()
     
@@ -36,6 +37,8 @@ class NotificationViewCell: UITableViewCell {
         title.numberOfLines = 0
         title.adjustsFontForContentSizeCategory = true
         title.font = UIFont.preferredFont(forTextStyle: .title3)
+//        title.isAccessibilityElement = true
+//        title.accessibilityLabel = title.text
         return title
     }()
     
@@ -45,6 +48,8 @@ class NotificationViewCell: UITableViewCell {
         description.numberOfLines = 0
         description.adjustsFontForContentSizeCategory = true
         description.font = UIFont.preferredFont(forTextStyle: .subheadline)
+//        description.isAccessibilityElement = true
+//        description.accessibilityLabel = description.text
         return description
     }()
 
@@ -53,6 +58,8 @@ class NotificationViewCell: UITableViewCell {
         description.translatesAutoresizingMaskIntoConstraints = false
         description.adjustsFontForContentSizeCategory = true
         description.font = UIFont.preferredFont(forTextStyle: .footnote)
+//        description.isAccessibilityElement = true
+//        description.accessibilityLabel = description.text
         return description
     }()
     
@@ -133,12 +140,12 @@ extension NotificationViewCell: ViewCoding {
 }
 
 extension NotificationViewCell {
-    
+
     private func groupAccessible() {
-        
-        self.titleCell.accessibilityLabel = "Etapa de cuidado pendente, título: \(titleCell.text ?? "etapa de skincare")"
-        self.descriptionCell.accessibilityLabel = "descrição: \(descriptionCell.text ?? "vamos nos cuidar?")"
+
+        self.titleCell.accessibilityLabel = "Etapa de cuidado pendente, título: \(titleCell.text ?? "etapa de skincare não carregada")"
+        self.descriptionCell.accessibilityLabel = "descrição: \(descriptionCell.text ?? "descrição não carregada")"
         self.hourCell.accessibilityLabel = "Horário de envio da notificação: \(hourCell.text ?? "horário indisponível")"
-        
+
     }
 }

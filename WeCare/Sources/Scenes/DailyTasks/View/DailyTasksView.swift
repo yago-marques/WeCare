@@ -83,6 +83,7 @@ final class DailyTasksView: UIView {
     init(frame: CGRect, controller: DailyTasksController? = nil) {
         self.controller = controller
         super.init(frame: frame)
+        teste()
         buildLayout()
     }
 
@@ -206,6 +207,27 @@ extension DailyTasksView: ViewCoding {
 
         views.forEach { view in
             self.addSubview(view)
+        }
+    }
+}
+
+extension DailyTasksView {
+    func accessibilityTeste() {
+        emptyTasksAnimation.isAccessibilityElement = true
+        emptyTasksLabel.isAccessibilityElement = true
+    }
+    func teste() {
+        if notificationsViewModel?.tasks.count == nil {
+
+            weatherAnimationLoader.isAccessibilityElement = false
+            weatherCard.isAccessibilityElement = false
+            tableLabel.isAccessibilityElement = false
+            notificationsTable.isAccessibilityElement = false
+            background.isAccessibilityElement = false
+
+//            self.shouldGroupAccessibilityChildren = true
+//            self.isAccessibilityElement = true
+            self.accessibilityLabel = "Você não possui cuidados pendentes"
         }
     }
 }

@@ -79,24 +79,6 @@ class WeatherCardView: UIView {
         groupAccessible()
     }
 
-    private func groupAccessible() {
-        self.weatherCard.isAccessibilityElement = false
-        self.location.isAccessibilityElement = false
-        self.temperature.isAccessibilityElement = false
-        self.uvIndex.isAccessibilityElement = false
-
-        self.shouldGroupAccessibilityChildren = true
-        self.isAccessibilityElement = true
-
-        let locationAccessible = location.text ?? "erro"
-        let temperatureAccessible = temperature.text ?? "erro"
-        let uvIndexAccessible = uvIndex.text ?? "erro"
-
-        self.accessibilityLabel = """
-            temperatura \(temperatureAccessible) em \(locationAccessible), com \(uvIndexAccessible)
-        """
-    }
-
 }
 
 extension WeatherCardView: ViewCoding {
@@ -140,4 +122,16 @@ extension WeatherCardView: ViewCoding {
         weatherCard.addSubview(location)
     }
 
+}
+
+extension WeatherCardView {
+    private func groupAccessible() {
+//        self.weatherIcon.accessibilityLabel = " imagem de \
+//        self.weatherCard.isAccessibilityElement = false
+//        self.background.isAccessibilityElement = false
+        self.location.isAccessibilityElement = (location.text != nil)
+        self.temperature.isAccessibilityElement = (temperature.text != nil)
+        self.uvIndex.isAccessibilityElement = (uvIndex.text != nil)
+
+    }
 }
