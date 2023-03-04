@@ -20,7 +20,7 @@ class NotificationViewCell: UITableViewCell {
         cell.layer.shadowRadius = 0.9
         cell.layer.shadowOpacity = 0.2
         cell.layer.cornerCurve = .circular
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 13
         return cell
     }()
     
@@ -35,7 +35,7 @@ class NotificationViewCell: UITableViewCell {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.numberOfLines = 0
         title.adjustsFontForContentSizeCategory = true
-        title.font = UIFont.preferredFont(forTextStyle: .title3)
+        title.font = UIFont.preferredFont(forTextStyle: .headline)
         return title
     }()
     
@@ -54,15 +54,6 @@ class NotificationViewCell: UITableViewCell {
         description.adjustsFontForContentSizeCategory = true
         description.font = UIFont.preferredFont(forTextStyle: .footnote)
         return description
-    }()
-    
-    private lazy var rightButton: UIImageView = {
-        let button = UIImageView()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .label
-        button.contentMode = .scaleAspectFit
-        button.image = UIImage(systemName: "chevron.right")
-        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -102,23 +93,19 @@ extension NotificationViewCell: ViewCoding {
             imageCell.heightAnchor.constraint(equalTo: imageCell.widthAnchor),
             imageCell.leadingAnchor.constraint(equalToSystemSpacingAfter: cell.leadingAnchor, multiplier: 1),
 
-            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10),
+            titleCell.topAnchor.constraint(equalTo: cell.topAnchor, constant: 12),
             titleCell.leadingAnchor.constraint(equalToSystemSpacingAfter: imageCell.trailingAnchor, multiplier: 1.5),
             titleCell.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.70),
 
-            descriptionCell.topAnchor.constraint(equalTo: titleCell.bottomAnchor),
+            descriptionCell.topAnchor.constraint(equalTo: titleCell.bottomAnchor, constant: 4),
             descriptionCell.leadingAnchor.constraint(equalTo: titleCell.leadingAnchor),
             descriptionCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor),
-            descriptionCell.centerYAnchor.constraint(equalTo: cell.centerYAnchor, constant: 6),
+            descriptionCell.centerYAnchor.constraint(equalTo: cell.centerYAnchor, constant: 10),
 
-            hourCell.topAnchor.constraint(equalToSystemSpacingBelow: descriptionCell.bottomAnchor, multiplier: 1),
-            hourCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor),
-            hourCell.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -15),
-            
-            rightButton.centerYAnchor.constraint(equalTo: imageCell.centerYAnchor),
-            rightButton.widthAnchor.constraint(equalTo: cell.widthAnchor, multiplier: 0.05),
-            rightButton.heightAnchor.constraint(equalTo: rightButton.widthAnchor),
-            rightButton.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: -7)
+            hourCell.topAnchor.constraint(equalTo: titleCell.topAnchor),
+            hourCell.trailingAnchor.constraint(equalTo: titleCell.trailingAnchor, constant: 18),
+            hourCell.bottomAnchor.constraint(equalTo: titleCell.bottomAnchor),
+  
         ])
     }
     
@@ -128,7 +115,6 @@ extension NotificationViewCell: ViewCoding {
         cell.addSubview(titleCell)
         cell.addSubview(descriptionCell)
         cell.addSubview(hourCell)
-        cell.addSubview(rightButton)
     }
 }
 
