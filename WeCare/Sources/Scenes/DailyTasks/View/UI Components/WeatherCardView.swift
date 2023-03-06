@@ -22,6 +22,19 @@ class WeatherCardView: UIView {
         card.layer.cornerRadius = 20
         return card
     }()
+
+    internal lazy var groupAccessibleCard: UIView = {
+        let card = UIView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        card.backgroundColor = .clear
+        card.layer.shadowColor = UIColor.black.cgColor
+        card.layer.shadowOffset = CGSizeMake(2.5, 2.5)
+        card.layer.shadowRadius = 0.9
+        card.layer.shadowOpacity = 0.2
+        card.layer.cornerCurve = .circular
+        card.layer.cornerRadius = 20
+        return card
+    }()
     
     internal lazy var background: UIImageView = {
         let image = UIImageView()
@@ -64,6 +77,7 @@ class WeatherCardView: UIView {
     
     init() {
         super.init(frame: .zero)
+
         buildLayout()
     }
     
@@ -96,6 +110,11 @@ extension WeatherCardView: ViewCoding {
             background.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
             background.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
 
+            groupAccessibleCard.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            groupAccessibleCard.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
+            groupAccessibleCard.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
+            groupAccessibleCard.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
+
             temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 5.7),
             temperature.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 7),
 
@@ -116,6 +135,7 @@ extension WeatherCardView: ViewCoding {
     func setupHierarchy() {
         addSubview(weatherCard)
         weatherCard.addSubview(background)
+        weatherCard.addSubview(groupAccessibleCard)
         weatherCard.addSubview(weatherIcon)
         weatherCard.addSubview(temperature)
         weatherCard.addSubview(uvIndex)
@@ -126,12 +146,15 @@ extension WeatherCardView: ViewCoding {
 
 extension WeatherCardView {
     private func groupAccessible() {
-//        self.weatherIcon.accessibilityLabel = " imagem de \
-//        self.weatherCard.isAccessibilityElement = false
-//        self.background.isAccessibilityElement = false
-        self.location.isAccessibilityElement = (location.text != nil)
-        self.temperature.isAccessibilityElement = (temperature.text != nil)
-        self.uvIndex.isAccessibilityElement = (uvIndex.text != nil)
 
+        self.weatherIcon.isAccessibilityElement = false
+        self.weatherCard.isAccessibilityElement = false
+        self.background.isAccessibilityElement = false
+        self.location.isAccessibilityElement = false
+        self.temperature.isAccessibilityElement = false
+        self.uvIndex.isAccessibilityElement = false
+        self.groupAccessibleCard.isAccessibilityElement = true
+
+        groupAccessibleCard.accessibilityLabel = "\((temperature.text ?? "erro")) em \((location.text ?? "erro")), com  \(uvIndex.text ?? "erro")"
     }
 }

@@ -14,6 +14,7 @@ final class DailyTasksView: UIView {
     var notificationsViewModel: NotificationsTasksViewModel? {
         didSet {
             self.notificationsTable.tableView.reloadData()
+
         }
     }
     weak var controller: DailyTasksController?
@@ -68,7 +69,6 @@ final class DailyTasksView: UIView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.tableView.delegate = self
         table.tableView.dataSource = self
-
         return table
     }()
     
@@ -83,8 +83,8 @@ final class DailyTasksView: UIView {
     init(frame: CGRect, controller: DailyTasksController? = nil) {
         self.controller = controller
         super.init(frame: frame)
-        teste()
         buildLayout()
+
     }
 
     @available(*, unavailable)
@@ -93,6 +93,7 @@ final class DailyTasksView: UIView {
     func setup(viewModel: DailyTasksViewModel) {
         self.weatherCard.setup(viewModel: viewModel.weatherCard)
         self.notificationsViewModel = viewModel.notificationsTable
+
     }
 
     func setupController(controller: DailyTasksController) {
@@ -123,11 +124,14 @@ extension DailyTasksView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = self.notificationsViewModel?.tasks.count else { return 0 }
-
         if count == 0 {
             addEmptyTableAnimation()
+            emptyTasksLabel.isAccessibilityElement = false
+            notificationsTable.isAccessibilityElement = true
+            notificationsTable.accessibilityLabel = "você não possui cuidados pendentes"
             return 0
         } else {
+            notificationsTable.isAccessibilityElement = false
             return count
         }
     }
@@ -207,27 +211,6 @@ extension DailyTasksView: ViewCoding {
 
         views.forEach { view in
             self.addSubview(view)
-        }
-    }
-}
-
-extension DailyTasksView {
-    func accessibilityTeste() {
-        emptyTasksAnimation.isAccessibilityElement = true
-        emptyTasksLabel.isAccessibilityElement = true
-    }
-    func teste() {
-        if notificationsViewModel?.tasks.count == nil {
-
-            weatherAnimationLoader.isAccessibilityElement = false
-            weatherCard.isAccessibilityElement = false
-            tableLabel.isAccessibilityElement = false
-            notificationsTable.isAccessibilityElement = false
-            background.isAccessibilityElement = false
-
-//            self.shouldGroupAccessibilityChildren = true
-//            self.isAccessibilityElement = true
-            self.accessibilityLabel = "Você não possui cuidados pendentes"
         }
     }
 }
