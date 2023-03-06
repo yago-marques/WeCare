@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum StepByStepFactory {
-    static func make(viewModel: NotificationsTask) -> UIViewController {
-        StepByStepViewController(viewModel: viewModel)
+    static func make(viewModel: NotificationsTask, controller: DailyTasksController) -> UIViewController {
+        StepByStepViewController(viewModel: viewModel, controller: controller)
     }
 }
