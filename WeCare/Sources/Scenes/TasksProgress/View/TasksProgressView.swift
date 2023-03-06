@@ -69,7 +69,6 @@ final class TasksProgressView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         buildLayout()
     }
 
@@ -80,6 +79,7 @@ final class TasksProgressView: UIView {
         self.halfCircle.updateProgress(percent: viewModel.getPercentageDouble())
         self.percentageLabel.text = viewModel.getPercentage()
         self.progressDescription.text = viewModel.getProgressDescription()
+        accessibility()
     }
 
     func addEmptyTableAnimation() {
@@ -131,5 +131,15 @@ extension TasksProgressView: ViewCoding {
         addSubview(percentageLabel)
         addSubview(progressDescription)
         addSubview(tableView)
+    }
+}
+
+extension TasksProgressView {
+    func accessibility() {
+        progressDescription.isAccessibilityElement = false
+        percentageLabel.isAccessibilityElement = false
+        halfCircle.isAccessibilityElement = true
+
+        halfCircle.accessibilityLabel = "porcentagem de tarefas feitas, \((percentageLabel.text ?? "erro")), \((progressDescription.text ?? "erro"))"
     }
 }

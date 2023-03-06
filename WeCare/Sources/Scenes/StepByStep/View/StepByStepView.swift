@@ -22,6 +22,11 @@ class StepByStepView: UIView {
         stepIcon.contentMode = .scaleAspectFit
         return stepIcon
     }()
+
+    private lazy var voiceIcon: UILabel = {
+        var voiceIcon = UILabel()
+        return voiceIcon
+    }()
     
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .close)
@@ -78,6 +83,7 @@ class StepByStepView: UIView {
     func setupView(viewModel: NotificationsTask) {
         self.stepDescription.text = viewModel.stepsDescription
         self.stepIcon.image = UIImage(named: viewModel.icon)
+        self.voiceIcon.text = viewModel.voiceIcon
         self.id = viewModel.id
         stepDescriptionAccesible()
     }
@@ -142,7 +148,8 @@ extension StepByStepView {
     
     func stepDescriptionAccesible() {
         self.stepDescription.accessibilityLabel = "resumo da etapa de cuidados: \(stepDescription.text ?? "vazio")"
-        
+        self.stepIcon.isAccessibilityElement = true
+        stepIcon.accessibilityLabel = "\(voiceIcon.text ?? "erro")"
     }
 
 }

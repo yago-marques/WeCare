@@ -14,6 +14,7 @@ final class DailyTasksView: UIView {
     var notificationsViewModel: NotificationsTasksViewModel? {
         didSet {
             self.notificationsTable.tableView.reloadData()
+
         }
     }
     weak var controller: DailyTasksController?
@@ -68,7 +69,6 @@ final class DailyTasksView: UIView {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.tableView.delegate = self
         table.tableView.dataSource = self
-
         return table
     }()
     
@@ -84,6 +84,7 @@ final class DailyTasksView: UIView {
         self.controller = controller
         super.init(frame: frame)
         buildLayout()
+
     }
 
     @available(*, unavailable)
@@ -92,6 +93,7 @@ final class DailyTasksView: UIView {
     func setup(viewModel: DailyTasksViewModel) {
         self.weatherCard.setup(viewModel: viewModel.weatherCard)
         self.notificationsViewModel = viewModel.notificationsTable
+
     }
 
     func setupController(controller: DailyTasksController) {
@@ -122,11 +124,14 @@ extension DailyTasksView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = self.notificationsViewModel?.tasks.count else { return 0 }
-
         if count == 0 {
             addEmptyTableAnimation()
+            emptyTasksLabel.isAccessibilityElement = false
+            notificationsTable.isAccessibilityElement = true
+            notificationsTable.accessibilityLabel = "você não possui cuidados pendentes"
             return 0
         } else {
+            notificationsTable.isAccessibilityElement = false
             return count
         }
     }
