@@ -29,6 +29,8 @@
 		DF52B421299CFF1B00F54E43 /* StepByStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B420299CFF1B00F54E43 /* StepByStepView.swift */; };
 		DF52B424299CFF4800F54E43 /* StepByStepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */; };
 		DF52B426299D072000F54E43 /* NotificationsTaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */; };
+		DF57CE4929B60C710041A5CC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57CE4829B60C710041A5CC /* ProgressBar.swift */; };
+		DF57CE4B29B624F20041A5CC /* tasks-done.json in Resources */ = {isa = PBXBuildFile; fileRef = DF57CE4A29B624F20041A5CC /* tasks-done.json */; };
 		DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0029A78BA400654AC0 /* DismissSheet.swift */; };
 		DF75DB0429A792BD00654AC0 /* LocalNotificationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */; };
 		DF75DB0629A953F600654AC0 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF75DB0529A953F600654AC0 /* Double.swift */; };
@@ -91,6 +93,8 @@
 		DF52B420299CFF1B00F54E43 /* StepByStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepView.swift; sourceTree = "<group>"; };
 		DF52B423299CFF4800F54E43 /* StepByStepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepViewCell.swift; sourceTree = "<group>"; };
 		DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTaskExtension.swift; sourceTree = "<group>"; };
+		DF57CE4829B60C710041A5CC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		DF57CE4A29B624F20041A5CC /* tasks-done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "tasks-done.json"; sourceTree = "<group>"; };
 		DF6609D2299414C400185DF8 /* WeCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeCare.entitlements; sourceTree = "<group>"; };
 		DF75DB0029A78BA400654AC0 /* DismissSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSheet.swift; sourceTree = "<group>"; };
 		DF75DB0329A792BD00654AC0 /* LocalNotificationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationLoader.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				ABCA6A3929968EE50002F8F2 /* WeatherCardView.swift */,
 				ABCA6A3B29968F200002F8F2 /* HeaderGreetings.swift */,
 				ABCA6A3D2996CC670002F8F2 /* NotificationsTableView.swift */,
+				DF57CE4829B60C710041A5CC /* ProgressBar.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				DFB7C8F029AE1F2800905A3A /* loader.json */,
+				DF57CE4A29B624F20041A5CC /* tasks-done.json */,
 				DFB7C8F629AE255300905A3A /* empty-notifications.json */,
 			);
 			path = LottieFiles;
@@ -586,6 +592,7 @@
 			files = (
 				DF30927C29918150000EB8F6 /* LaunchScreen.storyboard in Resources */,
 				DF30927929918150000EB8F6 /* Assets.xcassets in Resources */,
+				DF57CE4B29B624F20041A5CC /* tasks-done.json in Resources */,
 				DFB7C8F729AE255300905A3A /* empty-notifications.json in Resources */,
 				DFB7C8F129AE1F2800905A3A /* loader.json in Resources */,
 			);
@@ -643,6 +650,7 @@
 				DF3CA07E29B21D8700F62164 /* NotificationManager.swift in Sources */,
 				DF75DB0629A953F600654AC0 /* Double.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
+				DF57CE4929B60C710041A5CC /* ProgressBar.swift in Sources */,
 				DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

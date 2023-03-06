@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherCardView: UIView {
     
-    internal lazy var weatherCard: UIView = {
+    lazy var weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = .clear
@@ -23,12 +23,28 @@ class WeatherCardView: UIView {
         return card
     }()
     
-    internal lazy var background: UIImageView = {
+    lazy var background: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
         image.image = UIImage(named: "weatherCardBackground")
         return image
+    }()
+
+    private let progressLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.text = "Cuidados feitos"
+
+        return label
+    }()
+
+    private let progressBar: ProgressBar = {
+        let progress = ProgressBar()
+        progress.translatesAutoresizingMaskIntoConstraints = false
+
+        return progress
     }()
     
     private lazy var weatherIcon: UIImageView =  {
@@ -75,9 +91,10 @@ class WeatherCardView: UIView {
         guard let viewModel else { return }
         weatherIcon.image = UIImage(named: viewModel.weather.weatherIcon)
         temperature.text = viewModel.weather.temperature
-        //location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"
         uvIndex.text = " | Índice UV: \(viewModel.weather.uvIndex)"
         groupAccessible()
+        addProgressBar()
+        progressBar.setup(viewModel: viewModel.tasksViewModel)
     }
 
     private func groupAccessible() {
@@ -89,13 +106,27 @@ class WeatherCardView: UIView {
         self.shouldGroupAccessibilityChildren = true
         self.isAccessibilityElement = true
 
-       // let locationAccessible = location.text ?? "erro"
         let temperatureAccessible = temperature.text ?? "erro"
         let uvIndexAccessible = uvIndex.text ?? "erro"
 
         self.accessibilityLabel = """
             temperatura \(temperatureAccessible), com índice \(uvIndexAccessible)
         """
+    }
+
+    func addProgressBar() {
+        weatherCard.addSubview(progressBar)
+        weatherCard.addSubview(progressLabel)
+
+        NSLayoutConstraint.activate([
+            progressBar.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 2),
+            progressBar.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 15),
+            progressBar.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.35),
+            progressBar.heightAnchor.constraint(equalTo: progressBar.widthAnchor, multiplier: 0.2),
+
+            progressLabel.bottomAnchor.constraint(equalTo: progressBar.topAnchor, constant: -3),
+            progressLabel.leadingAnchor.constraint(equalTo: progressBar.leadingAnchor, constant: 10)
+        ])
     }
 
 }
@@ -118,18 +149,13 @@ extension WeatherCardView: ViewCoding {
             temperature.leadingAnchor.constraint(equalTo: weatherIcon.leadingAnchor),
             temperature.topAnchor.constraint(equalTo: uvIndex.topAnchor),
 
-//            location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
-//            location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
-
             weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.4),
             weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
             weatherIcon.trailingAnchor.constraint(equalTo: weatherCard.trailingAnchor, constant: -50),
             weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 5),
 
             uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: weatherIcon.bottomAnchor, multiplier: 2),
-//            uvIndex.centerXAnchor.constraint(equalTo: weatherIcon.centerXAnchor),
             uvIndex.leadingAnchor.constraint(equalTo: temperature.trailingAnchor)
-
         ])
     }
 
@@ -139,7 +165,6 @@ extension WeatherCardView: ViewCoding {
         weatherCard.addSubview(weatherIcon)
         weatherCard.addSubview(temperature)
         weatherCard.addSubview(uvIndex)
-        //weatherCard.addSubview(location)
     }
 
 }
