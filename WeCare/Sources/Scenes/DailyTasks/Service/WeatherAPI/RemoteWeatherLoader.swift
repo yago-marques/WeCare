@@ -22,7 +22,8 @@ final class RemoteWeatherLoader {
         uvIndex: 0,
         city: "--",
         country: "--",
-        weatherIcon: "sun"
+        weatherIcon: "sun",
+        weatherIconDescription: "decrição do sol"
     ) {
         didSet {
             print(weather)
@@ -43,7 +44,8 @@ final class RemoteWeatherLoader {
             uvIndex: rawWeather.uvIndex,
             city: rawWeather.location.city,
             country: rawWeather.location.country,
-            weatherIcon: rawWeather.symbolName
+            weatherIcon: rawWeather.symbolName,
+            weatherIconDescription: rawWeather.weatherIconDescription
         )
     }
 
