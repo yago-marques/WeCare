@@ -107,11 +107,12 @@ class WeatherCardView: UIView {
         temperature.text = viewModel.weather.temperature
         uvIndex.text = " | Índice UV: \(viewModel.weather.uvIndex)"
         groupAccessible()
+        weatherCardGroupAccessible()
         addProgressBar()
         progressBar.setup(viewModel: viewModel.tasksViewModel)
     }
 
-    private func groupAccessible() {
+    private func weatherCardGroupAccessible() {
         self.weatherCard.isAccessibilityElement = false
         self.location.isAccessibilityElement = false
         self.temperature.isAccessibilityElement = false
