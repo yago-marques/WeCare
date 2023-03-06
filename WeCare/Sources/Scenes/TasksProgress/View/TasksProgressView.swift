@@ -48,7 +48,7 @@ final class TasksProgressView: UIView {
         return tableView
     }()
 
-    lazy var emptyTasksAnimation: LottieAnimationView = {
+    let emptyTasksAnimation: LottieAnimationView = {
         let animationView = LottieAnimationView(animation: LottieAnimation.named("empty-notifications"))
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.backgroundColor = .clear

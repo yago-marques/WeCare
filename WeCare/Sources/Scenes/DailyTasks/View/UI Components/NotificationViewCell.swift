@@ -11,7 +11,7 @@ class NotificationViewCell: UITableViewCell {
     
     static let identifier = "NotificationViewCell"
     
-    private lazy var cell: UIView = {
+    private let cell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
         cell.backgroundColor = UIColor(named: "NotificationCellColor")
@@ -24,13 +24,13 @@ class NotificationViewCell: UITableViewCell {
         return cell
     }()
     
-    private lazy var imageCell: UIImageView = {
+    private let imageCell: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    lazy var titleCell: UILabel = {
+    let titleCell: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.numberOfLines = 0
@@ -39,7 +39,7 @@ class NotificationViewCell: UITableViewCell {
         return title
     }()
     
-    private lazy var descriptionCell: UILabel = {
+    private let descriptionCell: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         description.numberOfLines = 0
@@ -50,7 +50,7 @@ class NotificationViewCell: UITableViewCell {
         return description
     }()
 
-    private lazy var hourCell: UILabel = {
+    private let hourCell: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         description.adjustsFontForContentSizeCategory = true

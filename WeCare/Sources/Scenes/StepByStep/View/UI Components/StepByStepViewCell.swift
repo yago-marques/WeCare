@@ -11,13 +11,13 @@ class StepByStepViewCell: UITableViewCell {
 
     static let identifier = "StepByStepViewCell"
 
-    private lazy var cell: UIView = {
+    private let cell: UIView = {
         let cell = UIView()
         cell.translatesAutoresizingMaskIntoConstraints = false
         return cell
     }()
 
-    private lazy var titleStep: UILabel = {
+    private let titleStep: UILabel = {
         let titleStep = UILabel()
         titleStep.translatesAutoresizingMaskIntoConstraints = false
         titleStep.adjustsFontForContentSizeCategory = true
@@ -45,7 +45,7 @@ class StepByStepViewCell: UITableViewCell {
         return route
     }()
 
-    private lazy var descriptionStep: UILabel = {
+    private let descriptionStep: UILabel = {
         let descriptionStep = UILabel()
         descriptionStep.translatesAutoresizingMaskIntoConstraints = false
         descriptionStep.adjustsFontForContentSizeCategory = true

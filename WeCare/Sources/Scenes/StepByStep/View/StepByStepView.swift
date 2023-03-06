@@ -16,14 +16,14 @@ class StepByStepView: UIView {
     weak var controller: StepByStepViewController?
     var id: UUID? = nil
 
-    private lazy var stepIcon: UIImageView = {
+    private let stepIcon: UIImageView = {
         let stepIcon = UIImageView()
         stepIcon.translatesAutoresizingMaskIntoConstraints = false
         stepIcon.contentMode = .scaleAspectFit
         return stepIcon
     }()
 
-    private lazy var voiceIcon: UILabel = {
+    private let voiceIcon: UILabel = {
         var voiceIcon = UILabel()
         return voiceIcon
     }()
@@ -38,17 +38,16 @@ class StepByStepView: UIView {
         return button
     }()
 
-    private lazy var stepDescription: UILabel = {
+    private let stepDescription: UILabel = {
         let stepDescription = UILabel()
         stepDescription.translatesAutoresizingMaskIntoConstraints = false
         stepDescription.numberOfLines = 0
-        stepDescription.adjustsFontForContentSizeCategory = true
         stepDescription.font = UIFont.preferredFont(forTextStyle: .callout)
         stepDescription.textAlignment = .left
         return stepDescription
     }()
 
-   internal lazy var tableView: UITableView = {
+   lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(named: "backgroundColor")

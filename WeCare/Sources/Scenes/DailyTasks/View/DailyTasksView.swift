@@ -19,7 +19,7 @@ final class DailyTasksView: UIView {
     }
     weak var controller: DailyTasksController?
 
-    lazy var weatherAnimationLoader: LottieAnimationView = {
+    let weatherAnimationLoader: LottieAnimationView = {
         let animationView = LottieAnimationView(animation: LottieAnimation.named("loader"))
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.backgroundColor = .clear
@@ -29,7 +29,7 @@ final class DailyTasksView: UIView {
         return animationView
     }()
 
-    lazy var emptyTasksAnimation: LottieAnimationView = {
+    let emptyTasksAnimation: LottieAnimationView = {
         let animationView = LottieAnimationView(animation: LottieAnimation.named("tasks-done"))
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.backgroundColor = .clear
@@ -72,7 +72,7 @@ final class DailyTasksView: UIView {
         return table
     }()
     
-    lazy var background: UIImageView = {
+    let background: UIImageView = {
         let background = UIImageView()
         background.translatesAutoresizingMaskIntoConstraints = false
         background.contentMode = .scaleAspectFill

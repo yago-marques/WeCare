@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderGreetings: UIView {
     
-    private lazy var date: UILabel = {
+    private let date: UILabel = {
         let data = UILabel()
         data.text = Date().displayFormat
         data.translatesAutoresizingMaskIntoConstraints = false
@@ -18,7 +18,7 @@ class HeaderGreetings: UIView {
         return data
     }()
     
-    private lazy var greetings: UILabel = {
+    private let greetings: UILabel = {
         let greetings = UILabel()
         greetings.translatesAutoresizingMaskIntoConstraints = false
         greetings.font = .systemFont(ofSize: 32, weight: .regular)
