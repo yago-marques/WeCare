@@ -77,7 +77,7 @@ extension NotificationManager {
 
         if nextTaskHour <= 12 {
             return [
-                .init(timeInterval: getInterval(12 - Date().getHour), repeats: true)
+                .init(timeInterval: getInterval(12 - Date().getHour), repeats: false)
             ]
         } else {
             return try getDefaultsTriggers()
@@ -88,7 +88,7 @@ extension NotificationManager {
         guard let tasks = try taskLoader.getTasks() else { return [] }
         if tasks.isEmpty {
             return [
-                .init(timeInterval: getInterval(1), repeats: true)
+                .init(timeInterval: getInterval(1), repeats: false)
             ]
         } else {
             guard let lastTaskHour = tasks.last?.hour else { return [] }
@@ -97,11 +97,11 @@ extension NotificationManager {
 
             if differenceToNextTask >= 4 {
                 return [
-                    .init(timeInterval: getInterval(4), repeats: true)
+                    .init(timeInterval: getInterval(4), repeats: false)
                 ]
             } else {
                 return [
-                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: true)
+                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: false)
                 ]
             }
         }
@@ -109,28 +109,28 @@ extension NotificationManager {
 
     private func getEveningTriggers() throws -> [UNTimeIntervalNotificationTrigger] {
         guard let tasks = try taskLoader.getTasks() else {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: true)]
+            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
         }
         guard let lastTaskHour = tasks.last?.hour else {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: true)]
+            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
         }
         let nextTaskHour = lastTaskHour + 4
 
         if tasks.isEmpty {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: true)]
+            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
         } else {
             let differenceToNextTask = nextTaskHour - Date().getHour
 
             if differenceToNextTask >= 4, nextTaskHour <= 21.3 {
                 return [
-                    .init(timeInterval: getInterval(4), repeats: true)
+                    .init(timeInterval: getInterval(4), repeats: false)
                 ]
             } else if nextTaskHour <= 21.3 {
                 return [
-                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: true)
+                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: false)
                 ]
             } else {
-                return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: true)]
+                return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
             }
         }
     }
