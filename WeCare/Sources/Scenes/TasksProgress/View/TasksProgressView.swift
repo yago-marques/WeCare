@@ -58,10 +58,10 @@ final class TasksProgressView: UIView {
         return animationView
     }()
 
-    private let emptyTasksLabel: UILabel = {
+    let emptyTasksLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Você não possui cuidados concluidos!"
+        label.text = "Você não possui cuidados concluídos!"
         label.textColor = .secondaryLabel
 
         return label
@@ -140,6 +140,6 @@ extension TasksProgressView {
         percentageLabel.isAccessibilityElement = false
         halfCircle.isAccessibilityElement = true
 
-        halfCircle.accessibilityLabel = "porcentagem de tarefas feitas, \((percentageLabel.text ?? "erro")), \((progressDescription.text ?? "erro"))"
+        halfCircle.accessibilityLabel = "Porcentagem de tarefas concluídas, \((percentageLabel.text ?? "erro")). Número de tarefas concluídas \((progressDescription.text ?? "erro"))"
     }
 }
