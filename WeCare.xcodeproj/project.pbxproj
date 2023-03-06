@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4BD1B69729B5703900E29A43 /* WeatherIconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD1B69629B5703900E29A43 /* WeatherIconModel.swift */; };
-		4BD1B69929B570FF00E29A43 /* WeatherIconExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD1B69829B570FF00E29A43 /* WeatherIconExtension.swift */; };
 		ABC90CFA29AEE51800EA9E79 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC90CF929AEE51800EA9E79 /* OnboardingView.swift */; };
 		ABCA6A3829968E9A0002F8F2 /* NotificationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3729968E9A0002F8F2 /* NotificationViewCell.swift */; };
 		ABCA6A3A29968EE50002F8F2 /* WeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA6A3929968EE50002F8F2 /* WeatherCardView.swift */; };
@@ -66,8 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4BD1B69629B5703900E29A43 /* WeatherIconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconModel.swift; sourceTree = "<group>"; };
-		4BD1B69829B570FF00E29A43 /* WeatherIconExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconExtension.swift; sourceTree = "<group>"; };
 		ABC90CF929AEE51800EA9E79 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		ABCA6A3729968E9A0002F8F2 /* NotificationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewCell.swift; sourceTree = "<group>"; };
 		ABCA6A3929968EE50002F8F2 /* WeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCardView.swift; sourceTree = "<group>"; };
@@ -425,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				DF8F97A6299B1CB400AD3A5C /* Date.swift */,
-				4BD1B69829B570FF00E29A43 /* WeatherIconExtension.swift */,
 				DF52B425299D072000F54E43 /* NotificationsTaskExtension.swift */,
 				DF75DB0529A953F600654AC0 /* Double.swift */,
 			);
@@ -468,7 +463,6 @@
 		DFE84964299BB0F7006A7805 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4BD1B69629B5703900E29A43 /* WeatherIconModel.swift */,
 				DFE84965299BB132006A7805 /* HeaderGreetingsViewModel.swift */,
 				DFE84967299BB1A0006A7805 /* WeatherCardViewModel.swift */,
 				DFE84969299BB271006A7805 /* NotificationsTasksViewModel.swift */,
@@ -620,7 +614,6 @@
 				DF30927229918150000EB8F6 /* SceneDelegate.swift in Sources */,
 				DFE84971299BC568006A7805 /* LocalWeather.swift in Sources */,
 				DF52B41E299CFEAC00F54E43 /* StepByStepController.swift in Sources */,
-				4BD1B69729B5703900E29A43 /* WeatherIconModel.swift in Sources */,
 				DF75DB0129A78BA400654AC0 /* DismissSheet.swift in Sources */,
 				ABCA6A3829968E9A0002F8F2 /* NotificationViewCell.swift in Sources */,
 				ABCA6A3C29968F200002F8F2 /* HeaderGreetings.swift in Sources */,
@@ -633,7 +626,6 @@
 				DFE8496C299BB3AE006A7805 /* DailyTasksViewModel.swift in Sources */,
 				DF75DB1329ABBC8200654AC0 /* HalfCircleProgress.swift in Sources */,
 				DF75DB0629A953F600654AC0 /* Double.swift in Sources */,
-				4BD1B69929B570FF00E29A43 /* WeatherIconExtension.swift in Sources */,
 				DFE8496F299BC4F0006A7805 /* RemoteWeatherLoader.swift in Sources */,
 				DF75DB0C29AA875000654AC0 /* StepByStepFactory.swift in Sources */,
 			);
