@@ -10,7 +10,7 @@ import UIKit
 
 class WeatherCardView: UIView {
     
-    lazy var weatherCard: UIView = {
+    let weatherCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = .clear
@@ -23,7 +23,7 @@ class WeatherCardView: UIView {
         return card
     }()
 
-    internal lazy var groupAccessibleCard: UIView = {
+    internal let groupAccessibleCard: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = .clear
@@ -36,7 +36,7 @@ class WeatherCardView: UIView {
         return card
     }()
     
-    lazy var background: UIImageView = {
+    let background: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
@@ -60,7 +60,7 @@ class WeatherCardView: UIView {
         return progress
     }()
     
-    private lazy var weatherIcon: UIImageView =  {
+    private let weatherIcon: UIImageView =  {
         let icon = UIImageView()
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.contentMode = .scaleAspectFit
@@ -68,7 +68,7 @@ class WeatherCardView: UIView {
         return icon
     }()
     
-    private lazy var temperature: UILabel = {
+    private let temperature: UILabel = {
         let temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
         temperature.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -76,7 +76,7 @@ class WeatherCardView: UIView {
         return temperature
     }()
     
-    private lazy var location: UILabel = {
+    private let location: UILabel = {
         let location = UILabel()
         location.translatesAutoresizingMaskIntoConstraints = false
         location.adjustsFontForContentSizeCategory = true
@@ -84,7 +84,7 @@ class WeatherCardView: UIView {
         return location
     }()
     
-    private lazy var uvIndex: UILabel = {
+    private let uvIndex: UILabel = {
         let uvIndex = UILabel()
         uvIndex.translatesAutoresizingMaskIntoConstraints = false
         uvIndex.adjustsFontForContentSizeCategory = true

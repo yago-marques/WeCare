@@ -29,7 +29,7 @@ final class ProgressBar: UIView {
         return view
     }()
 
-    private lazy var progressShape: UIView = {
+    private let progressShape: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "progressColor")

@@ -36,6 +36,7 @@ final class TasksProgressController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.backButtonTitle = "Voltar"
         
         self.tasksProgressView.setup(viewModel: self.viewModel)
     }
