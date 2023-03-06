@@ -17,7 +17,6 @@ public struct WeatherInfo {
     public let temperature: String
     public let uvIndex: Int
     public let symbolName: String
-    public let weatherIconDescription: String
 }
 
 @available(iOS 16.0, *)

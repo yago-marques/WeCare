@@ -13,7 +13,7 @@ struct LocalWeather {
     let city: String
     let country: String
     var weatherIcon: String
-    var weatherIconDescription: String
+//    var weatherIconDescription: String
 
     func getTemperature() -> Int {
         let stringNumbers = temperature.filter { item in
