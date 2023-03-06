@@ -9,4 +9,5 @@ import Foundation
 
 struct WeatherCardViewModel {
     var weather: LocalWeather
+    var tasksViewModel: TasksProgressViewModel
 }

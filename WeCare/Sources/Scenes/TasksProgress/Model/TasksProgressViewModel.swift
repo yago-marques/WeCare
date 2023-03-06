@@ -8,15 +8,15 @@
 import Foundation
 
 struct TasksProgressViewModel {
-    let allTaksCount: Int
+    let allTasksCount: Int
     let doneTasksCount: Int
     let doneTasks: [NotificationsTask]
 
     func getPercentageDouble() -> Double {
-        if allTaksCount == 0 {
-            return Double(allTaksCount)
+        if allTasksCount == 0 {
+            return Double(allTasksCount)
         } else {
-            return Double(doneTasksCount)/Double(allTaksCount)
+            return Double(doneTasksCount)/Double(allTasksCount)
         }
 
     }
@@ -29,7 +29,7 @@ struct TasksProgressViewModel {
         formatter.maximumFractionDigits = 2
 
         formatter.locale = Locale(identifier: "pt_BR")
-        let floatDivision = allTaksCount == 0 ? 0 : Double(doneTasksCount)/Double(allTaksCount)
+        let floatDivision = allTasksCount == 0 ? 0 : Double(doneTasksCount)/Double(allTasksCount)
         guard let percentage = formatter.string(
             from: NSDecimalNumber(decimal: Decimal(floatDivision))
         ) else { return "inválido" }
@@ -38,6 +38,6 @@ struct TasksProgressViewModel {
     }
 
     func getProgressDescription() -> String {
-        "\(doneTasksCount) de \(allTaksCount)"
+        "\(doneTasksCount) de \(allTasksCount)"
     }
 }

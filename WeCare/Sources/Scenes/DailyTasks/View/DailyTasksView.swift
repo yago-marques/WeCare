@@ -30,7 +30,7 @@ final class DailyTasksView: UIView {
     }()
 
     lazy var emptyTasksAnimation: LottieAnimationView = {
-        let animationView = LottieAnimationView(animation: LottieAnimation.named("empty-notifications"))
+        let animationView = LottieAnimationView(animation: LottieAnimation.named("tasks-done"))
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.backgroundColor = .clear
         animationView.contentMode = .scaleAspectFit

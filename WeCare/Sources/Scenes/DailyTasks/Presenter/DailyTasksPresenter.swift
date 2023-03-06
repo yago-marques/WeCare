@@ -45,7 +45,7 @@ extension DailyTasksPresenter: DailyTasksPresenting {
         let doneTasks = tasks.filter { $0.isDone == true }
 
         return .init(
-            allTaksCount: tasks.count,
+            allTasksCount: tasks.count,
             doneTasksCount: doneTasks.count,
             doneTasks: doneTasks
         )
@@ -65,6 +65,10 @@ extension DailyTasksPresenter: DailyTasksPresenting {
     func markTaskAsDone(id: UUID) throws {
         try taskLoader.markTaskAsDone(id: id)
         try loadNotificationTable()
+        if let tasksViewModel = try self.getTasksProgressViewModel() {
+            interfaceModel.weatherCard?.tasksViewModel = tasksViewModel
+        }
+
     }
 }
 
@@ -81,7 +85,6 @@ private extension DailyTasksPresenter {
         guard let controller else { return }
         DispatchQueue.main.async {
             controller.view = controller.dailyView
-            controller.title = "WeCare"
         }
 
         try? taskLoader.startDateIfNeeded()
@@ -93,14 +96,14 @@ private extension DailyTasksPresenter {
 
     private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
         try weatherService.getWeather() { weather in
-            self.interfaceModel.weatherCard = .init(weather: weather)
+            guard let tasksViewModel = try self.getTasksProgressViewModel() else { return }
+            self.interfaceModel.weatherCard = .init(
+                weather: weather,
+                tasksViewModel: tasksViewModel
+            )
             self.controller?.removeWeatherAnimation()
             try completion()
         }
-//        guard let mock = DailyTasksViewModel.getMock().weatherCard?.weather else { return }
-//        self.interfaceModel.weatherCard = .init(weather: mock)
-//        self.controller?.removeWeatherAnimation()
-//        try completion()
     }
 
     private func updateTasksIfNeeded() throws {

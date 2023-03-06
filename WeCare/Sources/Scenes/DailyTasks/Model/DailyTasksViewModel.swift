@@ -24,7 +24,8 @@ extension DailyTasksViewModel {
                     city: "Fortaleza",
                     country: "Brasil",
                     weatherIcon: "moon"
-                )
+                ),
+                tasksViewModel: .init(allTasksCount: 0, doneTasksCount: 0, doneTasks: [])
             ),
 
             notificationsTable: .init(tasks: [
