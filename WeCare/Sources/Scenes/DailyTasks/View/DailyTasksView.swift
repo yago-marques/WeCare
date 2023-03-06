@@ -43,7 +43,6 @@ final class DailyTasksView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Você não possui cuidados pendentes!"
         label.textColor = .secondaryLabel
-
         return label
     }()
 
@@ -57,8 +56,9 @@ final class DailyTasksView: UIView {
     private let tableLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Cuidados pendentes:"
+        label.text = "Cuidados pendentes"
         label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.adjustsFontForContentSizeCategory = true
 
         return label
     }()
@@ -156,7 +156,7 @@ extension DailyTasksView: UITableViewDataSource {
             completionHandler(true)
         }
         updatedAction.image = UIImage(systemName: "checkmark.diamond.fill")
-        updatedAction.backgroundColor = UIColor(red: 0.55, green: 0.6, blue: 0.27, alpha: 1)
+        updatedAction.backgroundColor = UIColor(named: "ActionButtonColor")
         let swipeAction = UISwipeActionsConfiguration(actions: [updatedAction])
         return swipeAction
     }
@@ -171,10 +171,6 @@ extension DailyTasksView: ViewCoding {
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            background.topAnchor.constraint(equalTo: topAnchor),
-            background.widthAnchor.constraint(equalTo: widthAnchor),
-            background.heightAnchor.constraint(equalTo: heightAnchor),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor),
 
             weatherCard.topAnchor.constraint(equalTo: topAnchor, constant: -40),
             weatherCard.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.98),
@@ -182,7 +178,7 @@ extension DailyTasksView: ViewCoding {
             weatherCard.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
 
             tableLabel.topAnchor.constraint(equalToSystemSpacingBelow: weatherCard.bottomAnchor, multiplier: 1),
-            tableLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tableLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
 
             notificationsTable.topAnchor.constraint(equalToSystemSpacingBelow: tableLabel.bottomAnchor, multiplier: 1),
             notificationsTable.widthAnchor.constraint(equalTo: self.widthAnchor),
@@ -197,7 +193,6 @@ extension DailyTasksView: ViewCoding {
 
     func setupHierarchy() {
         let views = [
-            background,
             weatherCard,
             notificationsTable,
             weatherAnimationLoader,
