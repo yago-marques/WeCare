@@ -17,6 +17,7 @@ final class DailyTasksPresenter {
     weak var controller: DailyTasksController?
     let weatherService: WeatherClient
     let taskLoader: TaskLoader
+    let systemNotification: NotificationManaging
 
     var interfaceModel = DailyTasksViewModel() {
         didSet {
@@ -27,11 +28,13 @@ final class DailyTasksPresenter {
     init(
         controller: DailyTasksController? = nil,
         weatherService: WeatherClient,
-        taskLoader: TaskLoader
+        taskLoader: TaskLoader,
+        systemNotification: NotificationManaging
     ) {
         self.controller = controller
         self.weatherService = weatherService
         self.taskLoader = taskLoader
+        self.systemNotification = systemNotification
     }
     
 }
@@ -55,6 +58,7 @@ extension DailyTasksPresenter: DailyTasksPresenting {
         try loadWeatherCard() {
             try self.updateTasksIfNeeded()
             try self.loadNotificationTable()
+            try self.systemNotification.deliveryNotifications()
         }
     }
 
@@ -88,15 +92,15 @@ private extension DailyTasksPresenter {
     }
 
     private func loadWeatherCard(completion: @escaping () throws -> Void) throws {
-//        try weatherService.getWeather() { weather in
-//            self.interfaceModel.weatherCard = .init(weather: weather)
-//            self.controller?.removeWeatherAnimation()
-//            try completion()
-//        }
-        guard let mock = DailyTasksViewModel.getMock().weatherCard?.weather else { return }
-        self.interfaceModel.weatherCard = .init(weather: mock)
-        self.controller?.removeWeatherAnimation()
-        try completion()
+        try weatherService.getWeather() { weather in
+            self.interfaceModel.weatherCard = .init(weather: weather)
+            self.controller?.removeWeatherAnimation()
+            try completion()
+        }
+//        guard let mock = DailyTasksViewModel.getMock().weatherCard?.weather else { return }
+//        self.interfaceModel.weatherCard = .init(weather: mock)
+//        self.controller?.removeWeatherAnimation()
+//        try completion()
     }
 
     private func updateTasksIfNeeded() throws {

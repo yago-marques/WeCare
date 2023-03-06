@@ -11,15 +11,25 @@ class StepByStepViewController: UIViewController {
 
     private var stepByStepView: StepByStepView
     var viewModel: NotificationsTask
+    let dailyController: DailyTasksController
 
-    init(stepByStepView: StepByStepView = StepByStepView(), viewModel: NotificationsTask) {
+    init(
+        stepByStepView: StepByStepView = StepByStepView(),
+        viewModel: NotificationsTask,
+        controller: DailyTasksController
+    ) {
         self.stepByStepView = stepByStepView
         self.viewModel = viewModel
+        self.dailyController = controller
         super.init(nibName: nil, bundle: nil)
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
+
+    func markAsDone(id: UUID) {
+        try? dailyController.markTaskAsDone(id: id)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +45,7 @@ class StepByStepViewController: UIViewController {
         stepByStepView.delegate = self
         stepByStepView.tableView.delegate = self
         stepByStepView.tableView.dataSource = self
+        stepByStepView.controller = self
     }
 }
 

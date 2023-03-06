@@ -16,7 +16,8 @@ enum DailyTasksFactory {
             taskLoader: LocalNotificationLoader(
                 dailyControl: LocalPersistanceManager(),
                 tasksControl: LocalPersistanceManager()
-            )
+            ),
+            systemNotification: NotificationFactory.make()
         )
 
         return DailyTasksController(
