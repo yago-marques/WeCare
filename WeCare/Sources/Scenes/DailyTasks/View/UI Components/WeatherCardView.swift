@@ -55,7 +55,8 @@ class WeatherCardView: UIView {
     private lazy var temperature: UILabel = {
         let temperature = UILabel()
         temperature.translatesAutoresizingMaskIntoConstraints = false
-        temperature.font = UIFont.systemFont(ofSize: 48, weight: .thin)
+        temperature.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        temperature.tintColor = .systemGray
         return temperature
     }()
     
@@ -73,7 +74,7 @@ class WeatherCardView: UIView {
         uvIndex.adjustsFontForContentSizeCategory = true
         uvIndex.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         return uvIndex
-    }()
+    }() 
     
     init() {
         super.init(frame: .zero)
@@ -88,9 +89,27 @@ class WeatherCardView: UIView {
         guard let viewModel else { return }
         weatherIcon.image = UIImage(named: viewModel.weather.weatherIcon)
         temperature.text = viewModel.weather.temperature
-        location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"
-        uvIndex.text = "Índice UV: \(viewModel.weather.uvIndex)"
+        //location.text = "\(viewModel.weather.city), \(viewModel.weather.country)"
+        uvIndex.text = " | Índice UV: \(viewModel.weather.uvIndex)"
         groupAccessible()
+    }
+
+    private func groupAccessible() {
+        self.weatherCard.isAccessibilityElement = false
+        self.location.isAccessibilityElement = false
+        self.temperature.isAccessibilityElement = false
+        self.uvIndex.isAccessibilityElement = false
+
+        self.shouldGroupAccessibilityChildren = true
+        self.isAccessibilityElement = true
+
+       // let locationAccessible = location.text ?? "erro"
+        let temperatureAccessible = temperature.text ?? "erro"
+        let uvIndexAccessible = uvIndex.text ?? "erro"
+
+        self.accessibilityLabel = """
+            temperatura \(temperatureAccessible), com índice \(uvIndexAccessible)
+        """
     }
 
 }
@@ -115,11 +134,11 @@ extension WeatherCardView: ViewCoding {
             groupAccessibleCard.centerXAnchor.constraint(equalTo: weatherCard.centerXAnchor),
             groupAccessibleCard.centerYAnchor.constraint(equalTo: weatherCard.centerYAnchor),
 
-            temperature.leadingAnchor.constraint(equalToSystemSpacingAfter: weatherCard.leadingAnchor, multiplier: 5.7),
-            temperature.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 7),
+            temperature.leadingAnchor.constraint(equalTo: weatherIcon.leadingAnchor),
+            temperature.topAnchor.constraint(equalTo: uvIndex.topAnchor),
 
-            location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
-            location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
+//            location.leadingAnchor.constraint(equalTo: temperature.leadingAnchor),
+//            location.topAnchor.constraint(equalToSystemSpacingBelow: temperature.bottomAnchor, multiplier: 1),
 
             weatherIcon.widthAnchor.constraint(equalTo: weatherCard.heightAnchor, multiplier: 0.4),
             weatherIcon.heightAnchor.constraint(equalTo: weatherIcon.widthAnchor),
@@ -127,7 +146,8 @@ extension WeatherCardView: ViewCoding {
             weatherIcon.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 5),
 
             uvIndex.topAnchor.constraint(equalToSystemSpacingBelow: weatherIcon.bottomAnchor, multiplier: 2),
-            uvIndex.centerXAnchor.constraint(equalTo: weatherIcon.centerXAnchor)
+//            uvIndex.centerXAnchor.constraint(equalTo: weatherIcon.centerXAnchor),
+            uvIndex.leadingAnchor.constraint(equalTo: temperature.trailingAnchor)
 
         ])
     }
@@ -139,7 +159,7 @@ extension WeatherCardView: ViewCoding {
         weatherCard.addSubview(weatherIcon)
         weatherCard.addSubview(temperature)
         weatherCard.addSubview(uvIndex)
-        weatherCard.addSubview(location)
+        //weatherCard.addSubview(location)
     }
 
 }

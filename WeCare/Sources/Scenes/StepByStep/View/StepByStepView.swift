@@ -13,6 +13,8 @@ import UIKit
 class StepByStepView: UIView {
     
     weak var delegate: DismissSheetDelegate?
+    weak var controller: StepByStepViewController?
+    var id: UUID? = nil
 
     private lazy var stepIcon: UIImageView = {
         let stepIcon = UIImageView()
@@ -42,7 +44,7 @@ class StepByStepView: UIView {
         stepDescription.numberOfLines = 0
         stepDescription.adjustsFontForContentSizeCategory = true
         stepDescription.font = UIFont.preferredFont(forTextStyle: .callout)
-        stepDescription.textAlignment = .center
+        stepDescription.textAlignment = .left
         return stepDescription
     }()
 
@@ -64,7 +66,8 @@ class StepByStepView: UIView {
         button.layer.cornerCurve = .circular
         button.layer.cornerRadius = 10
         button.setTitle("Feito", for: .normal)
-        button.backgroundColor = UIColor(red: 0.55, green: 0.6, blue: 0.27, alpha: 1)
+        button.backgroundColor = UIColor(named: "ActionButtonColor")
+        button.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
         return button
     }()
 
@@ -81,6 +84,7 @@ class StepByStepView: UIView {
         self.stepDescription.text = viewModel.stepsDescription
         self.stepIcon.image = UIImage(named: viewModel.icon)
         self.voiceIcon.text = viewModel.voiceIcon
+        self.id = viewModel.id
         stepDescriptionAccesible()
     }
     
@@ -110,7 +114,7 @@ extension StepByStepView: ViewCoding {
             tableView.widthAnchor.constraint(equalTo: widthAnchor),
             tableView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             
-            doneButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 70),
+            doneButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 40),
             doneButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
             doneButton.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             doneButton.centerXAnchor.constraint(equalTo: stepIcon.centerXAnchor),
@@ -137,7 +141,9 @@ extension StepByStepView {
     }
     
     @objc func doneButtonPressed() {
-        
+        guard let id = self.id else { return }
+        try? controller?.dailyController.markTaskAsDone(id: id)
+        delegate?.dismiss()
     }
     
     func stepDescriptionAccesible() {

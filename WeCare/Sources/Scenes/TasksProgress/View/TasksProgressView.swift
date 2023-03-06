@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Lottie
 
 final class TasksProgressView: UIView {
 
@@ -37,6 +38,35 @@ final class TasksProgressView: UIView {
         return label
     }()
 
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
+        return tableView
+    }()
+
+    lazy var emptyTasksAnimation: LottieAnimationView = {
+        let animationView = LottieAnimationView(animation: LottieAnimation.named("empty-notifications"))
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.backgroundColor = .clear
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+
+        return animationView
+    }()
+
+    private let emptyTasksLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Você não possui cuidados concluidos!"
+        label.textColor = .secondaryLabel
+
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -52,6 +82,23 @@ final class TasksProgressView: UIView {
         accessibility()
     }
 
+    func addEmptyTableAnimation() {
+        self.addSubview(emptyTasksAnimation)
+        self.addSubview(emptyTasksLabel)
+
+        NSLayoutConstraint.activate([
+            emptyTasksAnimation.topAnchor.constraint(equalToSystemSpacingBelow: tableView.topAnchor, multiplier: 4),
+            emptyTasksAnimation.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyTasksAnimation.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7),
+            emptyTasksAnimation.heightAnchor.constraint(equalTo: emptyTasksAnimation.widthAnchor),
+
+            emptyTasksLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyTasksLabel.topAnchor.constraint(equalToSystemSpacingBelow: emptyTasksAnimation.bottomAnchor, multiplier: 1)
+        ])
+
+        emptyTasksAnimation.play()
+    }
+
 }
 
 extension TasksProgressView: ViewCoding {
@@ -61,7 +108,7 @@ extension TasksProgressView: ViewCoding {
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            halfCircle.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 5),
+            halfCircle.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 3),
             halfCircle.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
             halfCircle.heightAnchor.constraint(equalTo: halfCircle.widthAnchor, multiplier: 0.5),
             halfCircle.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -71,7 +118,11 @@ extension TasksProgressView: ViewCoding {
 
             progressDescription.topAnchor.constraint(equalToSystemSpacingBelow: percentageLabel.bottomAnchor, multiplier: 1),
             progressDescription.widthAnchor.constraint(equalTo: halfCircle.widthAnchor, multiplier: 0.7),
-            progressDescription.centerXAnchor.constraint(equalTo: centerXAnchor)
+            progressDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            tableView.widthAnchor.constraint(equalTo: widthAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalToSystemSpacingBelow: halfCircle.bottomAnchor, multiplier: 2)
         ])
     }
 
@@ -79,6 +130,7 @@ extension TasksProgressView: ViewCoding {
         addSubview(halfCircle)
         addSubview(percentageLabel)
         addSubview(progressDescription)
+        addSubview(tableView)
     }
 }
 
