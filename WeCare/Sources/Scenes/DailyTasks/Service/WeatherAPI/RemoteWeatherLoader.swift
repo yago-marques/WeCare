@@ -46,11 +46,6 @@ final class RemoteWeatherLoader {
             weatherIcon: rawWeather.symbolName
         )
     }
-
-    private func fetchWeather() {
-
-    }
-
 }
 
 extension RemoteWeatherLoader: WeatherClient {
