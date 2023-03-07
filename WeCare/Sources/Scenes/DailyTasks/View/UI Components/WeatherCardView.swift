@@ -90,7 +90,15 @@ class WeatherCardView: UIView {
         uvIndex.adjustsFontForContentSizeCategory = true
         uvIndex.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         return uvIndex
-    }() 
+    }()
+
+    private let uvIndexInt: UILabel = {
+        let uvIndexInt = UILabel()
+        uvIndexInt.translatesAutoresizingMaskIntoConstraints = false
+        uvIndexInt.adjustsFontForContentSizeCategory = true
+        uvIndexInt.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        return uvIndexInt
+    }()
     
     init() {
         super.init(frame: .zero)
@@ -106,27 +114,10 @@ class WeatherCardView: UIView {
         weatherIcon.image = UIImage(named: viewModel.weather.weatherIcon)
         temperature.text = viewModel.weather.temperature
         uvIndex.text = " | Índice UV: \(viewModel.weather.uvIndex)"
-        groupAccessible()
-        weatherCardGroupAccessible()
+        uvIndexInt.text = "\(viewModel.weather.uvIndex)"
         addProgressBar()
         progressBar.setup(viewModel: viewModel.tasksViewModel)
-    }
-
-    private func weatherCardGroupAccessible() {
-        self.weatherCard.isAccessibilityElement = false
-        self.location.isAccessibilityElement = false
-        self.temperature.isAccessibilityElement = false
-        self.uvIndex.isAccessibilityElement = false
-
-        self.shouldGroupAccessibilityChildren = true
-        self.isAccessibilityElement = true
-
-        let temperatureAccessible = temperature.text ?? "erro"
-        let uvIndexAccessible = uvIndex.text ?? "erro"
-
-        self.accessibilityLabel = """
-            temperatura \(temperatureAccessible), com índice \(uvIndexAccessible)
-        """
+        groupAccessible()
     }
 
     func addProgressBar() {
@@ -199,8 +190,10 @@ extension WeatherCardView {
         self.location.isAccessibilityElement = false
         self.temperature.isAccessibilityElement = false
         self.uvIndex.isAccessibilityElement = false
+        self.progressLabel.isAccessibilityElement = false
+        self.progressBar.isAccessibilityElement = false
         self.groupAccessibleCard.isAccessibilityElement = true
 
-        groupAccessibleCard.accessibilityLabel = "\((temperature.text ?? "erro")) em \((location.text ?? "erro")), com  \(uvIndex.text ?? "erro")"
+        groupAccessibleCard.accessibilityLabel = "Número de \((progressLabel.text ?? "erro")), \(progressBar.viewModel.doneTasksCount) de  \(progressBar.viewModel.allTasksCount), temperatura \((temperature.text ?? "erro")), com Índice UV: \(uvIndexInt.text ?? "erro")"
     }
 }
