@@ -46,10 +46,7 @@ extension TasksProgressController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = viewModel.doneTasksCount
         if rows == 0 {
-//            tasksProgressView.addEmptyTableAnimation()
-//            tasksProgressView.emptyTasksLabel.isAccessibilityElement = false
-//            tasksProgressView.tableView.isAccessibilityElement = true
-//            tasksProgressView.tableView.accessibilityLabel = "oiiiii"
+            tasksProgressView.addEmptyTableAnimation()
             return 0
         } else {
             return rows

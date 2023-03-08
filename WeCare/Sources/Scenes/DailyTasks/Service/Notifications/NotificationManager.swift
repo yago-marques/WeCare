@@ -59,79 +59,19 @@ extension NotificationManager {
     }
 
     private func getTriggers() throws -> [UNTimeIntervalNotificationTrigger] {
-        let hour = Date().getHour
-
-        if hour <= 12 {
-            return try getMorningTriggers()
-        } else if hour > 12 && hour < 18 {
-            return try getDefaultsTriggers()
-        }
-
-        return try getEveningTriggers()
-    }
-
-    private func getMorningTriggers() throws -> [UNTimeIntervalNotificationTrigger] {
+        let currentHour = Date().getHour
         guard let tasks = try taskLoader.getTasks() else { return [] }
         guard let lastTaskHour = tasks.last?.hour else { return [] }
         let nextTaskHour = lastTaskHour + 4
 
-        if nextTaskHour <= 12 {
+        if nextTaskHour <= 22 {
             return [
-                .init(timeInterval: getInterval(12 - Date().getHour), repeats: false)
+                .init(timeInterval: getInterval(nextTaskHour - currentHour), repeats: false)
             ]
         } else {
-            return try getDefaultsTriggers()
-        }
-    }
-
-    private func getDefaultsTriggers() throws -> [UNTimeIntervalNotificationTrigger] {
-        guard let tasks = try taskLoader.getTasks() else { return [] }
-        if tasks.isEmpty {
             return [
-                .init(timeInterval: getInterval(1), repeats: false)
+                .init(timeInterval: getInterval(32 - currentHour), repeats: false)
             ]
-        } else {
-            guard let lastTaskHour = tasks.last?.hour else { return [] }
-            let nextTaskHour = lastTaskHour + 4
-            let differenceToNextTask = nextTaskHour - Date().getHour
-
-            if differenceToNextTask >= 4 {
-                return [
-                    .init(timeInterval: getInterval(4), repeats: false)
-                ]
-            } else {
-                return [
-                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: false)
-                ]
-            }
-        }
-    }
-
-    private func getEveningTriggers() throws -> [UNTimeIntervalNotificationTrigger] {
-        guard let tasks = try taskLoader.getTasks() else {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
-        }
-        guard let lastTaskHour = tasks.last?.hour else {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
-        }
-        let nextTaskHour = lastTaskHour + 4
-
-        if tasks.isEmpty {
-            return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
-        } else {
-            let differenceToNextTask = nextTaskHour - Date().getHour
-
-            if differenceToNextTask >= 4, nextTaskHour <= 21.3 {
-                return [
-                    .init(timeInterval: getInterval(4), repeats: false)
-                ]
-            } else if nextTaskHour <= 21.3 {
-                return [
-                    .init(timeInterval: getInterval(4 - differenceToNextTask), repeats: false)
-                ]
-            } else {
-                return [.init(timeInterval: getInterval(32 - Date().getHour), repeats: false)]
-            }
         }
     }
 
