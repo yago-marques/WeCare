@@ -115,8 +115,10 @@ private extension DailyTasksPresenter {
 
     private func loadNotificationTable() throws {
         guard let tasks = try taskLoader.getTasks() else { return }
+        guard let tasksViewModel = try self.getTasksProgressViewModel() else { return }
         let unDoneTasks = tasks.filter { $0.isDone == false }
         self.interfaceModel.notificationsTable = .init(tasks: unDoneTasks)
+        self.interfaceModel.weatherCard?.tasksViewModel = tasksViewModel
     }
 
 }

@@ -37,12 +37,6 @@ final class DailyTasksController: UIViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
     func openSheet(viewModel: NotificationsTask) {
         navigationController?.present(StepByStepFactory.make(viewModel: viewModel, controller: self), animated: true)
     }
