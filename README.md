@@ -1,6 +1,6 @@
 # WeCare
 
-<img src="https://user-images.githubusercontent.com/84297648/194332580-aae0caf6-a94d-4edb-a865-334e9a48915d.png" width=200/>
+<img width="200" alt="Screenshot 2023-07-06 at 15 28 42" src="https://github.com/yago-marques/WeCare/assets/84297648/d16b45af-0bca-466a-9d8e-e77371c313ab">
 
 <hr>
 
@@ -9,7 +9,7 @@
 > WeCare is a native iOS app designed to provide users with personalized skincare notifications at specific times throughout the day. This dedicated facial care application offers a comprehensive solution for individuals seeking to establish and maintain a consistent skincare routine.
 
 ## 🎥 DEMO
-Upload your video here
+https://github.com/yago-marques/WeCare/assets/84297648/c504d956-131e-4e8d-8e5f-a7f1b78063db
 
 ## 👩🏾‍💻 Technologies
 - [x] UIKit
